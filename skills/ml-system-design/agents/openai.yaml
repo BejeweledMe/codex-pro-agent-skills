@@ -1,0 +1,4 @@
+interface:
+  display_name: "ML System Design"
+  short_description: "Design and review production ML systems"
+  default_prompt: "Use $ml-system-design to design or review an ML system end to end."

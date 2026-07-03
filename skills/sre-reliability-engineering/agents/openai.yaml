@@ -1,0 +1,4 @@
+interface:
+  display_name: "SRE Reliability Engineering"
+  short_description: "Design and review reliable production systems"
+  default_prompt: "Use $sre-reliability-engineering to review this service for SRE risks."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Council"
+  short_description: "Coordinate multi-model answer reviews"
+  default_prompt: "Use $llm-council to design a transparent multi-model council workflow."
