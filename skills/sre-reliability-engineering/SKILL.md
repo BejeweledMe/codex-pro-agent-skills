@@ -15,6 +15,7 @@ Do not start from tools. First clarify user journeys, ownership, SLO/SLI, error 
 
 Read only the references needed for the current task.
 
+- For the topic map and reference index, read `references/00_README.md`.
 - Always start with `references/sre-agent-operating-model.md` for broad SRE design, review, incident, or production-readiness work.
 - For SRE basics, responsibility boundaries, and operating principles, read `references/01-sre-foundations.md`.
 - For SLA/SLO/SLI, CUJ, composite SLO, and SLI implementation choices, read `references/02-slo-sli-sla.md`.

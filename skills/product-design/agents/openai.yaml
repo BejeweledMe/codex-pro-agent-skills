@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Design"
+  short_description: "Design, validate, and review product systems"
+  default_prompt: "Use $product-design to design or review a product, AI UX, or design system."

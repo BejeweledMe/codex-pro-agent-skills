@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Product Consulting"
+  short_description: "Business, product, and consulting judgment"
+  default_prompt: "Use $business-product-consulting to frame this product engineering decision for business value, risks, and executive communication."

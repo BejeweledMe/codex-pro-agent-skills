@@ -1,0 +1,4 @@
+interface:
+  display_name: "Flutter Skill"
+  short_description: "Design and review Flutter iOS apps"
+  default_prompt: "Use $flutter-skill to design or review a production iOS app built with Flutter and Dart."

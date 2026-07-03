@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Engineering"
+  short_description: "Design and review long-lived software systems"
+  default_prompt: "Use $software-engineering to design or review this software system for long-term maintainability."

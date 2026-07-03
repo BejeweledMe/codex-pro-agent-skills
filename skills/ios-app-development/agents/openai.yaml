@@ -1,0 +1,4 @@
+interface:
+  display_name: "iOS App Development"
+  short_description: "Design and review Flutter and Swift iOS apps"
+  default_prompt: "Use $ios-app-development to design or review a production iOS app built with Flutter, SwiftUI, or mixed native code."

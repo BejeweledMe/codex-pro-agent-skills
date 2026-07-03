@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Skill"
+  short_description: "Design and review native Swift iOS apps"
+  default_prompt: "Use $swift-skill to design or review a production native iOS app built with Swift, SwiftUI, UIKit, or SwiftData."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent LLM Evals"
+  short_description: "Design LLM and agent evaluation systems"
+  default_prompt: "Use $agent-llm-evals to design evals for this LLM or agent workflow."

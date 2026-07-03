@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA Testing"
+  short_description: "Design QA strategy and automated tests"
+  default_prompt: "Use $qa-testing to design a QA and automated testing strategy for this feature."

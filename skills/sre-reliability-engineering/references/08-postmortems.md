@@ -81,4 +81,3 @@ Blameless не означает "без ответственности". Это 
 - [13-toil-automation.md](13-toil-automation.md)
 - [14-business-culture-war-stories.md](14-business-culture-war-stories.md)
 - [15-tools-glossary.md](15-tools-glossary.md)
-

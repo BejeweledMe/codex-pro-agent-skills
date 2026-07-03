@@ -1,0 +1,4 @@
+interface:
+  display_name: "Telegram Mini Apps"
+  short_description: "Design and review Telegram Mini Apps"
+  default_prompt: "Use $telegram-mini-apps to design or review a production-ready Telegram Mini App."

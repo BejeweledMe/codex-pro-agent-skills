@@ -15,6 +15,7 @@ Do not start from model choice. First clarify the business problem, success crit
 
 Read only the references needed for the current task.
 
+- For the topic map and reference index, read `references/00_README.md`.
 - Always start with `references/01_principles_process_agent_checklist.md` for broad system design or review.
 - For problem definition, risks, and cost of mistakes, read `references/02_problem_framing.md`.
 - For build-vs-buy, decomposition, vendors, open source, and innovation level, read `references/03_preliminary_research_build_vs_buy.md`.

@@ -90,4 +90,3 @@ your_availability <= provider_availability
 - [08-postmortems.md](08-postmortems.md)
 - [10-reliability-architecture.md](10-reliability-architecture.md)
 - [14-business-culture-war-stories.md](14-business-culture-war-stories.md)
-
