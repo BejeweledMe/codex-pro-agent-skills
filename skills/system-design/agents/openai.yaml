@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Design"
+  short_description: "Design and review production software systems"
+  default_prompt: "Use $system-design to design or review this system end to end."

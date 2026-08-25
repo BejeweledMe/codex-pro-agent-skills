@@ -7,6 +7,7 @@ Niche, high-signal skills for professional Codex agents. The repo layout is inte
 ## Available Skills
 
 - `ml-system-design`: ML system design, review, validation, productionization, and maintenance.
+- `system-design`: Classical software systems and distributed architecture design, review, capacity planning, and production readiness.
 - `sre-reliability-engineering`: SLOs, observability, incidents, on-call, reliability architecture, and production readiness.
 - `software-engineering`: Long-lived software design, review, testing, migration, and maintainability.
 - `qa-testing`: QA strategy, automated tests, CI/CD quality gates, and release validation.
@@ -25,7 +26,7 @@ Niche, high-signal skills for professional Codex agents. The repo layout is inte
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/ml-system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council
+  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council
 ```
 
 Restart Codex after installing or updating skills.
@@ -43,6 +44,7 @@ Replace the path with any available skill:
 
 ```bash
 skills/ml-system-design
+skills/system-design
 skills/sre-reliability-engineering
 skills/software-engineering
 skills/qa-testing
@@ -63,6 +65,7 @@ From a local clone:
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 cp -R skills/ml-system-design "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/system-design "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/sre-reliability-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/software-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/qa-testing "${CODEX_HOME:-$HOME/.codex}/skills/"
