@@ -7,6 +7,8 @@ description: Route Russian or English requests for documents, reports, summaries
 
 Use this as the thin natural-language entry point for information-writing work. Select exactly one primary operation, at most one audience, and at most one artifact. Apply any selected layer skills that are available; do not invent a second operation merely because the requested output has several qualities.
 
+For the complete workflow, install this router with `information-style` and the operation, audience, and artifact skills the task needs. When a selected companion is unavailable, continue with the task contract and prioritize reader outcome, factual integrity, a clear main point, and a coherent structure. Do not imply that an unavailable skill was applied.
+
 ## Task contract
 
 Capture or infer only what is needed to proceed:

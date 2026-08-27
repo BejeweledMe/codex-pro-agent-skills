@@ -22,7 +22,7 @@ Niche, high-signal skills for professional Codex agents. The repo layout is inte
 
 ### Information Writing Skill Family
 
-Install `information-writing-router` for natural-language routing of Russian and English writing requests. It selects one operation and, when useful, one audience and one artifact skill. The family contains:
+For natural-language writing requests in Russian and English, install the whole information-writing family. `information-writing-router` selects one operation and, when useful, one audience and one artifact skill from the installed family. Install the router by itself only when you deliberately want its lightweight task-contract fallback.
 
 - `information-writing-router`: Natural-language entry point for documentation, reports, summaries, rewrites, explanations, decisions, and presentations.
 - `information-style`: Baseline clarity, structure, and information-density pass.
