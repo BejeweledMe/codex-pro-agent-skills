@@ -22,24 +22,17 @@ Niche, high-signal skills for professional Codex agents. The repo layout is inte
 
 ### Information Writing Skill Family
 
-For natural-language writing requests in Russian and English, install the whole information-writing family. `information-writing-router` selects one operation and, when useful, one audience and one artifact skill from the installed family. Install the router by itself only when you deliberately want its lightweight task-contract fallback.
+For natural-language writing requests in Russian and English, install `information-writing`. It is chat-first: it adapts to the conversation, task context, and the user's demonstrated fluency. Add a specialized skill only when the operation or deliverable needs its additional discipline.
 
-- `information-writing-router`: Natural-language entry point for documentation, reports, summaries, rewrites, explanations, decisions, and presentations.
-- `information-style`: Baseline clarity, structure, and information-density pass.
-- `information-research-synthesis`: Multi-source and external research synthesis.
-- `information-source-summary`: Faithful source-bound summaries of supplied material.
+- `information-writing`: Adaptive baseline for substantive chat answers and informational writing.
 - `information-editing`: Copyediting, rewriting, audience adaptation, restructuring, and compression.
+- `information-source-summary`: Faithful source-bound summaries of supplied material.
+- `information-research-synthesis`: Multi-source and external research synthesis.
 - `information-explanation`: Explanations that build a correct mental model.
 - `information-decision-support`: Comparative decision analysis and recommendations.
-- `information-technical-audience`: Adaptation for technical specialists.
-- `information-nontechnical-audience`: Adaptation for non-specialist readers.
-- `information-executive-audience`: Adaptation for executive decision-makers.
-- `information-execution-audience`: Adaptation for delivery and operational owners.
-- `technical-documentation`: Architecture and design docs, API references, runbooks, and troubleshooting guides.
-- `technical-analysis-report`: Technical evaluations, benchmarks, experiments, and engineering analyses.
-- `progress-reporting`: Project and work status reports.
-- `decision-memo`: Decision-focused written memos.
-- `engineering-execution-plan`: Actionable engineering delivery plans.
+- `audience-adaptation`: Technical, nontechnical, executive, and execution reader modes.
+- `technical-writing`: Documentation, architecture/design docs, API references, runbooks, troubleshooting, benchmarks, and technical analyses.
+- `execution-writing`: Status reports, decision memos, and engineering execution plans.
 - `information-presentation`: Claim-driven slide content and speaker notes.
 
 ## Install All From GitHub
@@ -48,7 +41,7 @@ For natural-language writing requests in Russian and English, install the whole 
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council skills/information-writing-router skills/information-style skills/information-research-synthesis skills/information-source-summary skills/information-editing skills/information-explanation skills/information-decision-support skills/information-technical-audience skills/information-nontechnical-audience skills/information-executive-audience skills/information-execution-audience skills/technical-documentation skills/technical-analysis-report skills/progress-reporting skills/decision-memo skills/engineering-execution-plan skills/information-presentation
+  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council skills/information-writing skills/information-editing skills/information-source-summary skills/information-research-synthesis skills/information-explanation skills/information-decision-support skills/audience-adaptation skills/technical-writing skills/execution-writing skills/information-presentation
 ```
 
 Restart Codex after installing or updating skills.
@@ -78,22 +71,15 @@ skills/telegram-mini-apps
 skills/business-product-consulting
 skills/product-design
 skills/llm-council
-skills/information-writing-router
-skills/information-style
-skills/information-research-synthesis
-skills/information-source-summary
+skills/information-writing
 skills/information-editing
+skills/information-source-summary
+skills/information-research-synthesis
 skills/information-explanation
 skills/information-decision-support
-skills/information-technical-audience
-skills/information-nontechnical-audience
-skills/information-executive-audience
-skills/information-execution-audience
-skills/technical-documentation
-skills/technical-analysis-report
-skills/progress-reporting
-skills/decision-memo
-skills/engineering-execution-plan
+skills/audience-adaptation
+skills/technical-writing
+skills/execution-writing
 skills/information-presentation
 ```
 
@@ -116,22 +102,15 @@ cp -R skills/telegram-mini-apps "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/business-product-consulting "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/product-design "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/llm-council "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-writing-router "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-style "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-research-synthesis "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/information-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/information-source-summary "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/information-editing "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/information-research-synthesis "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/information-explanation "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/information-decision-support "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-technical-audience "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-nontechnical-audience "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-executive-audience "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-execution-audience "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/technical-documentation "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/technical-analysis-report "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/progress-reporting "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/decision-memo "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/engineering-execution-plan "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/audience-adaptation "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/technical-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/execution-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/information-presentation "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
