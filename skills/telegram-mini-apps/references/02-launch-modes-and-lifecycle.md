@@ -46,6 +46,6 @@ Direct/main links используют `startapp` как один компакт
 
 ## Связанные Файлы
 
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [04-frontend-backend-architecture.md](04-frontend-backend-architecture.md)
-- [06-ui-theme-viewport.md](06-ui-theme-viewport.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [05-frontend-backend-architecture.md](05-frontend-backend-architecture.md)
+- [07-ui-theme-viewport.md](07-ui-theme-viewport.md)

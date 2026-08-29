@@ -20,6 +20,14 @@ Before executing a security test, establish system ownership or written authoriz
 - Test safety and usefulness together: block disallowed behavior while measuring false positives and false refusals on authorized, benign, and allowed-sensitive cases.
 - Treat model, prompt, index, policy, tool schema, and runtime changes as a release bundle with regression evidence and rollback.
 
+## Boundaries
+
+This skill owns security boundaries and authorized testing of an LLM/RAG/agent system.
+For composition and model/provider/product fallback decisions, start with
+`$llm-system-design`; for agent control flow use `$agent-workflows`; for repeated
+evaluation harnesses use `$agent-llm-evals`. Do not infer authorization from the use
+of any companion skill.
+
 ## Reference Routing
 
 - Read [threat model and boundaries](references/01_threat_model_boundaries.md) for every broad security design or review.

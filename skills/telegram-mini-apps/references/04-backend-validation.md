@@ -50,6 +50,6 @@ Data-check-string для third-party validation отличается от HMAC-v
 
 ## Связанные Файлы
 
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [04-frontend-backend-architecture.md](04-frontend-backend-architecture.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [05-frontend-backend-architecture.md](05-frontend-backend-architecture.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)

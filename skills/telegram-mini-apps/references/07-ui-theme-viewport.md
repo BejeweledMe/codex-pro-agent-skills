@@ -62,6 +62,6 @@ Fullscreen полезен для игр, media-first интерфейсов и i
 
 ## Связанные Файлы
 
-- [05-sdk-api-and-native-capabilities.md](05-sdk-api-and-native-capabilities.md)
-- [09-testing-debugging-local-dev.md](09-testing-debugging-local-dev.md)
-- [11-common-mistakes.md](11-common-mistakes.md)
+- [06-sdk-api-and-native-capabilities.md](06-sdk-api-and-native-capabilities.md)
+- [10-testing-debugging-local-dev.md](10-testing-debugging-local-dev.md)
+- [12-common-mistakes.md](12-common-mistakes.md)

@@ -57,8 +57,8 @@
 
 ## Связанные Файлы
 
-- [00-overview.md](00-overview.md)
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [03-backend-validation.md](03-backend-validation.md)
-- [08-payments-and-stars.md](08-payments-and-stars.md)
-- [09-testing-debugging-local-dev.md](09-testing-debugging-local-dev.md)
+- [01-overview.md](01-overview.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [04-backend-validation.md](04-backend-validation.md)
+- [09-payments-and-stars.md](09-payments-and-stars.md)
+- [10-testing-debugging-local-dev.md](10-testing-debugging-local-dev.md)

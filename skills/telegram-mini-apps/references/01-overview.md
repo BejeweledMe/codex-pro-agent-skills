@@ -27,6 +27,6 @@ Mini App выглядит как часть Telegram, но остается web 
 
 ## Связанные Файлы
 
-- [01-launch-modes-and-lifecycle.md](01-launch-modes-and-lifecycle.md)
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
+- [02-launch-modes-and-lifecycle.md](02-launch-modes-and-lifecycle.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)

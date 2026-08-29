@@ -40,7 +40,8 @@ Read only the references needed for the current task.
    - UI/UX review or frontend implementation: read `08`, then `07` for AI flows, `09` for design-system fit, and `12` for checklists.
    - Design system work: read `09`, `10`, `11`, `13`.
    - Metrics, validation, or launch readiness: read `05`, `11`, `12`, and topic files for the relevant surface.
-   - Fact-checking or source-sensitive work: read `14` and `sources` before making strong claims.
+   - Fact-checking or source-sensitive work: use supplied sources or primary current
+     sources before making strong claims; label any remaining inference explicitly.
 2. Identify blocking unknowns. Ask only when missing information changes the decision; otherwise state assumptions.
 3. Separate outcome, opportunity, solution, and assumptions.
 4. Evaluate value, usability, feasibility, and viability before committing to a solution.

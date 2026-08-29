@@ -57,7 +57,7 @@ Bot и Mini App не заменяют backend. Backend нужен для дов�
 
 ## Связанные Файлы
 
-- [01-launch-modes-and-lifecycle.md](01-launch-modes-and-lifecycle.md)
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [08-payments-and-stars.md](08-payments-and-stars.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
+- [02-launch-modes-and-lifecycle.md](02-launch-modes-and-lifecycle.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [09-payments-and-stars.md](09-payments-and-stars.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)

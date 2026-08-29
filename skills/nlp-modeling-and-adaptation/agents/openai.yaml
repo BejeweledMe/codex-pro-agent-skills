@@ -1,0 +1,4 @@
+interface:
+  display_name: "NLP Modeling And Adaptation"
+  short_description: "Choose and adapt text models from baselines to PEFT"
+  default_prompt: "Use $nlp-modeling-and-adaptation to choose or adapt a text model."

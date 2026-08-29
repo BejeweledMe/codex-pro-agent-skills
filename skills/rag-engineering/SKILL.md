@@ -16,6 +16,14 @@ Treat RAG as a diagnosable pipeline, not a prompt. Locate the first broken trans
 - Keep source/version/access provenance with every chunk and enforce access before retrieval. Route adversarial or ACL-boundary testing to `$genai-security-testing`.
 - Pair quality gains with tail latency, cost, index/update complexity, fallback, and rollback evidence. Do not prescribe universal chunk sizes, `k`, fusion weights, or ANN parameters.
 
+## Boundaries
+
+This skill owns the RAG pipeline after retrieval is selected. For deciding whether an
+LLM product should use prompt, RAG, an agent, or adaptation, start with
+`$llm-system-design`. Use `$agent-workflows` only when retrieval requires a genuinely
+unknown tool/search loop; use `$agent-llm-evals` and `$genai-security-testing` for
+their respective evaluation and authorized security concerns.
+
 ## Reference Routing
 
 Read only the files needed for the request.

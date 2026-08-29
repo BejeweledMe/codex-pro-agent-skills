@@ -15,6 +15,14 @@ An agent is a stateful control loop: `decide -> validate -> act -> observe -> up
 - Define tool schemas, argument provenance, permissions, expected results/errors, timeout, retryability, idempotency, and compensation before release.
 - Make state ownership, checkpoints, terminal states, loop limits, and degraded/manual paths explicit. Prompt wording is not a reliable loop bound.
 
+## Boundaries
+
+This skill owns how a selected agent workflow executes. For deciding whether an LLM
+product should use a prompt, RAG, agent, or adaptation and for product-level routing
+or budgets, start with `$llm-system-design`. Threat models and authorized boundary
+tests remain with `$genai-security-testing`; evaluation harnesses remain with
+`$agent-llm-evals`.
+
 ## Reference Routing
 
 - For pipeline, RAG, single-agent, multi-agent, or council selection, read [agent or pipeline](references/01_agent_or_pipeline.md).

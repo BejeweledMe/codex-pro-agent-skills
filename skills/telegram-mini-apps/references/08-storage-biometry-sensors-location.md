@@ -50,6 +50,6 @@ Bot API 8.0 добавил:
 
 ## Связанные Файлы
 
-- [05-sdk-api-and-native-capabilities.md](05-sdk-api-and-native-capabilities.md)
-- [06-ui-theme-viewport.md](06-ui-theme-viewport.md)
-- [11-common-mistakes.md](11-common-mistakes.md)
+- [06-sdk-api-and-native-capabilities.md](06-sdk-api-and-native-capabilities.md)
+- [07-ui-theme-viewport.md](07-ui-theme-viewport.md)
+- [12-common-mistakes.md](12-common-mistakes.md)

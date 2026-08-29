@@ -71,6 +71,6 @@ Capabilities зависят от версии Telegram client, платформ�
 
 ## Связанные Файлы
 
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [06-ui-theme-viewport.md](06-ui-theme-viewport.md)
-- [07-storage-biometry-sensors-location.md](07-storage-biometry-sensors-location.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [07-ui-theme-viewport.md](07-ui-theme-viewport.md)
+- [08-storage-biometry-sensors-location.md](08-storage-biometry-sensors-location.md)

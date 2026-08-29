@@ -1,6 +1,6 @@
 ---
 name: ml-system-design
-description: Use when designing, reviewing, validating, debugging, or improving ML-based systems and ML product architecture. Trigger for ML system design interviews, design docs, architecture reviews, problem framing, build-vs-buy decisions, metrics/loss selection, data and labeling plans, validation/leakage/split strategy, baseline planning, error analysis, training pipelines, feature stores, A/B experiments, integration/API/release plans, serving/inference optimization, monitoring, drift handling, reliability, ownership, and long-term maintenance.
+description: Use when designing, reviewing, validating, debugging, or improving predictive and classical ML systems. Trigger for ML problem framing, metrics/losses, data and labels, validation/leakage/splits, baselines, error analysis, training pipelines, feature stores, A/B experiments, non-LLM inference, monitoring, drift, retraining, ownership, and ML system design interviews. For LLM product composition, model adaptation, or LLM serving use the dedicated LLM skills.
 ---
 
 # ML System Design
@@ -10,6 +10,15 @@ Use this skill to design or review ML systems end to end. Treat a model as only 
 ## Core Rule
 
 Do not start from model choice. First clarify the business problem, success criteria, constraints, price of mistakes, available data, baseline, validation schema, fallback, monitoring, and ownership.
+
+## Boundaries
+
+This is the primary skill for predictive and classical ML lifecycle decisions:
+problem/metric/data/validation/baseline/training/deployment/monitoring. For a new LLM
+product architecture, start with `$llm-system-design`; for how a text model is chosen
+or adapted use `$nlp-modeling-and-adaptation`; for self-hosted LLM runtime bottlenecks
+use `$llm-inference-optimization`. The LLM references in this skill remain as
+compatibility bridges, not detailed primary routes.
 
 ## Reference Routing
 
@@ -31,8 +40,10 @@ Read only the references needed for the current task.
 - For API design, release cycle, operations, overrides, and fallbacks, read `references/13_integration_api_release_fallbacks.md`.
 - For serving, latency/throughput/cost tradeoffs, profiling, and inference optimization, read `references/14_serving_inference_optimization.md`.
 - For monitoring, drift, reliability, accountability, bus factor, documentation, and complexity, read `references/15_monitoring_ownership_maintenance.md`.
-- For LLM model selection, prompting versus retrieval versus adaptation, data/license constraints, evaluation slices, and release bundles, read `references/16_llm_model_selection_and_adaptation.md`.
-- For LLM inference capacity, prefill/decode diagnosis, KV-cache pressure, batching, routing, and rollback, read `references/17_llm_inference_serving_and_bottleneck_diagnosis.md`.
+- For a legacy overview of LLM selection/adaptation before handing off to the new
+  primary owner, read `references/16_llm_model_selection_and_adaptation.md`.
+- For a legacy overview of self-hosted LLM serving before handing off to the new
+  primary owner, read `references/17_llm_inference_serving_and_bottleneck_diagnosis.md`.
 
 ## Workflow
 
@@ -42,14 +53,15 @@ Read only the references needed for the current task.
    - Metrics or experiment design: read `05`, `07`, `09`, `12`.
    - Data/validation/debugging issue: read `06`, `07`, `09`, `11`, and `15` if production is involved.
    - Production, serving, or reliability review: read `13`, `14`, `15`, and `08` for fallback/baseline behavior.
-   - LLM selection, adaptation, or behavior change: read `16`, then the relevant data, validation, training, and evaluation references.
-   - LLM serving bottleneck or self-hosted capacity question: read `17`, then `14`, `15`, and companion system/SRE references as needed.
+   - LLM product architecture, provider/model routing, prompt/RAG/agent/adaptation choice, or product budget: start with `$llm-system-design`.
+   - Text-model selection, fine-tuning, PEFT, tokenizer, or adaptation question: start with `$nlp-modeling-and-adaptation`, then use the relevant ML lifecycle references.
+   - LLM serving bottleneck or self-hosted capacity question: start with `$llm-inference-optimization`, then use `14`, `15`, and companion system/SRE references as needed.
 2. Identify unknowns before proposing architecture. Ask only for blocking information; otherwise state assumptions.
 3. Produce a practical design or review with explicit tradeoffs.
 4. Validate the design against baseline, validation, data quality, integration, monitoring, fallback, ownership, and maintainability.
 5. Mark any ideas not grounded in the references as `external extension` if you add them.
 
-For RAG pipeline work, use `$rag-engineering` for corpus-to-context decisions. For agent control loops, use `$agent-workflows`. For threat modeling or authorized boundary testing, use `$genai-security-testing`. This skill remains the owner of the end-to-end ML and model lifecycle decision.
+For RAG pipeline work, use `$rag-engineering` for corpus-to-context decisions. For agent control loops, use `$agent-workflows`. For threat modeling or authorized boundary testing, use `$genai-security-testing`. This skill remains the owner of the predictive/classical ML lifecycle decision.
 
 ## Output For New System Design
 

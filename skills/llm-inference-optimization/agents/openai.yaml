@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Inference Optimization"
+  short_description: "Diagnose and optimize self-hosted LLM serving runtime"
+  default_prompt: "Use $llm-inference-optimization to diagnose this LLM serving bottleneck."

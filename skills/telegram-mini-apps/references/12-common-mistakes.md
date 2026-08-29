@@ -63,8 +63,8 @@
 
 ## Связанные Файлы
 
-- [02-auth-initdata.md](02-auth-initdata.md)
-- [03-backend-validation.md](03-backend-validation.md)
-- [06-ui-theme-viewport.md](06-ui-theme-viewport.md)
-- [09-testing-debugging-local-dev.md](09-testing-debugging-local-dev.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
+- [03-auth-initdata.md](03-auth-initdata.md)
+- [04-backend-validation.md](04-backend-validation.md)
+- [07-ui-theme-viewport.md](07-ui-theme-viewport.md)
+- [10-testing-debugging-local-dev.md](10-testing-debugging-local-dev.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)

@@ -11,6 +11,14 @@ Use this skill to design or review evaluation systems for LLM products and agent
 
 Do not start from a vendor eval dashboard, benchmark, or generic metric. First clarify the product behavior, sources of nondeterminism, task boundaries, tool/state contracts, safety requirements, grader evidence, human calibration needs, CI/release stage, and production feedback loop.
 
+## Boundaries
+
+This skill owns measurement, calibration, harnesses, and release gates. For the
+architecture of an LLM product and its component selection, use `$llm-system-design`;
+for the semantics of a selected RAG or agent component use `$rag-engineering` or
+`$agent-workflows`; for authorized security scope and test boundaries use
+`$genai-security-testing`.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

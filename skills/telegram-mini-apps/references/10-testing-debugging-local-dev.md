@@ -48,6 +48,6 @@ Telegram test environment отделен от production. Для него нуж
 
 ## Связанные Файлы
 
-- [01-launch-modes-and-lifecycle.md](01-launch-modes-and-lifecycle.md)
-- [06-ui-theme-viewport.md](06-ui-theme-viewport.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
+- [02-launch-modes-and-lifecycle.md](02-launch-modes-and-lifecycle.md)
+- [07-ui-theme-viewport.md](07-ui-theme-viewport.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)

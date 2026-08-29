@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM System Design"
+  short_description: "Compose LLM products and choose their capability pattern"
+  default_prompt: "Use $llm-system-design to design this LLM product architecture."

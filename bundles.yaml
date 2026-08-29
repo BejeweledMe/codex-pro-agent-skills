@@ -1,0 +1,140 @@
+version: 1
+bundles:
+  base:
+    description: General-purpose professional engineering and writing skills.
+    skills:
+      - information-writing
+      - information-editing
+      - audience-adaptation
+      - technical-writing
+      - execution-writing
+      - software-engineering
+      - qa-testing
+      - system-design
+      - sre-reliability-engineering
+  writing-specialists:
+    description: Full information-writing family for source, research, decision, and presentation work.
+    skills:
+      - information-writing
+      - information-editing
+      - information-source-summary
+      - information-research-synthesis
+      - information-explanation
+      - information-decision-support
+      - audience-adaptation
+      - technical-writing
+      - execution-writing
+      - information-presentation
+  product-and-consulting:
+    description: Product discovery, UX, business framing, and stakeholder decisions.
+    skills:
+      - product-design
+      - business-product-consulting
+      - information-decision-support
+      - execution-writing
+      - information-presentation
+  service-platform:
+    description: Classical services, software delivery, quality, and reliability.
+    skills:
+      - system-design
+      - software-engineering
+      - qa-testing
+      - sre-reliability-engineering
+      - technical-writing
+  classic-ml:
+    description: Classical and predictive ML systems, including text model selection and training.
+    skills:
+      - ml-system-design
+      - nlp-modeling-and-adaptation
+      - system-design
+      - software-engineering
+      - qa-testing
+      - sre-reliability-engineering
+  llm-product:
+    description: Design and release a user-facing LLM product.
+    skills:
+      - llm-system-design
+      - nlp-modeling-and-adaptation
+      - rag-engineering
+      - agent-workflows
+      - agent-llm-evals
+      - genai-security-testing
+      - llm-council
+      - system-design
+      - sre-reliability-engineering
+  llm-platform:
+    description: Build and operate a self-hosted LLM serving platform.
+    skills:
+      - llm-system-design
+      - llm-inference-optimization
+      - agent-llm-evals
+      - genai-security-testing
+      - system-design
+      - sre-reliability-engineering
+      - software-engineering
+  llm-adaptation:
+    description: Adapt, evaluate, and deploy a text or LLM model.
+    skills:
+      - nlp-modeling-and-adaptation
+      - llm-inference-optimization
+      - agent-llm-evals
+      - genai-security-testing
+      - ml-system-design
+      - software-engineering
+  agent-systems:
+    description: Design, test, secure, and operate LLM agent workflows.
+    skills:
+      - llm-system-design
+      - agent-workflows
+      - agent-llm-evals
+      - genai-security-testing
+      - rag-engineering
+      - system-design
+      - sre-reliability-engineering
+  ios-apps:
+    description: Production iOS, Swift, Flutter, and mixed-stack application work.
+    skills:
+      - ios-app-development
+      - swift-skill
+      - flutter-skill
+      - qa-testing
+      - software-engineering
+  telegram-mini-apps:
+    description: Telegram Mini App design, implementation, security, and release.
+    skills:
+      - telegram-mini-apps
+      - system-design
+      - qa-testing
+      - software-engineering
+  all:
+    description: Every skill currently published by this repository.
+    skills:
+      - agent-llm-evals
+      - agent-workflows
+      - audience-adaptation
+      - business-product-consulting
+      - execution-writing
+      - flutter-skill
+      - genai-security-testing
+      - information-decision-support
+      - information-editing
+      - information-explanation
+      - information-presentation
+      - information-research-synthesis
+      - information-source-summary
+      - information-writing
+      - ios-app-development
+      - llm-council
+      - llm-inference-optimization
+      - llm-system-design
+      - ml-system-design
+      - nlp-modeling-and-adaptation
+      - product-design
+      - qa-testing
+      - rag-engineering
+      - software-engineering
+      - sre-reliability-engineering
+      - swift-skill
+      - system-design
+      - technical-writing
+      - telegram-mini-apps

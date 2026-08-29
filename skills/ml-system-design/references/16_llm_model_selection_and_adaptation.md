@@ -1,5 +1,10 @@
 # LLM: Выбор Модели И Адаптация
 
+> **Совместимый обзор.** Для нового LLM-продукта сначала используйте
+> `$llm-system-design`; для выбора text-model family, SFT/PEFT, tokenizer и
+> adaptation workflow используйте `$nlp-modeling-and-adaptation`. Этот файл сохранён
+> для существующих маршрутов и даёт только краткий lifecycle context.
+
 ## Начать С Поведения, Не С Названия Модели
 
 Зафиксируйте задачу, цену ошибки, язык и модальность, допустимые данные и размещение, licence/contract constraints, контекст, latency/volume/budget, target audience и fallback. Создайте task-specific evaluation slices до выбора модели. Leaderboard без совпадающего task contract не является решением.

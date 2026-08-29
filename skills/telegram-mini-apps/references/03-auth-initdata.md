@@ -57,6 +57,6 @@ Frontend не является доверенным основанием. `initD
 
 ## Связанные Файлы
 
-- [03-backend-validation.md](03-backend-validation.md)
-- [04-frontend-backend-architecture.md](04-frontend-backend-architecture.md)
-- [11-common-mistakes.md](11-common-mistakes.md)
+- [04-backend-validation.md](04-backend-validation.md)
+- [05-frontend-backend-architecture.md](05-frontend-backend-architecture.md)
+- [12-common-mistakes.md](12-common-mistakes.md)

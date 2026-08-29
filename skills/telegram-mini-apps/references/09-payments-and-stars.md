@@ -42,6 +42,6 @@ Production flow для Stars:
 
 ## Связанные Файлы
 
-- [04-frontend-backend-architecture.md](04-frontend-backend-architecture.md)
-- [10-deployment-production-checklist.md](10-deployment-production-checklist.md)
-- [11-common-mistakes.md](11-common-mistakes.md)
+- [05-frontend-backend-architecture.md](05-frontend-backend-architecture.md)
+- [11-deployment-production-checklist.md](11-deployment-production-checklist.md)
+- [12-common-mistakes.md](12-common-mistakes.md)

@@ -17,6 +17,14 @@ Design systems from requirements and failure behavior, not from a preferred stac
 - Make tradeoffs explicit. State the benefit, cost, failure mode, rejected alternatives, and evidence that would change the decision.
 - Preserve future changeability through clear contracts, compatibility plans, tests, documentation, staged rollout, rollback, and ownership.
 
+## Boundaries
+
+This skill owns classical service and distributed-system architecture. Use
+`$ml-system-design` for a predictive or classical ML lifecycle and
+`$llm-system-design` for composition of an LLM product. Those skills may call this
+one for storage, queues, APIs, tenancy, capacity, and service reliability, but model
+or prompt decisions are not owned here.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

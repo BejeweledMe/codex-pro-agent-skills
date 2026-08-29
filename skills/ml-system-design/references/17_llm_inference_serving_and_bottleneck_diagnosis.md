@@ -1,5 +1,10 @@
 # LLM Inference, Serving И Диагностика Bottleneck
 
+> **Совместимый обзор.** Для self-hosted LLM runtime, KV cache, batching,
+> quantization и capacity используйте `$llm-inference-optimization`; для продуктового
+> budget/provider/fallback решения используйте `$llm-system-design`. Этот файл
+> сохранён для существующих маршрутов и даёт только краткий lifecycle context.
+
 ## Разложить Critical Path
 
 Измеряйте admission/queue, tokenization, prefill/TTFT, decode/token rate, streaming/network, postprocessing и external tools отдельно, по workload class и P50/P95/P99. Средняя end-to-end latency не локализует bottleneck.

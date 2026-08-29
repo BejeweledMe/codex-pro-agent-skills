@@ -2,30 +2,44 @@
 
 ![Codex Skills hero](assets/codex-skills-hero.png)
 
-Niche, high-signal skills for professional Codex agents. The repo layout is intentionally small and direct: each skill lives under `skills/<skill-name>` and contains its own `SKILL.md`, optional `agents/` metadata, and optional bundled resources.
+Focused, high-signal skills for professional Codex agents. Every skill lives in
+`skills/<skill-name>` with a compact `SKILL.md` and optional references. The library
+uses narrow primary owners instead of one catch-all guide: an agent first selects the
+right decision surface, then follows only the companion skills it needs.
+
+Read [the skill catalog](CATALOG.md) for the navigation model and bundle purpose.
 
 ## Available Skills
 
-- `ml-system-design`: ML system design, review, validation, productionization, and maintenance.
-- `system-design`: Classical software systems and distributed architecture design, review, capacity planning, and production readiness.
-- `sre-reliability-engineering`: SLOs, observability, incidents, on-call, reliability architecture, and production readiness.
-- `software-engineering`: Long-lived software design, review, testing, migration, and maintainability.
-- `qa-testing`: QA strategy, automated tests, CI/CD quality gates, and release validation.
-- `agent-llm-evals`: LLM evals, agent workflow evals, graders, traces, and continuous evaluation.
-- `rag-engineering`: RAG pipeline design, retrieval/context diagnosis, grounded answers, and index lifecycle.
-- `agent-workflows`: Agent control loops, tool/state contracts, single or multi-agent orchestration, and recovery.
-- `genai-security-testing`: Defensive LLM/RAG/agent hardening, authorized self-testing, and false-refusal evaluation.
-- `ios-app-development`: Production iOS architecture, Flutter/native integration, release, and maintenance.
-- `flutter-skill`: Flutter architecture, iOS integration, testing, performance, and release readiness.
-- `swift-skill`: Native Swift, SwiftUI/UIKit, SwiftData, concurrency, testing, and App Store readiness.
-- `telegram-mini-apps`: Telegram Mini App architecture, initData auth, WebApp API, payments, testing, and production readiness.
-- `business-product-consulting`: business/product consulting judgment for product engineering, communication, metrics, AI adoption, and org flow.
-- `product-design`: Product discovery, UI/UX, AI product design, design systems, validation, and business outcomes.
-- `llm-council`: A Codex adaptation of Andrej Karpathy's `llm-council` multi-model review pattern.
+**Classical systems**
 
-### Information Writing Skill Family
+- `system-design`: Services, APIs, data, queues, capacity, and distributed systems.
+- `software-engineering`: Long-lived software design, change safety, testing, and delivery.
+- `qa-testing`: Classic software QA strategy, suites, and quality gates.
+- `sre-reliability-engineering`: SLOs, observability, incidents, on-call, and reliability.
 
-For natural-language writing requests in Russian and English, install `information-writing`. It is chat-first: it adapts to the conversation, task context, and the user's demonstrated fluency. Add a specialized skill only when the operation or deliverable needs its additional discipline.
+**ML and LLM systems**
+
+- `ml-system-design`: Predictive/classical ML lifecycle, data, validation, training, and drift.
+- `llm-system-design`: LLM-product composition, model/provider routing, prompt/RAG/agent/adaptation choice, budgets, and fallback.
+- `nlp-modeling-and-adaptation`: Text-model selection from rules/TF-IDF/BM25/BERT through SFT/PEFT/preference optimization.
+- `llm-inference-optimization`: Self-hosted LLM runtime, KV cache, batching, quantization, and capacity.
+- `rag-engineering`: Grounded RAG ingestion, retrieval, context, diagnostics, and release.
+- `agent-workflows`: Agent control loops, tools, state, handoffs, and recovery.
+- `agent-llm-evals`: LLM/agent evals, graders, traces, regression, and release gates.
+- `genai-security-testing`: Defensive hardening and authorized testing of LLM/RAG/agent systems.
+- `llm-council`: Codex adaptation of the multi-model review pattern inspired by [karpathy/llm-council](https://github.com/karpathy/llm-council).
+
+**Product and mobile**
+
+- `business-product-consulting`: Product/business framing, decisions, metrics, and organization.
+- `product-design`: Product discovery, UX, AI product design, validation, and design systems.
+- `ios-app-development`: Cross-stack iOS architecture, release, and maintenance.
+- `swift-skill`: Native Swift, SwiftUI/UIKit, concurrency, testing, and release readiness.
+- `flutter-skill`: Flutter architecture, iOS integration, testing, and release readiness.
+- `telegram-mini-apps`: Telegram Mini App architecture, authentication, payments, testing, and production readiness.
+
+**Information writing**
 
 - `information-writing`: Adaptive baseline for substantive chat answers and informational writing.
 - `information-editing`: Copyediting, rewriting, audience adaptation, restructuring, and compression.
@@ -34,107 +48,88 @@ For natural-language writing requests in Russian and English, install `informati
 - `information-explanation`: Explanations that build a correct mental model.
 - `information-decision-support`: Comparative decision analysis and recommendations.
 - `audience-adaptation`: Technical, nontechnical, executive, and execution reader modes.
-- `technical-writing`: Documentation, architecture/design docs, API references, runbooks, troubleshooting, benchmarks, and technical analyses.
+- `technical-writing`: Documentation, design docs, runbooks, benchmarks, and technical analyses.
 - `execution-writing`: Status reports, decision memos, and engineering execution plans.
 - `information-presentation`: Claim-driven slide content and speaker notes.
 
-## Install All From GitHub
+## Install A Bundle
+
+Install `base` first for general professional work, then opt into the domains an agent
+will actually use. This keeps future narrow domains, such as computer vision, out of
+the installed selection set unless explicitly requested.
+
+Clone the repository and inspect available bundles:
+
+```bash
+git clone https://github.com/BejeweledMe/codex-pro-agent-skills.git
+cd codex-pro-agent-skills
+./scripts/install-bundle.sh --list
+```
+
+The helper uses the official Codex GitHub installer. It prints the exact command by
+default; add `--run` to execute it. Bundles can be combined and deduplicate shared
+skills:
+
+```bash
+./scripts/install-bundle.sh --bundle base --bundle llm-product --run
+```
+
+Examples for other focused installs:
+
+```bash
+./scripts/install-bundle.sh --bundle classic-ml --run
+./scripts/install-bundle.sh --bundle llm-platform --run
+./scripts/install-bundle.sh --bundle agent-systems --run
+./scripts/install-bundle.sh --bundle ios-apps --run
+./scripts/install-bundle.sh --bundle telegram-mini-apps --run
+```
+
+Install every skill in this release:
+
+```bash
+./scripts/install-bundle.sh --bundle all --run
+```
+
+`bundles.yaml` is the source of truth for membership. Bundles intentionally overlap:
+they describe a job to be done, not a filesystem hierarchy.
+
+## Install With The Official GitHub Command
+
+The official installer accepts explicit skill paths. This is useful when installing a
+single skill or when a local helper is not desired.
+
+Install one skill:
 
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/rag-engineering skills/agent-workflows skills/genai-security-testing skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council skills/information-writing skills/information-editing skills/information-source-summary skills/information-research-synthesis skills/information-explanation skills/information-decision-support skills/audience-adaptation skills/technical-writing skills/execution-writing skills/information-presentation
+  --path skills/llm-system-design
 ```
 
-Restart Codex after installing or updating skills.
-
-## Install One Skill From GitHub
+Install the `base` bundle directly:
 
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/ml-system-design
+  --path skills/information-writing skills/information-editing skills/audience-adaptation skills/technical-writing skills/execution-writing skills/software-engineering skills/qa-testing skills/system-design skills/sre-reliability-engineering
 ```
 
-Replace the path with any available skill:
+Install all current skills directly:
 
 ```bash
-skills/ml-system-design
-skills/system-design
-skills/sre-reliability-engineering
-skills/software-engineering
-skills/qa-testing
-skills/agent-llm-evals
-skills/rag-engineering
-skills/agent-workflows
-skills/genai-security-testing
-skills/ios-app-development
-skills/flutter-skill
-skills/swift-skill
-skills/telegram-mini-apps
-skills/business-product-consulting
-skills/product-design
-skills/llm-council
-skills/information-writing
-skills/information-editing
-skills/information-source-summary
-skills/information-research-synthesis
-skills/information-explanation
-skills/information-decision-support
-skills/audience-adaptation
-skills/technical-writing
-skills/execution-writing
-skills/information-presentation
-```
-
-## Install From A Local Clone
-
-From a local clone:
-
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/ml-system-design "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/system-design "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/sre-reliability-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/software-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/qa-testing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/agent-llm-evals "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/rag-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/agent-workflows "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/genai-security-testing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/ios-app-development "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/flutter-skill "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/swift-skill "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/telegram-mini-apps "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/business-product-consulting "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/product-design "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/llm-council "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-source-summary "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-editing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-research-synthesis "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-explanation "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-decision-support "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/audience-adaptation "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/technical-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/execution-writing "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R skills/information-presentation "${CODEX_HOME:-$HOME/.codex}/skills/"
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --method git \
+  --repo BejeweledMe/codex-pro-agent-skills \
+  --path skills/agent-llm-evals skills/agent-workflows skills/audience-adaptation skills/business-product-consulting skills/execution-writing skills/flutter-skill skills/genai-security-testing skills/information-decision-support skills/information-editing skills/information-explanation skills/information-presentation skills/information-research-synthesis skills/information-source-summary skills/information-writing skills/ios-app-development skills/llm-council skills/llm-inference-optimization skills/llm-system-design skills/ml-system-design skills/nlp-modeling-and-adaptation skills/product-design skills/qa-testing skills/rag-engineering skills/software-engineering skills/sre-reliability-engineering skills/swift-skill skills/system-design skills/technical-writing skills/telegram-mini-apps
 ```
 
 Restart Codex after installing or updating skills.
 
 ## Adding Skills
 
-Use this shape for every new skill:
-
-```text
-skills/<skill-name>/
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-└── references/
-```
-
-Keep `SKILL.md` compact and put detailed domain notes in `references/` so Codex can load only the files needed for the current task.
+Keep new skills flat under `skills/<skill-name>`. Give them a discriminating
+frontmatter description, a compact entrypoint, references only for conditional detail,
+and explicit handoffs to adjacent owners. Add the skill to `bundles.yaml`, update the
+catalog, and run the validation scripts before publishing.
