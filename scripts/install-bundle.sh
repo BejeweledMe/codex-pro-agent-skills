@@ -4,16 +4,20 @@ set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 manifest="$root/bundles.yaml"
-installer="${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py"
+codex_home="${CODEX_HOME:-$HOME/.codex}"
+installer="${CODEX_SKILL_INSTALLER:-$codex_home/skills/.system/skill-installer/scripts/install-skill-from-github.py}"
+destination="$codex_home/skills"
 repo="BejeweledMe/codex-pro-agent-skills"
 run=false
 list=false
+replace=false
 bundles=()
 
 usage() {
-  printf '%s\n' "Usage: $0 --bundle NAME [--bundle NAME ...] [--run]"
+  printf '%s\n' "Usage: $0 --bundle NAME [--bundle NAME ...] [--run] [--replace]"
   printf '%s\n' "       $0 --list"
   printf '%s\n' "Prints the official GitHub installer command by default. --run executes it."
+  printf '%s\n' "--replace backs up existing skill directories before installing updates."
 }
 
 while (($#)); do
@@ -29,6 +33,10 @@ while (($#)); do
       ;;
     --run)
       run=true
+      shift
+      ;;
+    --replace)
+      replace=true
       shift
       ;;
     -h|--help)
@@ -78,5 +86,25 @@ printf '%q ' "${command[@]}"
 printf '\n'
 
 if "$run"; then
+  conflicts=()
+  for skill in "${skills[@]}"; do
+    [[ -e "$destination/$skill" ]] && conflicts+=("$skill")
+  done
+
+  if ((${#conflicts[@]})); then
+    if ! "$replace"; then
+      printf 'Existing skills will not be overwritten: %s\n' "${conflicts[*]}" >&2
+      printf 'Re-run with --run --replace to back up and replace only these skills.\n' >&2
+      exit 1
+    fi
+
+    backup="$destination/.bundle-backups/$(date +%Y%m%d-%H%M%S)"
+    mkdir -p "$backup"
+    for skill in "${conflicts[@]}"; do
+      mv "$destination/$skill" "$backup/$skill"
+    done
+    printf 'Backed up existing skills to %s\n' "$backup" >&2
+  fi
+
   exec "${command[@]}"
 fi

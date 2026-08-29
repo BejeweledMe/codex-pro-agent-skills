@@ -67,11 +67,20 @@ cd codex-pro-agent-skills
 ```
 
 The helper uses the official Codex GitHub installer. It prints the exact command by
-default; add `--run` to execute it. Bundles can be combined and deduplicate shared
-skills:
+default; add `--run` to execute a first installation. Bundles can be combined and
+deduplicate shared skills:
 
 ```bash
 ./scripts/install-bundle.sh --bundle base --bundle llm-product --run
+```
+
+The official installer does not overwrite existing skill directories. To update a
+bundle explicitly, add `--replace`: the helper moves only the affected installed
+directories into `~/.codex/skills/.bundle-backups/<timestamp>/` before calling the
+same official installer.
+
+```bash
+./scripts/install-bundle.sh --bundle base --bundle llm-product --run --replace
 ```
 
 Examples for other focused installs:

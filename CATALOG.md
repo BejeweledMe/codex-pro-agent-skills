@@ -52,4 +52,5 @@ future CV skills will use explicit `computer-vision-*` bundles and will not be a
 The machine-readable membership is [bundles.yaml](bundles.yaml). Use
 `./scripts/install-bundle.sh --list` to inspect it or
 `./scripts/install-bundle.sh --bundle base --bundle llm-product` to print the exact
-official installer command.
+official installer command. `--run` performs a first installation; `--run --replace`
+backs up and replaces the affected existing skills explicitly.
