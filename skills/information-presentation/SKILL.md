@@ -7,6 +7,14 @@ description: Create claim-driven presentation content with clear visual evidence
 
 Treat the slide, not the paragraph, as the unit of communication. Each slide should make one primary point and move the audience toward understanding, a decision, or action.
 
+## Hierarchy And Handoffs
+
+This is the primary owner when the requested artifact is a presentation or slide
+narrative. Use `information-research-synthesis`, `information-source-summary`, or
+`information-decision-support` to establish evidence or a recommendation first when
+needed, then use this skill to turn it into claims, visual evidence, and speaker
+notes. Use `audience-adaptation` to set the appropriate depth and decision framing.
+
 ## Slide composition
 
 Distinguish three layers for each slide:

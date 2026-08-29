@@ -31,6 +31,27 @@ because a request touches the same product.
 | iOS product or an unknown native/cross-platform split | `ios-app-development` | `swift-skill` for native implementation, `flutter-skill` for Flutter, both only at a defined mixed boundary |
 | Telegram Mini App | `telegram-mini-apps` | `system-design`, `software-engineering`, or `qa-testing` only for the non-Telegram layer they own |
 
+## Writing Operations
+
+`information-writing` is the shared discipline for every substantive answer or
+artifact. A more specific primary skill controls the evidence contract or deliverable
+workflow, but never overrides explicit language, reader, source boundary, required
+form, or length. `audience-adaptation` is a companion layer, not a competing primary
+operation.
+
+| Reader need or artifact | Primary skill | Add only when needed |
+|---|---|---|
+| Direct user answer without a narrower operation | `information-writing` | `audience-adaptation` |
+| Faithful account of supplied material | `information-source-summary` | `audience-adaptation` |
+| Finding that needs new/external evidence, or supplied sources that do not form the complete evidence boundary | `information-research-synthesis` | `information-decision-support`, `audience-adaptation` |
+| Faithful synthesis of one or more supplied sources that form the complete evidence boundary | `information-source-summary` | `audience-adaptation` |
+| Correct mental model | `information-explanation` | `audience-adaptation` |
+| Recommendation among alternatives | `information-decision-support` | research or source-summary evidence route, `execution-writing` for a decision memo |
+| Edit, rewrite, restructure, or compress existing text without an artifact-specific contract | `information-editing` | `audience-adaptation` |
+| Create or substantively revise a technical document or engineering analysis | `technical-writing` | source/research route, `audience-adaptation` |
+| Status update, decision memo, or execution plan | `execution-writing` | `information-decision-support`, `audience-adaptation` |
+| Presentation or slide narrative | `information-presentation` | evidence route, `audience-adaptation` |
+
 ## Architecture Domains
 
 | Question | Primary skill | Delegate detailed work to |

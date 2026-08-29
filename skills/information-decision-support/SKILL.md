@@ -7,6 +7,14 @@ description: Compare realistic alternatives under constraints and produce a defe
 
 The objective is a defensible choice, not an exhaustive option catalog.
 
+## Hierarchy And Handoffs
+
+This is the primary operation when the requested outcome is a recommendation among
+realistic alternatives. Use `information-research-synthesis` when new evidence must
+be gathered before comparing options, and `information-source-summary` when the
+analysis must remain bounded to supplied material. Use `execution-writing` when the
+chosen analysis must be packaged as a formal decision memo.
+
 ## Decision method
 
 State the decision, hard constraints, success criteria, and decision owner when known. Separate must-haves from preferences. Identify realistic options and remove invalid or clearly dominated choices early.

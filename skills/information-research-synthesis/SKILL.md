@@ -7,6 +7,14 @@ description: Research a question across sources and synthesize evidence into a d
 
 Use research synthesis for a question that needs evidence from multiple sources, new sources, or external research. It is not a substitute for source-bound summarization.
 
+## Hierarchy And Handoffs
+
+This is the primary operation for an evidence-backed finding across sources. When the
+supplied material is the complete evidence boundary, use `information-source-summary`
+instead. After the evidence is synthesized, use `information-decision-support` for a
+choice among realistic alternatives or `audience-adaptation` to package the finding
+for a specific reader.
+
 ## Research frame
 
 Define the question, intended use, source boundary, and decision or conclusion the work must support. Decompose the question only as far as needed to answer it. Prefer primary, authoritative, and current sources where they fit the claim.

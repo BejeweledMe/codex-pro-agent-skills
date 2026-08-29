@@ -1,11 +1,24 @@
 ---
 name: audience-adaptation
-description: Adapt informational writing for technical, nontechnical, executive, or execution readers, including direct answers to a user whose demonstrated fluency determines the appropriate depth.
+description: Adapt a primary informational artifact for technical, nontechnical, executive, or execution readers. Use alongside the skill that owns the source, research, explanation, decision, edit, or deliverable; it is a reader-model companion rather than a primary content operation.
 ---
 
 # Audience Adaptation
 
 Use this skill when the intended reader changes what information, depth, evidence, or next action the writing must emphasize.
+
+## Hierarchy And Handoffs
+
+This is a reader-model companion, not the default owner of a content operation. First
+choose what the text must do with `information-writing` or its specialized routes;
+then use this skill to select depth, evidence, structure, and emphasis for the reader.
+
+For a new artifact whose only specified condition is its audience,
+`information-writing` remains primary and this skill sets the reader model. When
+supplied prose must change for a new reader, `information-editing` remains primary and
+this skill is its companion. Do not use audience type to change the source boundary,
+invent missing evidence, or replace the operation-specific requirements of a summary,
+research, decision, edit, or technical/execution/presentation deliverable.
 
 ## Choose the reader model
 

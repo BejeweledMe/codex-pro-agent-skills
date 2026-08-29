@@ -7,6 +7,14 @@ description: Create status reports, decision memos, and engineering execution pl
 
 Use this skill when the deliverable helps a team coordinate work, make a decision, or deliver an approved outcome. Choose one mode; do not invent progress, commitments, owners, dates, or confidence.
 
+## Hierarchy And Handoffs
+
+This is the primary owner for a status report, execution plan, or formal decision
+memo. Use `information-decision-support` when the recommendation itself still needs
+analysis, then package the result here for coordination and approval. Use
+`audience-adaptation` to tune the artifact for executives or execution readers; do
+not invent dates, owners, commitments, or progress while doing so.
+
 ## Status report mode
 
 Report the actual state at a clear point in time. Use only sections that change the reader's understanding or action:

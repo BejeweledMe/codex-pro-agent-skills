@@ -7,6 +7,14 @@ description: Explain a concept, mechanism, system, or distinction so the reader 
 
 The goal is a correct mental model, not a display of knowledge. Match depth to the reader's existing knowledge and the action they need to take.
 
+## Hierarchy And Handoffs
+
+This is the primary operation when the reader needs to understand a concept,
+distinction, or mechanism. Use `information-source-summary` when fidelity to a
+supplied source is the contract, `information-research-synthesis` when external
+evidence is needed, and `audience-adaptation` to calibrate the same explanation for
+the reader.
+
 ## Build the explanation
 
 Identify what the reader is actually trying to understand. State the core idea compactly, then explain why it exists, how it works, and what consequence follows. Add an example only when it makes an otherwise abstract relationship observable.
