@@ -31,6 +31,8 @@ Read only the references needed for the current task.
 - For API design, release cycle, operations, overrides, and fallbacks, read `references/13_integration_api_release_fallbacks.md`.
 - For serving, latency/throughput/cost tradeoffs, profiling, and inference optimization, read `references/14_serving_inference_optimization.md`.
 - For monitoring, drift, reliability, accountability, bus factor, documentation, and complexity, read `references/15_monitoring_ownership_maintenance.md`.
+- For LLM model selection, prompting versus retrieval versus adaptation, data/license constraints, evaluation slices, and release bundles, read `references/16_llm_model_selection_and_adaptation.md`.
+- For LLM inference capacity, prefill/decode diagnosis, KV-cache pressure, batching, routing, and rollback, read `references/17_llm_inference_serving_and_bottleneck_diagnosis.md`.
 
 ## Workflow
 
@@ -40,10 +42,14 @@ Read only the references needed for the current task.
    - Metrics or experiment design: read `05`, `07`, `09`, `12`.
    - Data/validation/debugging issue: read `06`, `07`, `09`, `11`, and `15` if production is involved.
    - Production, serving, or reliability review: read `13`, `14`, `15`, and `08` for fallback/baseline behavior.
+   - LLM selection, adaptation, or behavior change: read `16`, then the relevant data, validation, training, and evaluation references.
+   - LLM serving bottleneck or self-hosted capacity question: read `17`, then `14`, `15`, and companion system/SRE references as needed.
 2. Identify unknowns before proposing architecture. Ask only for blocking information; otherwise state assumptions.
 3. Produce a practical design or review with explicit tradeoffs.
 4. Validate the design against baseline, validation, data quality, integration, monitoring, fallback, ownership, and maintainability.
 5. Mark any ideas not grounded in the references as `external extension` if you add them.
+
+For RAG pipeline work, use `$rag-engineering` for corpus-to-context decisions. For agent control loops, use `$agent-workflows`. For threat modeling or authorized boundary testing, use `$genai-security-testing`. This skill remains the owner of the end-to-end ML and model lifecycle decision.
 
 ## Output For New System Design
 

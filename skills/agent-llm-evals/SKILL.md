@@ -1,6 +1,6 @@
 ---
 name: agent-llm-evals
-description: Use when designing, reviewing, validating, debugging, or improving LLM evals and agent workflow evals. Trigger for eval-driven development, task-specific eval datasets, graders, rubrics, LLM-as-judge, human calibration, traces, transcripts, tool-call evaluation, argument validation, guardrail evaluation, handoff evaluation, multi-turn agent tasks, capability evals, regression evals, pass@k/pass^k, model/prompt/tool upgrades, continuous evaluation, and production feedback loops for LLM or agent systems.
+description: Use when designing, reviewing, validating, debugging, or improving LLM evals and agent workflow evals. Trigger for eval-driven development, task-specific eval datasets, graders, rubrics, LLM-as-judge, human calibration, traces, transcripts, tool-call evaluation, argument validation, evaluation of guardrails, handoffs, multi-turn agent tasks, capability/regression evals, model/prompt/tool upgrades, continuous evaluation, and production feedback loops.
 ---
 
 # Agent LLM Evals
@@ -24,6 +24,7 @@ Read only the references needed for the current task.
 - For reusable eval-case, grader, CI gate, and release templates, read `references/06-agent-eval-checklists-and-templates.md`.
 - For eval pyramid and feedback-loop placement, read `references/07-eval-pyramid-and-feedback-loops.md`.
 - For continuous evaluation gates, presubmit/post-submit/nightly/release/canary placement, and platform-scope caveats, read `references/08-continuous-evaluation-gates.md`.
+- For RAG stage-evaluation boundaries and authorized security-evaluation protocol, read `references/09-rag-and-security-eval-protocols.md` with the primary domain skill.
 
 ## Workflow
 
@@ -35,6 +36,8 @@ Read only the references needed for the current task.
    - Prompt/model/tool upgrade validation: read `05`, then `01`, `02`, `03`, and `04`.
    - Continuous eval or release gate design: read `08`, then `05` and `07`.
    - Production issue follow-up: read `04`, then `05` and the affected eval layer.
+   - RAG evaluation: use `$rag-engineering` for stage semantics, then read `09`, `03`, `04`, and `05`.
+   - Authorized security evaluation: use `$genai-security-testing` for scope and test protocol, then read `09`, `03`, `04`, and `05`.
 2. Identify blocking unknowns. Ask only when missing context changes the decision; otherwise state assumptions.
 3. Map risks to eval layers: deterministic checks, task-specific evals, tool/state checks, trace grading, human review, release gates, and production monitoring.
 4. Prefer deterministic or state-based grading where possible. Use LLM-as-judge only where nuance requires it and calibrate with human labels for important decisions.
@@ -77,3 +80,4 @@ Lead with risks and missing decisions:
 - Do not use saturated evals as evidence of improvement; promote them to regression and add harder capability cases.
 - Do not treat OpenAI or other vendor-specific eval surfaces as durable without checking current docs; keep methodology separate from platform status.
 - Do not ship model, prompt, tool, or workflow changes without regression evals, rollout criteria, and production monitoring.
+- Do not call a guardrail evaluation sufficient when it lacks both authorized adversarial evidence and benign or allowed-sensitive utility evidence.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "RAG Engineering"
+  short_description: "Design, diagnose, and operate grounded RAG pipelines"
+  default_prompt: "Use $rag-engineering to design or debug this RAG system."

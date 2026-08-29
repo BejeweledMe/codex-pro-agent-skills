@@ -1,0 +1,4 @@
+interface:
+  display_name: "GenAI Security Testing"
+  short_description: "Harden and authorized-test LLM, RAG, and agent systems"
+  default_prompt: "Use $genai-security-testing to threat-model and test this GenAI system I control."

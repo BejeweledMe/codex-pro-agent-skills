@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Workflows"
+  short_description: "Design and debug LLM agent control loops and tools"
+  default_prompt: "Use $agent-workflows to design or debug this agent workflow."

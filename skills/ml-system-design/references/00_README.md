@@ -8,6 +8,8 @@
 - Ревью design doc: начать с [04](04_design_doc.md), затем проверить данные, метрики, validation, baseline, integration, monitoring и ownership.
 - Плохие метрики или непонятная деградация: [05](05_metrics_losses.md) -> [07](07_validation_leakage_splits.md) -> [09](09_error_analysis.md) -> [12](12_measuring_ab_reporting.md).
 - Production-риск: [13](13_integration_api_release_fallbacks.md) -> [14](14_serving_inference_optimization.md) -> [15](15_monitoring_ownership_maintenance.md).
+- Выбор/adaptation LLM: [16](16_llm_model_selection_and_adaptation.md) -> метрики, данные, validation, training и release references по задаче.
+- Self-hosted LLM и bottleneck inference: [17](17_llm_inference_serving_and_bottleneck_diagnosis.md) -> [14](14_serving_inference_optimization.md) -> [15](15_monitoring_ownership_maintenance.md).
 
 ## Lifecycle Map
 
@@ -25,6 +27,7 @@
 12. Интегрировать систему через API, release process, fallbacks и operations.
 13. Оптимизировать serving после profiling и требований.
 14. Поддерживать monitoring, ownership, документацию и контроль сложности.
+15. Для LLM отдельно проверить выбор/адаптацию модели и причинную модель serving до оптимизации.
 
 ## Как Агенту Использовать Базу
 

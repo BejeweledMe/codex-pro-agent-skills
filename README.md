@@ -12,6 +12,9 @@ Niche, high-signal skills for professional Codex agents. The repo layout is inte
 - `software-engineering`: Long-lived software design, review, testing, migration, and maintainability.
 - `qa-testing`: QA strategy, automated tests, CI/CD quality gates, and release validation.
 - `agent-llm-evals`: LLM evals, agent workflow evals, graders, traces, and continuous evaluation.
+- `rag-engineering`: RAG pipeline design, retrieval/context diagnosis, grounded answers, and index lifecycle.
+- `agent-workflows`: Agent control loops, tool/state contracts, single or multi-agent orchestration, and recovery.
+- `genai-security-testing`: Defensive LLM/RAG/agent hardening, authorized self-testing, and false-refusal evaluation.
 - `ios-app-development`: Production iOS architecture, Flutter/native integration, release, and maintenance.
 - `flutter-skill`: Flutter architecture, iOS integration, testing, performance, and release readiness.
 - `swift-skill`: Native Swift, SwiftUI/UIKit, SwiftData, concurrency, testing, and App Store readiness.
@@ -41,7 +44,7 @@ For natural-language writing requests in Russian and English, install `informati
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council skills/information-writing skills/information-editing skills/information-source-summary skills/information-research-synthesis skills/information-explanation skills/information-decision-support skills/audience-adaptation skills/technical-writing skills/execution-writing skills/information-presentation
+  --path skills/ml-system-design skills/system-design skills/sre-reliability-engineering skills/software-engineering skills/qa-testing skills/agent-llm-evals skills/rag-engineering skills/agent-workflows skills/genai-security-testing skills/ios-app-development skills/flutter-skill skills/swift-skill skills/telegram-mini-apps skills/business-product-consulting skills/product-design skills/llm-council skills/information-writing skills/information-editing skills/information-source-summary skills/information-research-synthesis skills/information-explanation skills/information-decision-support skills/audience-adaptation skills/technical-writing skills/execution-writing skills/information-presentation
 ```
 
 Restart Codex after installing or updating skills.
@@ -64,6 +67,9 @@ skills/sre-reliability-engineering
 skills/software-engineering
 skills/qa-testing
 skills/agent-llm-evals
+skills/rag-engineering
+skills/agent-workflows
+skills/genai-security-testing
 skills/ios-app-development
 skills/flutter-skill
 skills/swift-skill
@@ -95,6 +101,9 @@ cp -R skills/sre-reliability-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/software-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/qa-testing "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/agent-llm-evals "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/rag-engineering "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/agent-workflows "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/genai-security-testing "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/ios-app-development "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/flutter-skill "${CODEX_HOME:-$HOME/.codex}/skills/"
 cp -R skills/swift-skill "${CODEX_HOME:-$HOME/.codex}/skills/"
