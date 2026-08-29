@@ -15,6 +15,19 @@ Do not start from a local code preference. First clarify expected lifetime, user
 owners, dependencies, public contracts, change risk, tests, docs, review path,
 rollback or migration path, and how the system will remain understandable over time.
 
+## Hierarchy And Handoffs
+
+This skill owns the engineering lifecycle of a chosen product or service boundary:
+code health, change design, compatibility, tests as a development practice, builds,
+dependencies, migration, review, and release controls. Start with `$system-design`
+when the unresolved question is service topology, data ownership, distributed
+contracts, or capacity; then use this skill to make that design changeable in code.
+
+Use `$qa-testing` when the primary deliverable is a risk-based classic QA or test-suite
+strategy. Use `$sre-reliability-engineering` when the primary deliverable is an SLO,
+observability, incident, on-call, or operational reliability system. Those skills
+complement, rather than replace, software ownership and delivery discipline.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

@@ -11,6 +11,18 @@ Use this skill to design, implement, or review Telegram Mini Apps as production 
 
 Do not trust the frontend. `initDataUnsafe` is for client convenience only. Sensitive decisions start after backend validation of raw `initData`, `auth_date`, and the correct signature path.
 
+## Hierarchy And Handoffs
+
+This is a vertical product skill: start here for a Telegram Mini App because its bot,
+WebView, authentication, payments, and platform constraints change otherwise generic
+web or service decisions. It owns the Telegram-specific contract across frontend,
+bot, and backend.
+
+Delegate a non-Telegram backend's topology, storage, queues, and capacity to
+`$system-design`; use `$software-engineering` for codebase lifecycle and
+`$qa-testing` for general verification. Keep Telegram auth, client behavior, payment,
+and BotFather decisions here so generic skills do not override platform rules.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

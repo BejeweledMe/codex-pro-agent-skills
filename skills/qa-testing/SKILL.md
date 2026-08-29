@@ -11,6 +11,19 @@ Use this skill to design or review classic software QA and automated testing sys
 
 Do not start from framework, coverage target, or E2E suite size. First clarify user-visible behavior, risk, price of failure, deterministic contracts, required fidelity, CI/CD stage, ownership, and the action expected when a check fails.
 
+## Hierarchy And Handoffs
+
+This skill owns risk-based verification for classic software: what evidence is needed,
+at which test layer, in which environment, and what happens after a failure. Use
+`$software-engineering` for the broader codebase, maintainability, build, dependency,
+or migration decision that the tests support. Use `$system-design` when contracts,
+topology, or failure semantics are still undecided.
+
+For LLM or agent behavior, graders, traces, and release evaluation use
+`$agent-llm-evals`; for LLM/RAG/agent security testing use
+`$genai-security-testing`. Do not force those nondeterministic concerns into a
+classic test-pyramid decision.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

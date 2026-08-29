@@ -1,6 +1,6 @@
 ---
 name: flutter-skill
-description: Use when designing, reviewing, validating, debugging, implementing, or releasing Flutter applications, especially production Flutter apps targeting iOS. Trigger for Flutter app architecture, MVVM/ViewModel/repository/service layers, Dart async and isolates, Flutter state management, widgets/navigation, platform plugins and channels, Swift Package Manager/CocoaPods iOS dependencies, Flutter persistence/cache/offline design, permissions/privacy, performance/jank/memory, testing/debugging/observability, TestFlight/App Store signing and release readiness, and long-term Flutter app maintenance.
+description: "Use for Flutter application architecture, implementation, and review, including Dart/UI/state/data work and iOS delivery concerns. Use directly for a known Flutter stack; use ios-app-development first when choosing Flutter versus native Swift or defining a mixed-stack boundary."
 ---
 
 # Flutter Skill
@@ -10,6 +10,18 @@ Use this skill to design, review, validate, debug, implement, or release product
 ## Core Rule
 
 Do not assume Flutter removes iOS work. First clarify target platforms, target iOS versions, release target, native plugins/capabilities, state/data ownership, persistence/offline needs, privacy/security constraints, performance budget, testing depth, signing/CI setup, and ownership.
+
+## Hierarchy And Handoffs
+
+This skill owns Flutter and Dart implementation after Flutter is the selected path.
+Enter directly for an existing Flutter application. For a product-level platform
+choice, an iOS-only versus cross-platform tradeoff, or ownership across Flutter and
+native modules, start with `$ios-app-development`.
+
+Use `$ios-app-development` again when a plugin, entitlement, privacy, signing, or
+release decision crosses the Flutter/native boundary. Route native Swift, SwiftUI,
+UIKit, and Apple-framework implementation to `$swift-skill`; do not duplicate those
+details here.
 
 ## Reference Routing
 

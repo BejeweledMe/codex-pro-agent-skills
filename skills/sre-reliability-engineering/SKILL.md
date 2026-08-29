@@ -11,6 +11,18 @@ Use this skill to design or review production systems through SRE practices. Tre
 
 Do not start from tools. First clarify user journeys, ownership, SLO/SLI, error budget, business impact, dependencies, failure modes, rollback/fallback, observability, on-call readiness, and post-incident learning.
 
+## Hierarchy And Handoffs
+
+This skill owns the operated reliability system after a product or service exists:
+user-facing SLOs, error budgets, observability, alerting, incident response, on-call,
+and resilience validation. Use `$system-design` first when component topology, data
+flow, service contracts, or capacity choices are still open; bring this skill in to
+make the selected design measurable and recoverable in production.
+
+Use `$software-engineering` for codebase and delivery-process health, and
+`$qa-testing` for classic pre-release verification. Neither replaces production
+signals, error-budget policy, or incident ownership.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

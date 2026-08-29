@@ -1,6 +1,6 @@
 ---
 name: swift-skill
-description: Use when designing, reviewing, validating, debugging, implementing, or releasing native iOS applications and modules built with Swift, SwiftUI, UIKit, SwiftData, or Apple frameworks. Trigger for Swift language architecture, value vs reference semantics, ARC and memory ownership, SwiftUI state and navigation, UIKit interoperability, SwiftData persistence, URLSession/networking, async/await, actors, MainActor, Sendable, app lifecycle/background work, permissions/privacy/security, Keychain, performance/Instruments, XCTest/XCUITest, TestFlight/App Store signing and release readiness, and long-term native iOS app maintenance.
+description: "Use for implementation and review of native iOS applications or modules built with Swift, SwiftUI, UIKit, SwiftData, and Apple frameworks. Use directly for a known native stack; use ios-app-development first when choosing Swift versus Flutter or defining a mixed-stack boundary."
 ---
 
 # Swift Skill
@@ -10,6 +10,18 @@ Use this skill to design, review, validate, debug, implement, or release native 
 ## Core Rule
 
 Do not start from a pattern name like MVVM, Clean, TCA, or "pure SwiftUI". First clarify product goals, target iOS versions, Apple frameworks/capabilities, data/offline needs, SwiftUI/UIKit boundaries, concurrency/lifecycle constraints, privacy/security requirements, performance budget, testing depth, signing/release target, and ownership.
+
+## Hierarchy And Handoffs
+
+This skill owns native-language and Apple-framework decisions after Swift is the
+selected implementation path. Enter directly for a known Swift codebase or native
+module. For a stack choice, cross-platform product tradeoff, or Flutter/native split,
+start with `$ios-app-development`.
+
+Use `$ios-app-development` again when a local Swift decision changes platform-wide
+capabilities, privacy posture, release ownership, or the contract with a Flutter
+shell. Do not use this skill for Dart, Flutter state architecture, or Flutter plugin
+implementation; route those to `$flutter-skill`.
 
 ## Reference Routing
 

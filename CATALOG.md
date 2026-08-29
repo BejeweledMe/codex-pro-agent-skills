@@ -8,6 +8,29 @@ The physical layout intentionally remains flat under `skills/`: that is the disc
 shape expected by Codex. Navigation is provided by narrow primary owners, the catalog,
 and named installation bundles rather than nested skill directories.
 
+## Navigation Contract
+
+The hierarchy is a decision convention, not a forced runtime call stack. Codex sees a
+skill's name and concise description before it reads the skill body. A discriminating
+primary owner handles the broad decision, then explicitly hands implementation or
+specialist questions to a narrower skill. Do not load every neighbouring skill merely
+because a request touches the same product.
+
+1. Choose the domain owner from the unresolved decision, not from a technology named
+   in passing.
+2. Let that owner select a stack, architecture, product direction, or component.
+3. Load a specialist only for its implementation surface.
+4. Add quality, reliability, evaluation, or security skills only when their evidence
+   is needed.
+
+| Domain | Start with | Then route to |
+|---|---|---|
+| User problem, discovery, UX, requirements, design system | `product-design` | `business-product-consulting` for strategic or executive choices; the appropriate implementation domain after validation |
+| Business case, market or portfolio choice, operating model, executive recommendation | `business-product-consulting` | `product-design` for user evidence and UX; the affected engineering domain for implementation |
+| Classical service architecture | `system-design` | `software-engineering` for changeability, `qa-testing` for verification, `sre-reliability-engineering` for operation |
+| iOS product or an unknown native/cross-platform split | `ios-app-development` | `swift-skill` for native implementation, `flutter-skill` for Flutter, both only at a defined mixed boundary |
+| Telegram Mini App | `telegram-mini-apps` | `system-design`, `software-engineering`, or `qa-testing` only for the non-Telegram layer they own |
+
 ## Architecture Domains
 
 | Question | Primary skill | Delegate detailed work to |

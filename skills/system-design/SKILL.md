@@ -25,6 +25,12 @@ This skill owns classical service and distributed-system architecture. Use
 one for storage, queues, APIs, tenancy, capacity, and service reliability, but model
 or prompt decisions are not owned here.
 
+For a selected architecture's codebase lifecycle, migration, and delivery controls,
+use `$software-engineering`; for verification strategy use `$qa-testing`; for SLOs,
+observability, incident response, and operational reliability use
+`$sre-reliability-engineering`. This skill remains the owner of component and
+data-flow topology, contracts, invariants, and capacity tradeoffs.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

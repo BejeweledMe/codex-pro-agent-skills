@@ -1,6 +1,6 @@
 ---
 name: product-design
-description: Use when designing, reviewing, validating, debugging, or improving products, product discovery, UI/UX, AI/ML product experiences, design systems, product metrics, business outcomes, assumption tests, user research plans, opportunity-solution trees, feature proposals, product requirements, UX reviews, launch/readiness plans, governance, adoption, and long-term product maintenance.
+description: "Use for user-centered product discovery, UX, product requirements, AI/ML experiences, design systems, and hypothesis validation. Own the path from user outcome and evidence to an experience and measurable product change; use business-product-consulting for strategy, operating-model, or executive tradeoff decisions."
 ---
 
 # Product Design
@@ -10,6 +10,22 @@ Use this skill to design or review products end to end. Treat product design as 
 ## Core Rule
 
 Do not start from a screen, component, model, or feature. First clarify the user, context, desired outcome, opportunity, evidence, assumptions, risks, success metrics, guardrails, fallback, ownership, and maintenance path.
+
+## Hierarchy And Handoffs
+
+This skill owns the product and experience path: user problem, discovery evidence,
+opportunity, candidate experience, requirements, usability, validation, and product
+measurement. Start here when the central uncertainty is what to build, for whom, or
+how the experience should behave.
+
+Use `$business-product-consulting` when the primary decision is a business case,
+portfolio or market choice, operating model, organization/ownership, executive
+recommendation, or a comparison of strategic alternatives. It may consume this
+skill's evidence but does not replace user research or UX design.
+
+After the product decision is made, delegate implementation architecture to the
+appropriate system, ML, LLM, or mobile skill. Do not let an implementation choice
+stand in for validation of the user problem.
 
 ## Reference Routing
 

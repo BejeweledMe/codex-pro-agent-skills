@@ -1,6 +1,6 @@
 ---
 name: business-product-consulting
-description: Use when framing, reviewing, validating, or communicating product engineering decisions through business/product consulting judgment. Trigger for business value analysis, product strategy, product/market analysis, PRD/RFC/memo/deck/executive-summary writing or review, SCR/SCQA/Pyramid Principle communication, MECE/issue-tree problem structuring, UI/UX review with product/business lens, developer productivity measurement with SPACE, AI-assisted development rollout with DORA 2025, Team Topologies/org-flow/ownership reviews, risk/second-order-effect analysis, and future-facing product/system tradeoff decisions.
+description: "Use for product and engineering strategy, business cases, market or portfolio choices, operating-model and ownership decisions, executive recommendations, and structured tradeoff analysis. For user discovery, UX, design systems, or product requirements, use product-design as the primary owner."
 ---
 
 # Business Product Consulting
@@ -10,6 +10,19 @@ Use this skill to make product engineering work decision-ready: clarify business
 ## Core Rule
 
 Do not start from the feature, screen, model, library, architecture, or implementation. First clarify the situation, complication, stakeholder, decision, desired outcome, alternatives, business/user value, risks, metrics, ownership, and next test or ask.
+
+## Hierarchy And Handoffs
+
+This skill owns decision framing above the feature: stakeholder choice, business
+value, alternatives, market and portfolio logic, operating model, organization,
+second-order effects, and an executive-ready recommendation. Start here when a leader
+or team must choose a direction rather than design a specific experience.
+
+Use `$product-design` as the primary owner when the unresolved question is user
+research, opportunity discovery, UX behavior, interaction design, design-system work,
+or product requirements. Use this skill afterwards to synthesize the business
+decision from that evidence. Do not use a strategic memo as a substitute for discovery
+evidence.
 
 ## Reference Routing
 

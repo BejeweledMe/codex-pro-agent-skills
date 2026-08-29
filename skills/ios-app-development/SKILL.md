@@ -1,6 +1,6 @@
 ---
 name: ios-app-development
-description: Use when designing, reviewing, validating, debugging, implementing, or releasing production iOS applications built with Flutter, SwiftUI, UIKit, or mixed Flutter/native code. Trigger for iOS app architecture, Flutter MVVM/ViewModel/repository/service design, Swift/native architecture, SwiftUI state and navigation, platform plugins and channels, Swift Package Manager/CocoaPods dependency issues, SwiftData and local persistence, async/concurrency/lifecycle, permissions/privacy/security, performance/memory/battery, testing/debugging/observability, TestFlight/App Store signing and release readiness, and long-term iOS app maintenance.
+description: "Use for cross-stack iOS product and platform decisions: select Swift, Flutter, or a mixed boundary; shape iOS architecture, native capabilities, privacy, lifecycle, integration, release, and long-term ownership. For framework-specific implementation after stack selection, use swift-skill or flutter-skill."
 ---
 
 # iOS App Development
@@ -10,6 +10,25 @@ Use this skill to design, review, validate, debug, implement, or release iOS app
 ## Core Rule
 
 Do not start from framework preference. First clarify stack, target iOS versions, product/platform goals, native capabilities, data/offline needs, privacy/security constraints, performance budget, testing depth, release target, signing/CI setup, and long-term ownership.
+
+## Hierarchy And Handoffs
+
+This is the iOS platform router and cross-stack owner. Start here when the stack is
+unknown, a product must choose between native and Flutter, or a decision crosses app,
+native integration, privacy, release, or App Store boundaries.
+
+- Choose `$swift-skill` as the implementation owner for a native iOS-only product,
+  an Apple-framework capability, or Swift/SwiftUI/UIKit code and runtime behavior.
+- Choose `$flutter-skill` as the implementation owner for a Flutter product, shared
+  cross-platform feature, Dart/UI/state/data design, or Flutter plugin integration.
+- Use this skill together with both specialists for a mixed app or native-plugin
+  boundary. Keep one explicit owner for each interface and release decision.
+- Bring in `$qa-testing` for classic test strategy, `$system-design` for backend or
+  distributed-service architecture, and `$sre-reliability-engineering` for operated
+  service reliability. They do not replace platform routing here.
+
+Do not load all three skills merely because the target is iOS. After selecting the
+stack, use the specialist and return here only for platform-wide tradeoffs.
 
 ## Reference Routing
 
