@@ -75,9 +75,9 @@ deduplicate shared skills:
 ```
 
 The official installer does not overwrite existing skill directories. To update a
-bundle explicitly, add `--replace`: the helper moves only the affected installed
-directories into `~/.codex/skills/.bundle-backups/<timestamp>/` before calling the
-same official installer.
+bundle explicitly, add `--replace`: the helper first downloads the complete bundle to
+a staging directory, then moves only the affected installed directories into
+`~/.codex/skills/.bundle-backups/<timestamp>/` and replaces them.
 
 ```bash
 ./scripts/install-bundle.sh --bundle base --bundle llm-product --run --replace

@@ -98,12 +98,32 @@ if "$run"; then
       exit 1
     fi
 
+    staging="$(mktemp -d "$destination/.bundle-staging.XXXXXX")"
+    staging_command=(python3 "$installer" --method git --repo "$repo" --dest "$staging" --path)
+    for skill in "${skills[@]}"; do
+      staging_command+=("skills/$skill")
+    done
+
+    if ! "${staging_command[@]}"; then
+      if rmdir "$staging" 2>/dev/null; then
+        printf 'Update download failed; existing skills were left unchanged. Empty staging was removed.\n' >&2
+      else
+        printf 'Update download failed; existing skills were left unchanged. Partial staging: %s\n' "$staging" >&2
+      fi
+      exit 1
+    fi
+
     backup="$destination/.bundle-backups/$(date +%Y%m%d-%H%M%S)"
     mkdir -p "$backup"
     for skill in "${conflicts[@]}"; do
       mv "$destination/$skill" "$backup/$skill"
     done
+    for skill in "${skills[@]}"; do
+      mv "$staging/$skill" "$destination/$skill"
+    done
+    rmdir "$staging"
     printf 'Backed up existing skills to %s\n' "$backup" >&2
+    exit 0
   fi
 
   exec "${command[@]}"
