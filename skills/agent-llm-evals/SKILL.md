@@ -17,7 +17,10 @@ This skill owns measurement, calibration, harnesses, and release gates. For the
 architecture of an LLM product and its component selection, use `$llm-system-design`;
 for the semantics of a selected RAG or agent component use `$rag-engineering` or
 `$agent-workflows`; for authorized security scope and test boundaries use
-`$genai-security-testing`.
+`$genai-security-testing`. For computer vision task metrics, visual error analysis,
+calibration, OCR/video/retrieval metrics, and CV release evidence use
+`$computer-vision-evaluation`; use this skill only when the evaluation target is an
+LLM, VLM, or agent harness with language behavior, traces, tools, or graders.
 
 ## Reference Routing
 

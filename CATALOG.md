@@ -28,6 +28,7 @@ because a request touches the same product.
 | User problem, discovery, UX, requirements, design system | `product-design` | `business-product-consulting` for strategic or executive choices; the appropriate implementation domain after validation |
 | Business case, market or portfolio choice, operating model, executive recommendation | `business-product-consulting` | `product-design` for user evidence and UX; the affected engineering domain for implementation |
 | Classical service architecture | `system-design` | `software-engineering` for changeability, `qa-testing` for verification, `sre-reliability-engineering` for operation |
+| Computer-vision problem, sensor, task, or end-to-end perception pipeline | `computer-vision-system-design` | CV data, modeling, evaluation, and inference specialists for their decision surfaces; classical service owners for the surrounding platform |
 | iOS product or an unknown native/cross-platform split | `ios-app-development` | `swift-skill` for native implementation, `flutter-skill` for Flutter, both only at a defined mixed boundary |
 | Telegram Mini App | `telegram-mini-apps` | `system-design`, `software-engineering`, or `qa-testing` only for the non-Telegram layer they own |
 
@@ -58,6 +59,11 @@ operation.
 |---|---|---|
 | How should a classical service, API, queue, database, or distributed system work? | `system-design` | `sre-reliability-engineering`, `software-engineering`, `qa-testing` |
 | How should a predictive or classical ML system be designed, trained, validated, and operated? | `ml-system-design` | `nlp-modeling-and-adaptation` for text-model changes |
+| How should a computer vision product or perception pipeline be framed and decomposed? | `computer-vision-system-design` | CV data, modeling, evaluation, and inference specialists; generic `system-design` and SRE only for the surrounding service |
+| How should visual data, labels, splits, leakage, augmentation, or active-learning loops be handled? | `computer-vision-data-and-labeling` | `computer-vision-evaluation`, `computer-vision-modeling-and-training` |
+| Which vision model family or adaptation method should be used? | `computer-vision-modeling-and-training` | `computer-vision-data-and-labeling`, `computer-vision-evaluation`, `computer-vision-inference-optimization` |
+| How should CV quality be measured, debugged, calibrated, and released? | `computer-vision-evaluation` | `computer-vision-data-and-labeling`, `computer-vision-modeling-and-training`, `agent-llm-evals` only for LLM/VLM/agent harnesses |
+| Why is a non-LLM CV pipeline slow, expensive, or hard to deploy? | `computer-vision-inference-optimization` | `computer-vision-modeling-and-training`, `computer-vision-evaluation`, `system-design`, `sre-reliability-engineering` |
 | How should an LLM product be composed from prompts, RAG, agents, models, and fallbacks? | `llm-system-design` | RAG, agent, adaptation, inference, eval, and security specialists |
 | Which text model family or adaptation method should we use? | `nlp-modeling-and-adaptation` | `llm-system-design`, `agent-llm-evals` |
 | Why is a self-hosted LLM slow, expensive, or out of capacity? | `llm-inference-optimization` | `llm-system-design`, `sre-reliability-engineering` |
@@ -70,13 +76,17 @@ Use one primary skill for the decision, then load companion skills only for thei
 specialist implementation. This prevents a broad system-design request from dragging
 every LLM reference into context.
 
+For computer vision, choose the unresolved decision surface first. Classification,
+retrieval, detection, segmentation, OCR/documents, and video/tracking are narrow
+references within those owners rather than separate top-level skills.
+
 ## Installation Bundles
 
-Bundles are task-oriented and deliberately overlap. A repeated path is safe to
-install: the official installer replaces the same skill directory. `base` is a compact
-default; all other domains are opt-in. There is no empty computer-vision bundle today:
-future CV skills will use explicit `computer-vision-*` bundles and will not be added to
-`base`.
+Bundles are task-oriented and deliberately overlap; the helper deduplicates shared
+paths before invoking the official installer. The installer does not overwrite an
+existing skill directory, while the helper's explicit `--replace` flow backs up and
+replaces only selected skills. `base` is a compact default; computer vision remains
+opt-in through a CV bundle, `all`, or explicit skill paths.
 
 | Bundle | Intended work |
 |---|---|
@@ -85,6 +95,10 @@ future CV skills will use explicit `computer-vision-*` bundles and will not be a
 | `product-and-consulting` | Product discovery, UX, business framing, and stakeholder decisions |
 | `service-platform` | Classical services, engineering delivery, QA, and reliability |
 | `classic-ml` | Predictive/classical ML and text-model selection/adaptation |
+| `computer-vision-core` | CV-only decision surfaces for perception architecture, data, modeling, evaluation, and inference |
+| `computer-vision-training` | CV dataset, model-training/adaptation, and evaluation work with generic ML/QA companions |
+| `computer-vision-systems` | Production CV pipeline, serving, quality, software, and reliability work |
+| `computer-vision-all` | Full CV vertical plus the generic ML, service, QA, SRE, and delivery companions |
 | `llm-product` | User-facing LLM products, RAG, agents, evals, and security |
 | `llm-platform` | Self-hosted LLM serving and platform operations |
 | `llm-adaptation` | Fine-tuning/adaptation and deployment of text/LLM models |

@@ -21,9 +21,11 @@ Design systems from requirements and failure behavior, not from a preferred stac
 
 This skill owns classical service and distributed-system architecture. Use
 `$ml-system-design` for a predictive or classical ML lifecycle and
-`$llm-system-design` for composition of an LLM product. Those skills may call this
-one for storage, queues, APIs, tenancy, capacity, and service reliability, but model
-or prompt decisions are not owned here.
+`$computer-vision-system-design` for computer vision products and perception
+pipelines. Use `$llm-system-design` for composition of an LLM product. Those skills
+may call this one for storage, queues, APIs, tenancy, capacity, and service
+reliability, but model, prompt, sensor, or perception-stage decisions are not owned
+here.
 
 For a selected architecture's codebase lifecycle, migration, and delivery controls,
 use `$software-engineering`; for verification strategy use `$qa-testing`; for SLOs,

@@ -57,6 +57,10 @@ Read only the files needed for the request.
   and training data belong to `$nlp-modeling-and-adaptation`.
 - Retrieval/index latency belongs to `$rag-engineering` until a trace localizes the
   bottleneck in generation.
+- Non-LLM computer vision inference, including image/video decode, preprocessing,
+  tiling, detection/segmentation/OCR postprocessing, visual vector search, and
+  CV runtime conversion or quantization, belongs to
+  `$computer-vision-inference-optimization`.
 - Generic service/storage/queue design belongs to `$system-design`; SLO ownership,
   on-call, incident response, and reliability operations belong to
   `$sre-reliability-engineering`.

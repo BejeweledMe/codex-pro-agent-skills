@@ -30,6 +30,14 @@ Read [the skill catalog](CATALOG.md) for the navigation model and bundle purpose
 - `genai-security-testing`: Defensive hardening and authorized testing of LLM/RAG/agent systems.
 - `llm-council`: Codex adaptation of the multi-model review pattern inspired by [karpathy/llm-council](https://github.com/karpathy/llm-council).
 
+**Computer vision**
+
+- `computer-vision-system-design`: CV product and perception-pipeline framing across cameras, tasks, stages, and handoffs.
+- `computer-vision-data-and-labeling`: CV data collection, annotation schemas, label QA, splits, leakage, augmentation, and active learning.
+- `computer-vision-modeling-and-training`: CV model-family choice, training, transfer learning, SSL, metric learning, OCR/VLM adaptation, and losses.
+- `computer-vision-evaluation`: CV metrics, visual error analysis, calibration, slices, robustness, drift, and release evidence.
+- `computer-vision-inference-optimization`: Non-LLM CV inference profiling, preprocessing, video timing, vector search, conversion, compression, and deployment.
+
 **Product and mobile**
 
 - `business-product-consulting`: Product/business framing, decisions, metrics, and organization.
@@ -55,8 +63,8 @@ Read [the skill catalog](CATALOG.md) for the navigation model and bundle purpose
 ## Install A Bundle
 
 Install `base` first for general professional work, then opt into the domains an agent
-will actually use. This keeps future narrow domains, such as computer vision, out of
-the installed selection set unless explicitly requested.
+will actually use. This keeps optional domains, including computer vision, out of the
+installed selection set unless explicitly requested.
 
 Clone the repository and inspect available bundles:
 
@@ -87,6 +95,10 @@ Examples for other focused installs:
 
 ```bash
 ./scripts/install-bundle.sh --bundle classic-ml --run
+./scripts/install-bundle.sh --bundle computer-vision-core --run
+./scripts/install-bundle.sh --bundle computer-vision-training --run
+./scripts/install-bundle.sh --bundle computer-vision-systems --run
+./scripts/install-bundle.sh --bundle computer-vision-all --run
 ./scripts/install-bundle.sh --bundle llm-platform --run
 ./scripts/install-bundle.sh --bundle agent-systems --run
 ./scripts/install-bundle.sh --bundle ios-apps --run
@@ -131,7 +143,7 @@ Install all current skills directly:
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --method git \
   --repo BejeweledMe/codex-pro-agent-skills \
-  --path skills/agent-llm-evals skills/agent-workflows skills/audience-adaptation skills/business-product-consulting skills/execution-writing skills/flutter-skill skills/genai-security-testing skills/information-decision-support skills/information-editing skills/information-explanation skills/information-presentation skills/information-research-synthesis skills/information-source-summary skills/information-writing skills/ios-app-development skills/llm-council skills/llm-inference-optimization skills/llm-system-design skills/ml-system-design skills/nlp-modeling-and-adaptation skills/product-design skills/qa-testing skills/rag-engineering skills/software-engineering skills/sre-reliability-engineering skills/swift-skill skills/system-design skills/technical-writing skills/telegram-mini-apps
+  --path skills/agent-llm-evals skills/agent-workflows skills/audience-adaptation skills/business-product-consulting skills/computer-vision-data-and-labeling skills/computer-vision-evaluation skills/computer-vision-inference-optimization skills/computer-vision-modeling-and-training skills/computer-vision-system-design skills/execution-writing skills/flutter-skill skills/genai-security-testing skills/information-decision-support skills/information-editing skills/information-explanation skills/information-presentation skills/information-research-synthesis skills/information-source-summary skills/information-writing skills/ios-app-development skills/llm-council skills/llm-inference-optimization skills/llm-system-design skills/ml-system-design skills/nlp-modeling-and-adaptation skills/product-design skills/qa-testing skills/rag-engineering skills/software-engineering skills/sre-reliability-engineering skills/swift-skill skills/system-design skills/technical-writing skills/telegram-mini-apps
 ```
 
 Restart Codex after installing or updating skills.

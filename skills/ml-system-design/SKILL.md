@@ -1,6 +1,6 @@
 ---
 name: ml-system-design
-description: Use when designing, reviewing, validating, debugging, or improving predictive and classical ML systems. Trigger for ML problem framing, metrics/losses, data and labels, validation/leakage/splits, baselines, error analysis, training pipelines, feature stores, A/B experiments, non-LLM inference, monitoring, drift, retraining, ownership, and ML system design interviews. For LLM product composition, model adaptation, or LLM serving use the dedicated LLM skills.
+description: Use when designing, reviewing, validating, debugging, or improving predictive and classical ML systems. Trigger for ML problem framing, metrics/losses, data and labels, validation/leakage/splits, baselines, error analysis, training pipelines, feature stores, A/B experiments, non-LLM inference, monitoring, drift, retraining, ownership, and ML system design interviews. For computer vision, LLM product composition, text-model adaptation, or LLM serving use the dedicated specialist skills.
 ---
 
 # ML System Design
@@ -14,9 +14,12 @@ Do not start from model choice. First clarify the business problem, success crit
 ## Boundaries
 
 This is the primary skill for predictive and classical ML lifecycle decisions:
-problem/metric/data/validation/baseline/training/deployment/monitoring. For a new LLM
-product architecture, start with `$llm-system-design`; for how a text model is chosen
-or adapted use `$nlp-modeling-and-adaptation`; for self-hosted LLM runtime bottlenecks
+problem/metric/data/validation/baseline/training/deployment/monitoring. For a broad
+computer-vision product or pipeline, start with `$computer-vision-system-design`;
+route visual data, model, evaluation, and runtime work to the corresponding dedicated
+CV owner. For a new LLM product
+architecture, start with `$llm-system-design`; for how a text model is chosen or
+adapted use `$nlp-modeling-and-adaptation`; for self-hosted LLM runtime bottlenecks
 use `$llm-inference-optimization`. The LLM references in this skill remain as
 compatibility bridges, not detailed primary routes.
 
@@ -53,6 +56,7 @@ Read only the references needed for the current task.
    - Metrics or experiment design: read `05`, `07`, `09`, `12`.
    - Data/validation/debugging issue: read `06`, `07`, `09`, `11`, and `15` if production is involved.
    - Production, serving, or reliability review: read `13`, `14`, `15`, and `08` for fallback/baseline behavior.
+   - Computer-vision architecture or task decomposition: start with `$computer-vision-system-design`; use the dedicated data, modeling, evaluation, or inference owner when that decision is already clear.
    - LLM product architecture, provider/model routing, prompt/RAG/agent/adaptation choice, or product budget: start with `$llm-system-design`.
    - Text-model selection, fine-tuning, PEFT, tokenizer, or adaptation question: start with `$nlp-modeling-and-adaptation`, then use the relevant ML lifecycle references.
    - LLM serving bottleneck or self-hosted capacity question: start with `$llm-inference-optimization`, then use `14`, `15`, and companion system/SRE references as needed.

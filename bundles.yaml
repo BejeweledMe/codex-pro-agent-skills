@@ -50,6 +50,47 @@ bundles:
       - software-engineering
       - qa-testing
       - sre-reliability-engineering
+  computer-vision-core:
+    description: Core computer vision decision surfaces without the general base bundle.
+    skills:
+      - computer-vision-system-design
+      - computer-vision-data-and-labeling
+      - computer-vision-modeling-and-training
+      - computer-vision-evaluation
+      - computer-vision-inference-optimization
+  computer-vision-training:
+    description: Computer vision data, model training/adaptation, and evaluation work.
+    skills:
+      - computer-vision-data-and-labeling
+      - computer-vision-modeling-and-training
+      - computer-vision-evaluation
+      - ml-system-design
+      - software-engineering
+      - qa-testing
+  computer-vision-systems:
+    description: Production computer vision pipeline, serving, reliability, and quality work.
+    skills:
+      - computer-vision-system-design
+      - computer-vision-inference-optimization
+      - computer-vision-evaluation
+      - ml-system-design
+      - system-design
+      - sre-reliability-engineering
+      - software-engineering
+      - qa-testing
+  computer-vision-all:
+    description: Full computer vision vertical plus generic ML, service, quality, and reliability companions.
+    skills:
+      - computer-vision-system-design
+      - computer-vision-data-and-labeling
+      - computer-vision-modeling-and-training
+      - computer-vision-evaluation
+      - computer-vision-inference-optimization
+      - ml-system-design
+      - system-design
+      - software-engineering
+      - qa-testing
+      - sre-reliability-engineering
   llm-product:
     description: Design and release a user-facing LLM product.
     skills:
@@ -113,6 +154,11 @@ bundles:
       - agent-workflows
       - audience-adaptation
       - business-product-consulting
+      - computer-vision-data-and-labeling
+      - computer-vision-evaluation
+      - computer-vision-inference-optimization
+      - computer-vision-modeling-and-training
+      - computer-vision-system-design
       - execution-writing
       - flutter-skill
       - genai-security-testing

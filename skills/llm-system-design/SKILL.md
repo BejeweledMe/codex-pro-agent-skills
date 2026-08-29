@@ -55,6 +55,11 @@ Read only the files needed for the current request.
   to `$agent-workflows`.
 - Fine-tuning method, classical NLP/encoder choice, tokenizer changes, training
   data, and adaptation evaluation belong to `$nlp-modeling-and-adaptation`.
+- Computer-vision task framing and perception topology belong to
+  `$computer-vision-system-design`; visual model training belongs to
+  `$computer-vision-modeling-and-training`. This skill owns the LLM/VLM product
+  composition around prompts, provider routing, context, tools, budgets, and
+  user-visible fallback.
 - TTFT, prefill/decode, KV cache, batching, quantization, GPUs, and serving
   capacity belong to `$llm-inference-optimization`.
 - Eval harnesses, graders, regression gates, and calibration belong to

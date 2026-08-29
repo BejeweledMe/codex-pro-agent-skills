@@ -20,9 +20,10 @@ or migration decision that the tests support. Use `$system-design` when contract
 topology, or failure semantics are still undecided.
 
 For LLM or agent behavior, graders, traces, and release evaluation use
-`$agent-llm-evals`; for LLM/RAG/agent security testing use
-`$genai-security-testing`. Do not force those nondeterministic concerns into a
-classic test-pyramid decision.
+`$agent-llm-evals`; for computer vision task metrics, visual error analysis,
+calibration, robustness, and model-release evidence use `$computer-vision-evaluation`;
+for LLM/RAG/agent security testing use `$genai-security-testing`. Do not force those
+nondeterministic or model-quality concerns into a classic test-pyramid decision.
 
 ## Reference Routing
 

@@ -8,6 +8,9 @@
 - Ревью design doc: начать с [04](04_design_doc.md), затем проверить данные, метрики, validation, baseline, integration, monitoring и ownership.
 - Плохие метрики или непонятная деградация: [05](05_metrics_losses.md) -> [07](07_validation_leakage_splits.md) -> [09](09_error_analysis.md) -> [12](12_measuring_ab_reporting.md).
 - Production-риск: [13](13_integration_api_release_fallbacks.md) -> [14](14_serving_inference_optimization.md) -> [15](15_monitoring_ownership_maintenance.md).
+- Computer vision product or pipeline: start with `$computer-vision-system-design`;
+  use the dedicated CV data, modeling, evaluation, or inference owner when that
+  decision is already clear. This base remains a companion for generic ML lifecycle.
 - LLM-продукт: начать с `$llm-system-design`; этот skill остаётся владельцем
   классического ML lifecycle и является companion для общих data/validation/training
   вопросов.
