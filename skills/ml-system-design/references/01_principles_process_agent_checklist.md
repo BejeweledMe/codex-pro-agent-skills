@@ -31,6 +31,28 @@ ML system design - это проектирование всей ML-based сис�
 
 Сложность часто выглядит как признак экспертности, но сама по себе не является ценностью. Если простое non-ML или baseline-решение дает достаточный эффект, его нужно рассматривать всерьез.
 
+## Locate the Constraint and the Displaced Cost
+
+Use the *Machine Learning Systems* framing **D·A·M** as a compact diagnostic lens:
+Data, Algorithm and Machine interact. It is not a numerical score or an ownership
+chart. Trace the product outcome through the workload and execution path, then
+identify the first binding constraint from evidence.
+
+- Data: coverage, labels, freshness, availability and movement.
+- Algorithm: representation, objective, decision policy and quality.
+- Machine: actual execution, resources, queueing and device envelope.
+
+Ask what became simpler, where the cost moved, who owns the new dependency, and
+what evidence would invalidate the choice. A cache buys less computation with
+freshness and invalidation obligations; a feature store buys reuse with historical
+and online consistency obligations; human review buys intervention with capacity,
+delay and authority obligations.
+
+Use a representative comparison, change the causal lever, then remeasure the
+whole outcome and affected constraints. Deep neural execution belongs to
+`$neural-training-systems`; fleet implementation belongs to `$ai-platform-llmops`.
+This lens does not require either companion for routine classical ML work.
+
 ## Agent Checklist
 
 - Какая бизнес-проблема сформулирована без ML-терминов?

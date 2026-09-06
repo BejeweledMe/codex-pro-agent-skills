@@ -17,7 +17,7 @@ SLO полезен только тогда, когда влияет на пов�
 - Quality: корректность и полнота ответа, когда 200 OK ещё не означает успех.
 - Freshness: актуальность данных в системах с кэшами, очередями, батчами и индексами.
 
-Большинству команд стоит начинать с availability и latency, а quality/freshness добавлять после стабилизации базовых SLI.
+Choose the initial SLIs from the critical journey. Availability and latency are useful starting points for request services; a data, search, or prediction journey may require quality or freshness from the beginning.
 
 ## Практики
 
@@ -34,17 +34,73 @@ SLO полезен только тогда, когда влияет на пов�
 - Маршрутизируйте алерты по зоне действия. Сервисный SLO должен будить команду, которая может починить сервис. CUJ SLO должен идти IC, платформенной/SRE-команде или владельцу сценария.
 - Разделяйте техническую и продуктовую надёжность. Техническая отвечает на вопрос "система корректно отвечает?", продуктовая - "пользователь достиг результата?".
 - Для latency SLI используйте histogram, а не summary, потому что histogram корректнее агрегируется между инстансами.
-- Для низкого трафика используйте traffic floor, clamping, noise threshold или synthetic probes, иначе единичные ошибки будут жечь бюджет непропорционально.
+- For low traffic, separate the recorded SLI from notification confidence. A single failure may consume a large real fraction of an event budget. Use explicit minimum-volume or longer-window alert policies where justified, and synthetic probes for additional coverage. Do not clamp away real failures or declare success when no eligible work was observed.
 
 Implementation choices для SLI:
 
 - Event-based SLO точнее учитывает объём: одна плохая минута с одной ошибкой не равна одной плохой минуте с миллионом ошибок. Но он сложнее для retries, batch/async flows и composite SLO.
 - Timeslice SLO проще реализовать, проще комбинировать и обычно достаточно надёжен для операционных решений. Переходите на event-based только если потеря точности реально влияет на решения.
 - Точка измерения меняет смысл SLI:
-  - ingress/балансировщик ближе к пользовательскому опыту и ловит routing/DNS/TLS/edge проблемы;
+  - ingress/load-balancer metrics observe requests that reach that boundary; use external probes or client evidence for DNS, TLS, routing, and other failures before it;
   - сервисная метрика лучше показывает поведение owner-команды и проще связывается с кодом;
   - OpenTelemetry/traces помогают строить SLI по реальным путям запроса, но требуют зрелого instrumenting и sampling.
 - Источник метрик должен соответствовать вопросу. Если SLO защищает checkout как CUJ, одной метрики `/healthz` или 200 OK от сервиса недостаточно.
+
+## Measurement contract and SLI atomicity
+
+Define the eligible population, observation point, terminal outcome, time window,
+and treatment of retries, cancellations, unfinished work, and synthetic traffic.
+Count each eligible operation once for the chosen SLI. An attempt-based metric
+and a journey-based metric answer different questions.
+
+Record mutually exclusive good/bad outcomes at one logical completion point.
+Where practical, derive total from the same outcome-labelled counter rather than
+independently updating total at admission and errors later. The requirement is
+consistent event accounting, not a distributed atomic transaction across telemetry
+backends; using `defer` is not inherently wrong when it records the same terminal
+outcome consistently.
+
+For a two-outcome classification, check `good + bad = eligible_total`,
+`0 <= bad <= eligible_total`, and an SLI in `[0,1]` when the denominator is
+positive. Investigate impossible values and spikes through label populations,
+aggregation windows, counter resets, missing series, scrape timing, duplicate
+counting, and asynchronous updates. Do not clamp away a broken measuring system
+or change the SLO to hide it. A zero denominator means no eligible observations,
+not demonstrated success.
+
+Validate with representative success, failure, cancellation, timeout, retry,
+restart, and no-traffic cases. Confirm both the classification and resulting
+query before trusting budget decisions. During a measurement incident, retain
+independent user-impact evidence and explicitly mark budget uncertainty.
+
+## HTTP outcome classification
+
+Agree classification before aggregation. Status codes are evidence about an
+operation; they do not fully describe whether the protected journey succeeded.
+
+| Observed outcome | Classification decision | Evidence to inspect |
+| --- | --- | --- |
+| Server failure such as 500 | An eligible operation that failed is bad even if it failed quickly | Operation result and error path; a fast failure must not improve latency success |
+| 200 response | Good only if the promised result and applicable latency/quality conditions hold | Content, durable effect where promised, freshness, and elapsed time |
+| 429 response | Rejection within the customer's agreed allowance is a bad outcome; exclusion for excess traffic must be an explicit contract | Customer allowance, admission/rate-limit decision, actual load, and rejected journey |
+| Client abort, including a proxy's 499 | Distinguish service delay beyond the promise from voluntary cancellation or a shorter client deadline | Client/proxy timing, server progress, timeout contract, and any completed effect |
+| Other 4xx | Distinguish expected invalid input or denied access from a valid journey broken by service behavior | Request eligibility, authorization/validation contract, and resulting user outcome |
+
+A combined SLI can classify an operation as good only when all promised conditions
+hold; retain separate availability, latency, quality, and freshness drill-downs.
+Do not double-count one operation as multiple bad events in that combined SLI.
+Keep exclusions visible and stable across releases.
+
+Product/risk owners approve aggregate weights. Use separate segment SLOs when
+different obligations would be hidden by traffic volume or a weighted average.
+Inspect endpoint, region, version, tenant class, and journey contributions before
+assigning an owner; contribution is a triage signal, not proof of causality.
+
+If service metrics are green but the journey fails, probe from DNS through ingress
+to the meaningful result and identify ownership of intermediate routing layers.
+
+Source: *SRE: Коллективный разум*, SLI instrumentation, HTTP classification,
+weighted indicators, and user-journey discussions.
 
 Базовые формулы:
 
@@ -57,6 +113,13 @@ SLI = good_events / total_events
 ```text
 SLI = sum(good_i * weight_i) / sum(total_i * weight_i)
 ```
+
+The following composite formulas require independent component-success events
+over the same specified interval and workload. Serial means every listed
+component must succeed; parallel means any one can complete the promised operation
+with sufficient capacity and working routing/failover. Include shared components.
+These estimates do not replace measured CUJ reliability. For common failure
+domains and recovery dependencies, see [10-reliability-architecture.md](10-reliability-architecture.md).
 
 Composite reliability для последовательных зависимостей:
 
@@ -92,7 +155,7 @@ R_parallel = 1 - (1 - R_1) * (1 - R_2) * ... * (1 - R_n)
 - Понятно ли, что является good и bad event?
 - Есть ли drill-down: какие endpoint, зависимости, регионы и версии внесли вклад?
 - Может ли команда ответить: "что мы делаем иначе из-за текущего error budget?"
-- Работает ли SLO в observation mode 2-4 недели до включения page-алертов?
+- Has observation covered representative traffic, failures, and no-data behavior before page activation? Two to four weeks is an illustrative observation period; volume and risk determine sufficient evidence.
 
 Зрелый SLO проходит тест действия: значение SLO приводит к конкретному решению о релизах, рисках, техдолге или capacity.
 

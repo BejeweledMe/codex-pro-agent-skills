@@ -2,6 +2,8 @@
 
 ## Selection Gate
 
+Product-level prompt/RAG/agent/adaptation composition belongs to `$llm-system-design`. Use this gate to keep the chosen execution workflow no more autonomous than its task requires; RAG and councils are alternatives for particular needs, not mandatory rungs to traverse.
+
 Start with the least autonomous option that satisfies the contract:
 
 - deterministic pipeline when transitions and inputs are known;
@@ -18,4 +20,6 @@ Run a paired evaluation against a single-agent or pipeline baseline. Account for
 
 ## Human Control
 
-Use a human decision point where the action is irreversible, high impact, ambiguous, outside policy, or cannot be validated deterministically. A human approval must show the relevant evidence and proposed effect rather than requiring blind confirmation.
+Use a human decision point when the action requires authority not already granted, or when its impact, uncertainty, or reversibility calls for review under the task policy. Present the concrete proposed effect and relevant evidence. Lack of a deterministic verifier calls for appropriate semantic evidence or review, not automatic approval for routine work.
+
+Preserve already granted authority within its scope. Reading, searching, proposing, durable writing, disclosure, deletion, and production promotion are distinct effects: check which are covered before crossing their boundaries. Evidence that an action can succeed does not grant permission to execute it.

@@ -69,6 +69,54 @@ Metadata нужна для воспроизводимости и debugging:
 
 Data pipeline должен проверять schema, missing values, duplicates, outliers, freshness, range checks, source availability и version compatibility.
 
+## Prediction-Time Data and Label Contract
+
+For an affected source, feature or label, record its owner and source of truth,
+entity/join key, sampling population, event time, availability time, permitted
+freshness, definition/version, and action on invalid or absent data. A past event
+can still be unavailable at prediction time. Late arrivals and corrections need
+a versioned policy derived from observed delays and downstream requirements;
+data engineering implements replay/backfill while ML verifies point-in-time meaning.
+
+During label discovery, allow annotators to report uncertainty, missing classes
+or an unanswerable case with a reason. Calibrate instructions using inspected
+examples, agreement and adjudication appropriate to the harm. Keep manual,
+imported, weak and generated labels distinguishable in provenance. Synthetic or
+proxy data alone cannot establish field representativeness.
+
+## Data Selection: Value, Coverage and Total Cost
+
+Use selection when it has a concrete objective: reaching a quality target sooner,
+improving quality at a fixed budget, reducing paid labels, or protecting rare-case
+coverage. A smaller dataset is not itself success.
+
+1. Fix the evaluation population, quality/calibration floor and important slice
+   requirements before optimizing the selector.
+2. Compare the full-data baseline, a random or appropriately stratified subset,
+   and the proposed selector at comparable total budgets.
+3. Include scoring, annotation turnaround, indexing, selection, data movement,
+   training and maintenance. For a training-time saving claim, compare
+   `T_selection + T_train(subset)` with `T_train(full)`; this is an accounting
+   gate under the declared reuse horizon, not sufficient evidence of useful quality.
+4. Inspect selected and rejected cohorts, duplicates, provenance and label delay.
+   Cheap deduplication or stratified sampling can be sufficient; use active
+   selection only when its pool-scoring and annotation loop justify the overhead.
+5. Remeasure convergence and input access: random reads, extra epochs, stale labels
+   or a moved bottleneck can erase savings from fewer examples.
+6. Keep the selector only if its stated objective improves while coverage and
+   quality floors hold. Record the simpler fallback and the population or cost
+   change that should trigger reconsideration.
+
+For reuse across runs, account for amortized selection cost explicitly rather
+than pretending it is free. Information gain per compute is a conceptual frame,
+not directly observed information units; use quality at fixed cost or cost to
+target quality. Modality owners supply specialized coverage criteria; training
+owns execution profiling and business owners judge whether savings are realized.
+
+Source basis: *Machine Learning System Design*, data and validation chapters;
+*Machine Learning Systems, Volume I*, data acquisition and selection decisions.
+These mechanisms do not establish current labeling prices or platform APIs.
+
 ## Checklist
 
 - Можно ли воспроизвести dataset с нуля?

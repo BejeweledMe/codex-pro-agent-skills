@@ -1,6 +1,6 @@
 ---
 name: agent-llm-evals
-description: Use when designing, reviewing, validating, debugging, or improving LLM evals and agent workflow evals. Trigger for eval-driven development, task-specific eval datasets, graders, rubrics, LLM-as-judge, human calibration, traces, transcripts, tool-call evaluation, argument validation, evaluation of guardrails, handoffs, multi-turn agent tasks, capability/regression evals, model/prompt/tool upgrades, continuous evaluation, and production feedback loops.
+description: "Design, debug, or review LLM and agent evaluations: task datasets, tool/state grading, calibrated judges, traces, candidate selection, repeated trials, and release gates. Use when evaluating model, prompt, tool, or workflow changes; domain owners define the behavior being measured."
 ---
 
 # Agent LLM Evals
@@ -22,6 +22,16 @@ calibration, OCR/video/retrieval metrics, and CV release evidence use
 `$computer-vision-evaluation`; use this skill only when the evaluation target is an
 LLM, VLM, or agent harness with language behavior, traces, tools, or graders.
 
+Upstream workflow and domain owners supply the success, state, permission,
+abstention, and escalation contracts. This skill owns datasets, harness isolation,
+graders and calibration, repeated trials, and release evidence against those
+contracts. `$qa-testing` owns classic deterministic testing strategy;
+`$sre-reliability-engineering` owns production response and rollback execution.
+Classical experiment design and A/B statistics stay with `$ml-system-design`
+and the product decision owner. Evaluation results do not grant new action
+authority. Scale the work to the request: a narrow grader or schema correction
+needs the affected checks, not a full evaluation program.
+
 ## Reference Routing
 
 Read only the references needed for the current task.
@@ -36,6 +46,7 @@ Read only the references needed for the current task.
 - For eval pyramid and feedback-loop placement, read `references/07-eval-pyramid-and-feedback-loops.md`.
 - For continuous evaluation gates, presubmit/post-submit/nightly/release/canary placement, and platform-scope caveats, read `references/08-continuous-evaluation-gates.md`.
 - For RAG stage-evaluation boundaries and authorized security-evaluation protocol, read `references/09-rag-and-security-eval-protocols.md` with the primary domain skill.
+- For candidate coverage versus selected success, verifier errors, revision regressions, independent acceptance, memory integrity, and review/redo economics, read `references/search-selection-and-verification.md`.
 
 ## Workflow
 
@@ -49,6 +60,7 @@ Read only the references needed for the current task.
    - Production issue follow-up: read `04`, then `05` and the affected eval layer.
    - RAG evaluation: use `$rag-engineering` for stage semantics, then read `09`, `03`, `04`, and `05`.
    - Authorized security evaluation: use `$genai-security-testing` for scope and test protocol, then read `09`, `03`, `04`, and `05`.
+   - Sampling, selection, critique/revision, or long-horizon reliability: read `search-selection-and-verification.md`, then the relevant grader, harness, and release references.
 2. Identify blocking unknowns. Ask only when missing context changes the decision; otherwise state assumptions.
 3. Map risks to eval layers: deterministic checks, task-specific evals, tool/state checks, trace grading, human review, release gates, and production monitoring.
 4. Prefer deterministic or state-based grading where possible. Use LLM-as-judge only where nuance requires it and calibrate with human labels for important decisions.
@@ -67,6 +79,8 @@ Include:
 - Grader mix: deterministic, state-check, tool-call, LLM-as-judge, human review.
 - Trace/transcript evidence requirements.
 - Repeated-trial metric choice such as pass@1, pass@k, pass^k, variance, latency, tokens, and cost.
+- Where search or revision applies: candidate coverage, selected success, verifier errors, revision regressions, and acceptance evidence independent of the optimized score.
+- Where stateful or delegated work applies: memory integrity, verified terminal outcomes, abstention/escalation, irreversible-action failures, and review/redo burden.
 - CI/release placement and production monitoring path.
 - Thresholds, rollback criteria, owner, risks, and open questions.
 
@@ -92,3 +106,5 @@ Lead with risks and missing decisions:
 - Do not treat OpenAI or other vendor-specific eval surfaces as durable without checking current docs; keep methodology separate from platform status.
 - Do not ship model, prompt, tool, or workflow changes without regression evals, rollout criteria, and production monitoring.
 - Do not call a guardrail evaluation sufficient when it lacks both authorized adversarial evidence and benign or allowed-sensitive utility evidence.
+- Do not treat candidate coverage or an optimized search score as proof of selected or released success.
+- Revalidate the generator and verifier together after changes that affect proposals, evidence, state, or execution; an unchanged judge model does not imply unchanged calibration.

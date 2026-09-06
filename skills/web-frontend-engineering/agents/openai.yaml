@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Frontend Engineering"
+  short_description: "Build and diagnose operable browser applications"
+  default_prompt: "Use $web-frontend-engineering to implement or diagnose this browser behavior, tracing state, rendering, requests, and user-visible evidence."

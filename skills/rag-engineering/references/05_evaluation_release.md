@@ -16,4 +16,11 @@ Compare one explicit hypothesis at a time on a fixed corpus snapshot and query s
 
 Release the index and its dependent configuration as a bundle. Use shadow, canary, or limited routing when risk warrants it. Define fallback to a verified prior index or simpler retrieval path, rollback trigger, owner, and how an affected answer is investigated.
 
+Include deletion, revoked-access and stale-snapshot cases in migration acceptance.
+Verify fallback and rollback against current policy, not merely the prior bundle's
+historical test result. If a prior index cannot satisfy current access/deletion
+obligations, use a safe reduced-retrieval or no-answer path until it is repaired.
+Use `$data-engineering` for generic source-log, publication and replay machinery;
+this skill retains evidence identity, access and grounding acceptance.
+
 Use `$agent-llm-evals` for the harness, graders, calibration, CI placement, and regression gates. Use `$genai-security-testing` for an authorized test of ACL, injected content, or data-flow boundaries.

@@ -20,7 +20,7 @@ On-call отвечает на вопрос: кто конкретно отвеч
   2. secondary/backup;
   3. team lead или SRE lead;
   4. руководитель направления как страховка процесса.
-- Минимальный пул для недельной ротации: 4 человека, лучше 5-6. Меньше быстро приводит к выгоранию.
+- Size the rotation from coverage, primary/backup duties, leave, page load, and recovery time. Four to six people is an illustrative weekly-rotation example, not a universal staffing minimum.
 - Используйте primary/secondary:
   - primary получает alert первым;
   - secondary страхует и помогает обучать новичков.
@@ -52,6 +52,11 @@ On-call отвечает на вопрос: кто конкретно отвеч
 
 Метрики on-call:
 
+The numerical column below contains examples for local discussion. Calibrate
+targets to service impact, intervention time, coverage, and observed workload.
+Compensation and rest arrangements require the organization's applicable policy;
+these examples do not establish legal requirements.
+
 | Метрика | Что показывает | Практический ориентир |
 | --- | --- | --- |
 | MTTA | время до подтверждения | `< 3 минут` для P1 |
@@ -61,6 +66,12 @@ On-call отвечает на вопрос: кто конкретно отвеч
 | Night pages | ночные побудки | `< 2` в неделю |
 | Escalation rate | доля эскалаций | `< 20%` |
 | On-call happiness | субъективная оценка | `> 3.5/5` |
+
+Read these signals together with missed incidents, impact, and timing
+distributions. A low escalation rate may mean blocked escalation; a high
+actionable rate may coexist with missing coverage. MTTR alone is not proof of
+service reliability. Investigate fatigue and access barriers rather than ranking
+individual responders against this table.
 
 Проверьте процесс:
 

@@ -18,6 +18,8 @@ Keep two dimensions separate:
 
 Small size and narrow scope often go together, but not always. A broad API behavior can sometimes be tested in a small hermetic environment. A single method can become medium-sized if it needs filesystem, browser or local server infrastructure.
 
+When test-size labels control CI placement, define observable local budgets for process or machine boundaries, network access, disk, time, and other scarce resources. Enforce those budgets with the runner where practical; a test labeled small but silently reaching a shared service does not provide the isolation that label promises. Use project-specific budgets rather than copying another organization's exact limits.
+
 ## Feedback Loop Properties
 
 A useful feedback loop is:

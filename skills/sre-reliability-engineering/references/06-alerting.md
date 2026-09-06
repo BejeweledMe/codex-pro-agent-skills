@@ -16,12 +16,17 @@
 ## Практики
 
 - Разделяйте два типа реакции:
-  - Page: немедленная реакция, обычно 3-10 минут, угроза SLO.
+  - Page: immediate response to a reliability threat; an acknowledgement target such as 3–10 minutes must fit the intervention window and staffing.
   - Ticket: рабочее время, медленная деградация или плановая проверка.
 - Используйте multi-window multi-burn-rate:
   - длинное окно подтверждает устойчивость проблемы;
   - короткое окно подтверждает, что проблема актуальна сейчас.
-- Практические пороги для SLO 99.9% и 30-дневного окна:
+- Illustrative levels for a 30-day SLO window follow. Start with a fast-burn page
+  and slow-burn ticket when those cover the needed actions; add intermediate
+  levels only when they change response or routing. Verify burn definitions using
+  [03-error-budget.md](03-error-budget.md). Require both windows of the chosen
+  rule to breach its threshold; group overlapping severities so one event does
+  not generate competing response instructions.
 
 | Severity | Burn rate | Long window | Short window | Тип |
 | --- | ---: | --- | --- | --- |
@@ -32,10 +37,10 @@
 
 - Используйте recording rules для SLO-метрик на больших объёмах.
 - Генерируйте rules инструментами вроде Sloth/sloth-next, Pyrra или кастомного генератора, чтобы снизить риск ошибки в PromQL.
-- Настройте Alertmanager:
-  - `group_wait: 0s` для page;
-  - частый repeat для неподтверждённых page;
-  - отдельный канал и редкий repeat для ticket.
+- Configure grouping, acknowledgement, repeat, and escalation for the actual alert stack:
+  - `group_wait: 0s` is a possible urgent-page setting, not a universal default; balance response delay against duplicate pages;
+  - distinguish repeat delivery from acknowledgement and escalation;
+  - use a separate ticket route with a response cadence appropriate to working hours.
 - В каждый page-алерт включайте:
   - сервис/SLO/endpoint;
   - burn rate и error ratio;
@@ -44,13 +49,22 @@
   - ссылку на runbook;
   - primary/secondary on-call;
   - время начала и длительность.
-- Ежемесячно ревьюйте signal/noise: цель - около 80% actionable alerts.
-- Ограничивайте silence:
-  - обязательная причина;
-  - владелец;
-  - тикет;
-  - максимум по умолчанию;
-  - отчёт или мета-алерт на долгие silence.
+- Review alert outcomes at a cadence matched to volume and change: actionable,
+  false positive/noise, duplicate, and missed violation. Around 80% actionable is
+  a historical example, not an acceptance threshold. A perfect actionable rate
+  warrants checking missed coverage; never create noise to lower it.
+- Give every silence a named owner, reason, precise match scope, start and expiry,
+  and a change/incident reference when relevant. Check duration units and ensure
+  renewal is an explicit reassessment.
+- Define local duration limits and an overdue-silence review or meta-alert.
+  Historical examples such as 24 hours for review and seven days maximum are
+  policy examples, not universal TTLs. Inspect the owner and active condition
+  before renewal, and remove the silence when its reason ends.
+- During a silence, retain visibility of the underlying signal and an independent
+  way to detect unexpected user impact. Verify expiry restores notification,
+  routing, and escalation; deleting a silence is insufficient if the route is broken.
+- A page's runbook must provide first observations, plausible causes, bounded
+  mitigation/recovery, and escalation. See [13-toil-automation.md](13-toil-automation.md).
 
 ## Антипаттерны
 
@@ -78,14 +92,17 @@ Fire drill для алертинга:
 
 - Каждый page привязан к SLO или доказанно критичному симптому.
 - Каждый page имеет runbook.
-- Actionable rate > 80%.
+- Actionable outcomes and missed violations support the local coverage and response goals.
 - Page alerts за смену не превращаются в постоянный шум.
-- Эскалация протестирована за последние 30 дней.
+- Escalation has been exercised at a risk-appropriate cadence and after changes to routing, access, or coverage.
 - Нет silence дольше разрешённого максимума.
 - Новые алерты проходят review как код.
 - Ticket и page идут разными каналами.
 
 Признак зрелости: ночной page означает реальную необходимость действий, а не просьбу "посмотреть график".
+
+Source: *SRE: Коллективный разум*, Chapter 7 alerting, alert-health feedback,
+minimum runbooks, and silence governance. Numerical examples require local calibration.
 
 ## Связанные темы
 

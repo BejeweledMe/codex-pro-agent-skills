@@ -33,6 +33,27 @@ copy/layout removal, resolution/tiling, batching, smaller route, graph/runtime e
 precision, postprocess, index parameters, or placement. Measure on the same workload and
 quality contract; otherwise label the comparison as non-equivalent.
 
+## Bound The Plausible Gain
+
+Match hardware arithmetic rates to the executed precision and dense/sparse
+convention. A Roofline-style ceiling uses the relevant memory level and arithmetic
+intensity; it is not measured throughput or proof that a kernel reaches that
+ceiling. For a fixed-work stage, compute work/rate and bytes/bandwidth are useful
+conditional lower-bound estimates. Do not sum imagined overlapping stages and
+call the result a measured critical path.
+
+For an unchanged workload where fraction f of baseline elapsed time is accelerated
+by s and other costs remain unchanged, the Amdahl speedup is
+1 / ((1 - f) + f / s). New transfers, synchronization, changed batching or a moved
+bottleneck invalidate those assumptions. Verify the whole path after the change,
+not only the optimized operator.
+
+On edge devices, measure sustained operation after thermal and power management
+settle, not just a cold peak. Include representative device tiers, battery/power
+mode, competing work and connectivity where relevant. Compare equivalent quality
+and task outcomes; use `$ml-system-design` for a shared benchmark-claim worksheet
+only when broader comparison validity is the unresolved decision.
+
 ## Benchmark Record
 
 Save hardware and power mode, software/runtime/driver versions, artifact hashes,

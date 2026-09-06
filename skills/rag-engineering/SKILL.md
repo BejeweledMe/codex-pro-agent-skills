@@ -41,7 +41,7 @@ Read only the files needed for the request.
 2. Record the corpus and answer contracts, representative query slices, current index manifest, and the last stage where correct evidence is visible.
 3. Establish a simple baseline with verified extraction and exact or sparse retrieval where applicable.
 4. Change one causal layer at a time and compare on fixed query/evidence cases. Preserve an immutable previous index bundle.
-5. Use `$agent-workflows` only when the search route or tool sequence is genuinely unknown; use `$system-design` for storage, APIs, and platform capacity.
+5. Use `$agent-workflows` only when the search route or tool sequence is genuinely unknown. Use `$system-design` for service/storage topology and architectural capacity; `$api-contract-engineering` for HTTP/OpenAPI and wire compatibility; and `$data-engineering` for generic publication, source-log, and replay machinery. Retrieval evidence, access, and grounding acceptance stay here.
 6. Release through shadow or canary traffic with an explicit fallback retrieval path, owner, and rollback trigger.
 
 ## Output

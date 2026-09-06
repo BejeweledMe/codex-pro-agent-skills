@@ -52,6 +52,10 @@ Read only the files needed for the request.
 
 ### Not This Skill
 
+- Neural execution memory, step profiling, precision mechanics, collectives, and
+  coherent optimizer/data-state restart belong to `$neural-training-systems`.
+  This skill retains model/objective choice, adaptation methods, data semantics,
+  quality diagnostics, and evaluation; pass those constraints to the execution owner.
 - Prompt/RAG/agent/adaptation composition, provider routing, product token/cost
   budgets, and user-visible fallback belong to `$llm-system-design`.
 - Corpus ingestion, chunking, retrieval/index/reranker pipeline, and RAG failure

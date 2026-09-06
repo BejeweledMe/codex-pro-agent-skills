@@ -24,3 +24,9 @@ Prefill и decode могут иметь разные ограничения. П�
 ## Release Bundle
 
 Treat model, tokenizer/template, adapter, runtime, scheduler, limits, prompt/policy and routing as an attributable release bundle. For SLO/incident ownership use `$sre-reliability-engineering`; for storage/queue/platform architecture use `$system-design`; for model behavior regressions use `$agent-llm-evals`.
+
+For shared registry, replica provisioning, controller scaling, fleet routing
+and rollout execution, use `$ai-platform-llmops`. The LLM runtime owner supplies
+measured service demand, KV/state constraints, warmup/readiness and overload
+evidence; it retains request execution and engine tuning. Neural training
+execution and checkpoint/restart work belong to `$neural-training-systems`.

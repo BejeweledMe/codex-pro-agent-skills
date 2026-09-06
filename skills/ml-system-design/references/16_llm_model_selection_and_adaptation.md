@@ -28,6 +28,12 @@
 
 Сравнивайте domain slices с general and safety regressions, quality/cost/latency and data-risk evidence. Выпускайте через ограниченный маршрут и держите previous verified bundle. Для RAG component design передайте работу `$rag-engineering`; для behavioral release gate используйте `$agent-llm-evals`.
 
+For neural step execution, precision/memory/collectives and coherent restart,
+use `$neural-training-systems` with the NLP owner's objective, tokenizer,
+data/order/batch assumptions and quality gate. Shared job capacity, registry
+and deployment infrastructure belong to `$ai-platform-llmops`; model selection
+and adaptation acceptance remain with the model owner.
+
 ## Quality Bar
 
 Не задавайте универсальные числа примеров, GPU или quality thresholds. Проверяйте актуальные licence, runtime support и provider claims непосредственно перед конкретным выбором.

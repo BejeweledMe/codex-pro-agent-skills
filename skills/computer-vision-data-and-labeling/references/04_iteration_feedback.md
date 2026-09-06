@@ -16,6 +16,18 @@ representativeness, error clusters, rare slices, and production impact. Confiden
 selection can miss confidently wrong or novel samples, so combine signals and retain a
 random audit stream.
 
+Evaluate selection as an end-to-end investment: candidate scoring/embedding,
+selection, human review/labeling, storage and selected-data training all consume
+budget. Compare against random selection and the available full-data alternative
+under the same total resource budget and quality target. Report the selector's
+overhead, marginal benefit and whether it merely displaced work to another owner.
+Fewer labels or training examples alone is not a saving.
+
+Protect rare, safety-critical and new-domain coverage floors while comparing
+aggregate quality. Recheck the selection policy when the model, population or
+annotation cost changes; a selector tuned on one model need not benefit its
+successor. Keep final evaluation outside the selection feedback loop.
+
 For auto-labeling:
 
 - version the proposing model, prompt/configuration, threshold, and postprocessing;

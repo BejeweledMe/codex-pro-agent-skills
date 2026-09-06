@@ -116,6 +116,31 @@ Binary pass/fail is simple, but complex tasks often need partial credit:
 
 Partial credit helps diagnose whether a change improved part of a workflow even if full task completion still fails.
 
+## Search Scores And Acceptance Evidence
+
+When a score guides sampling, ranking, or revision, treat it as a search signal.
+Before accepting the result or promoting a system change, use an additional
+evidence channel that does not merely repeat that optimized score: a held-out
+check, task invariant, primary-source check, external execution record, or
+independently calibrated expert assessment.
+
+Independence concerns the basis of evidence. A different model using the same
+unsupported assumptions is insufficient; the same model can assess separately
+grounded evidence. Authorization evidence establishes permission for an action,
+not correctness of its result.
+
+Calibrate acceptance on the current candidate distribution. Report false accepts
+among independently labeled incorrect candidates and false rejects among correct
+candidates, with counts, critical slices, and an explicit treatment of `Unknown`.
+An unknown result does not establish success. See
+[search-selection-and-verification.md](search-selection-and-verification.md)
+for fixed-pool selection, revision comparisons, and release isolation.
+
+Executable checks establish only the requirements they actually test. Inspect
+reference behavior and flaky or incomplete checks before treating their verdict
+as ground truth. Majority vote can rank candidates, but shared false assumptions
+can make the majority wrong.
+
 ## Anti-Patterns
 
 - LLM judge with vague rubric and no human agreement check.

@@ -1,6 +1,6 @@
 ---
 name: software-engineering
-description: Use when designing, reviewing, validating, refactoring, testing, documenting, migrating, or operating long-lived software systems through Google-style software engineering practices. Trigger for maintainability, code health, API compatibility, Hyrum's Law, tradeoff analysis, team knowledge sharing, engineering productivity metrics, style guides, code review, documentation, unit tests, test doubles, larger tests, version control, branching, build systems, dependency management, code search, static analysis, deprecation, large-scale changes, CI/CD, release safety, managed compute, and production-facing software design.
+description: "Design and review long-lived software changes: maintainability, code health, Hyrum's Law, tests, review, builds, dependencies, static analysis, CI, deprecation, migrations, and release evidence. Owns cross-cutting change lifecycle; framework/runtime implementation belongs to the language or frontend owner."
 ---
 
 # Software Engineering
@@ -11,9 +11,11 @@ maintenance obligation, not only as the implementation of today's feature.
 
 ## Core Rule
 
-Do not start from a local code preference. First clarify expected lifetime, users,
-owners, dependencies, public contracts, change risk, tests, docs, review path,
-rollback or migration path, and how the system will remain understandable over time.
+Establish expected lifetime, reuse surface, owners, and change risk from the task
+and repository context. Scale tests, review, documentation, compatibility, and
+recovery work to blast radius and reversibility. A routine local change may need
+only a focused diff and relevant verification; a durable shared contract needs
+consumer evidence and an owned migration path.
 
 ## Hierarchy And Handoffs
 
@@ -28,12 +30,35 @@ strategy. Use `$sre-reliability-engineering` when the primary deliverable is an 
 observability, incident, on-call, or operational reliability system. Those skills
 complement, rather than replace, software ownership and delivery discipline.
 
+Use `$python-backend-engineering`, `$node-typescript-backend-engineering`, or
+`$web-frontend-engineering` when the unresolved decision is framework, runtime,
+or browser implementation. Keep cross-cutting code health, test policy, review,
+build/dependency, migration, and release obligations here; generic local code
+changes need only proportionate guidance, not an obligatory specialist chain.
+
+Use `$platform-devops-engineering` for infrastructure provisioning, CI platform,
+artifact promotion, deployment, and reconciliation mechanics. This skill retains
+source/candidate lifecycle, test policy, mainline restoration, and migration
+obligations. Pass candidate/configuration identity, transition and rollback
+constraints, observations, and the responsible owner.
+
+Use `$api-contract-engineering` for observable OAS/HTTP/wire and consumer
+compatibility. Supply affected operations, versions, consumers, and observed
+mismatches; retain application changes, migration coordination, and release evidence.
+Use `$application-security-engineering` for security controls and component policy,
+and `$security-review` for independent assurance. Integrate their accepted
+requirements into delivery without treating routine code review as security assurance.
+
+Use `$technical-writing` for document form, cross-API structure, or broad-audience
+clarity. Engineering retains factual accuracy and freshness; pass the verified
+behavior and limits described in `references/08-documentation-as-code.md`.
+
 ## Reference Routing
 
 Read only the references needed for the current task.
 
 - For the topic map and reference index, read `references/00_README.md`.
-- Always start with `references/19-swe-agent-operating-model.md` for broad design, review, implementation, migration, or production-facing work.
+- For broad engineering work or decisions about process and architectural proportionality, start with `references/19-swe-agent-operating-model.md`.
 - For the core thesis of software engineering over time and scale, read `references/01-engineering-over-time-and-scale.md`.
 - For tradeoff analysis, reversible decisions, and productivity measurement, read `references/02-decision-making-and-productivity-measurement.md`.
 - For teamwork, HRT, psychological safety, bus factor, and knowledge sharing, read `references/03-team-culture-and-knowledge-sharing.md`.
@@ -52,18 +77,13 @@ Read only the references needed for the current task.
 - For deprecation, migration, backsliding prevention, and large-scale changes, read `references/16-deprecation-large-scale-change-and-migration.md`.
 - For CI, CD, presubmit/post-submit split, feature flags, release trains, staged rollout, and release safety, read `references/17-ci-cd-release-and-production-safety.md`.
 - For managed compute, containerized production environments, state, retries, platform abstractions, and runtime failure assumptions, read `references/18-managed-compute-and-production-abstractions.md`.
+- For integrating accepted security requirements, release evidence, and vulnerability feedback into delivery, read `references/20-secure-development-lifecycle-hooks.md`.
 
 ## Workflow
 
-1. Classify the request:
-   - New software system design: read `19`, then `01`, `02`, `03`, `06`, `08`, `09`, `13`, `14`, `17`, and topic-specific files.
-   - Architecture or design review: read `19`, `01`, `02`, `08`, `09`, `13`, `14`, `16`, and `17`.
-   - Code review or implementation guidance: read `06`, `07`, `09`, `10`, `11`, and `15`.
-   - Testing work: read `09`, then `10`, `11`, `12`, and `17` as needed.
-   - Documentation or knowledge-sharing work: read `03`, `08`, and `07`.
-   - API compatibility, dependency, or migration work: read `01`, `14`, `16`, and `13`.
-   - CI/CD, release, or production-facing software work: read `09`, `12`, `17`, and `18`; combine with the SRE skill when SLOs, incident response, alerting, or on-call are central.
-   - Engineering culture, leadership, or productivity work: read `02`, `03`, `04`, and `05` as applicable.
+1. Identify the unresolved engineering decision and use Reference Routing to load
+   only the relevant depth. Add another reference or specialist when evidence
+   exposes a distinct decision; the reference list is not a mandatory reading sequence.
 2. Identify blocking unknowns. Ask only when the missing data changes the recommendation; otherwise state assumptions.
 3. Tie recommendations to lifetime, scale, users, owners, maintainability, validation, migration, and rollback.
 4. Avoid presenting Google-specific implementations as universal rules. Extract the principle and adapt it to the local organization.

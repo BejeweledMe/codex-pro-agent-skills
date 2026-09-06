@@ -23,6 +23,35 @@ whether a system can be understood and maintained by people beyond its authors.
 - Write tutorials as step-by-step paths for a specific reader, not as architecture dumps.
 - Deprecate old docs: mark, redirect, archive, or delete them so stale knowledge does not compete with current truth.
 
+## Technical-Writing Handoff
+
+Use `$technical-writing` when the difficult decision is document form, information
+structure, or clarity across APIs or audiences. Engineering remains responsible
+for technical truth and for updating it when behavior changes.
+
+Pass the smallest useful evidence packet:
+
+- Reader and task, document purpose, canonical location, and factual owner.
+- Verified behavior, relevant state transitions and invariants, and who has authority to change state.
+- Preconditions, rejection and failure behavior, recovery limits, and observable success signals.
+- Applicable versions/configuration, evidence links, reproducible examples, and explicit unknowns.
+- For a defect or runbook: reproduction conditions, expected versus observed behavior, diagnostic evidence, and verified recovery steps.
+- The change or release that should trigger the next factual review.
+
+The writer returns a usable document with claims traceable to that packet.
+Engineering checks examples and operational claims against the stated version
+before treating it as authoritative. Missing evidence remains an identified gap;
+document polish cannot establish behavior. A small local documentation fix does
+not require a separate handoff or packet.
+
+Give readers arriving through search enough orientation to identify applicability;
+give readers seeking a known task consistent names and structure. Separate
+consumer-facing and operator-facing information when their tasks, access, or
+update triggers differ.
+
+Source basis: *Software Engineering at Google*, documentation audiences, ownership,
+and freshness. The packet operationalizes the engineering-to-writing boundary.
+
 ## Anti-Patterns
 
 - Treating a wiki as a dumping ground with no owner.

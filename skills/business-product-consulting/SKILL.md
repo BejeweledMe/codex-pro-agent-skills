@@ -29,7 +29,7 @@ evidence.
 Read only the references needed for the current task.
 
 - Always start with `references/00_README.md` for broad business/product consulting work.
-- For translating a ticket into business/user value, stakeholder decision, outcomes, constraints, and non-goals, read `references/01-business-thinking.md`.
+- For translating a ticket into business/user value, stakeholder decision, outcomes, constraints, non-goals, or realized economics, read `references/01-business-thinking.md`.
 - For executive updates, PRDs, RFCs, strategy memos, postmortems, emails, and concise narrative framing, read `references/02-scr-scqa-communication.md`.
 - For answer-first communication, storyline, synthesis, argument quality, and executive summaries, read `references/03-pyramid-principle.md`.
 - For problem decomposition, root-cause analysis, issue trees, workstreams, segmentation, roadmap options, and taxonomy design, read `references/04-mece-issue-trees.md`.

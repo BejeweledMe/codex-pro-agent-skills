@@ -89,6 +89,19 @@ Goal: detect distribution drift and unknown unknowns with limited blast radius.
 - Define rollback/rollforward criteria before launch.
 - For agent changes, compare prompt/model/tool variants against both capability and regression suites.
 
+For search or revision changes, use local iteration scores for development and
+independent acceptance evidence at the applicable release gate. Place broader
+repeated trials, verifier calibration, revision comparisons, and recovery cases
+according to their cost and fidelity needs. Protect release holdouts and grader
+configuration from candidate modification.
+
+During bounded rollout, monitor the same failure modes measured offline:
+false acceptance where outcome evidence is available, missed escalation,
+irreversible effects, and review/redo burden. Include evidence delay and unresolved
+outcomes in the report. Hand thresholds, slices, retained evidence, and failure
+actions to `$sre-reliability-engineering` for production response; send confirmed
+failures back into regression cases.
+
 ## Platform Scope Note
 
 OpenAI's agent workflow page describes specific OpenAI Platform surfaces such as traces, graders, datasets and eval runs. The durable engineering pattern is broader: capture inspectable workflow evidence, grade it with structured criteria, and move stable cases into repeatable datasets. Do not couple a long-term QA strategy to a vendor surface without checking current product status.

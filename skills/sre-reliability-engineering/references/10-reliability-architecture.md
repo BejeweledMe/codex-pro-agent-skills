@@ -11,7 +11,7 @@
 - bandwidth и connection pools конечны;
 - topology меняется;
 - DNS, routing, control plane и внешние провайдеры могут стать hidden dependency;
-- последовательные hard dependencies перемножают недоступность.
+- serial hard dependencies require joint success; common failure domains and recovery dependencies determine the actual end-to-end risk.
 
 ## Практики
 
@@ -28,14 +28,23 @@
   3. Поведение при network partition.
   4. Метрики на outgoing calls.
   5. Game Day или staging-test с отключением зависимости.
-- Моделируйте composite reliability:
+- Use the following composite estimates only for independent success events over
+  the same interval, workload, and success definition. Serial requires every
+  component; parallel requires any one to complete the operation, including
+  sufficient capacity and functioning routing/failover:
 
 ```text
 R_serial = R_1 * R_2 * ... * R_n
 R_parallel = 1 - (1 - R_1) * (1 - R_2) * ... * (1 - R_n)
 ```
 
-- Помните: пять последовательных компонентов по 99.9% дают примерно 99.5% end-to-end, а десять - примерно 99.0%.
+- Under those assumptions, five serial components at 99.9% each give roughly
+  99.5%, and ten roughly 99.0%. Count the calling service if it is one of the
+  required components. These are topology examples, not measured CUJ SLOs.
+- Identify shared networks, zones, identity, DNS, storage, deployment machinery,
+  and control planes. Correlation invalidates the independent-product estimate;
+  its error direction depends on the topology and joint distribution. Do not
+  apply a universal "correlation penalty" or multiply contractual SLAs.
 - Размечайте зависимости:
   - hard dependency: без неё сценарий невозможен;
   - soft dependency: можно деградировать.
@@ -56,6 +65,33 @@ R_parallel = 1 - (1 - R_1) * (1 - R_2) * ... * (1 - R_n)
   - runbook;
   - documented API contract.
 - Стройте graph of dependencies из tracing/service mesh и используйте его в incident dashboards.
+
+## Recovery dependencies and bounded rollout
+
+Review the bootstrap and recovery path separately from the serving path. A
+runtime trace may miss dependencies on identity, DNS, repositories, credentials,
+consoles, and communication tools needed only during recovery. Ask which tools
+and authority survive each failed layer and whether they can restore it without
+first requiring it to work. Route topology changes to `$system-design` and
+implementation to `$platform-devops-engineering`; SRE owns the exercise and
+user-reliability acceptance.
+
+Last-known configuration or fallback can sustain service during a control-plane
+failure only within its freshness, authorization, and capacity contract. Test
+that degraded operation remains bounded and can safely converge when control
+returns. See [16-recovery-and-integrity.md](16-recovery-and-integrity.md) for the
+recovery procedure and trusted-state checks.
+
+For client agents, firmware, or other fleets, a small rollout percentage can
+produce large absolute traffic. Budget requests and cost per unit plus aggregate
+DNS/API/dependency load, startup bursts, and retries. Pass measured limits and
+abort signals to the release/platform owner; local error rate alone is not a
+promotion criterion.
+
+Source: *SRE: Коллективный разум*, dependency reliability, control-plane recovery,
+and fleet external-request budgets. Independence qualifications describe the
+mathematical assumptions; the source's universal claim about correlation direction
+must not be carried into estimates.
 
 ## Антипаттерны
 

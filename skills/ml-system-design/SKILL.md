@@ -1,6 +1,6 @@
 ---
 name: ml-system-design
-description: Use when designing, reviewing, validating, debugging, or improving predictive and classical ML systems. Trigger for ML problem framing, metrics/losses, data and labels, validation/leakage/splits, baselines, error analysis, training pipelines, feature stores, A/B experiments, non-LLM inference, monitoring, drift, retraining, ownership, and ML system design interviews. For computer vision, LLM product composition, text-model adaptation, or LLM serving use the dedicated specialist skills.
+description: "Design, review and debug predictive/classical ML systems: whether ML is needed, build or buy, metrics, data, validation, baselines, lifecycle pipelines, predictive serving, benchmark claims, placement, A/B versus canary, monitoring, drift, degradation and ownership. Includes ML system design interviews. Modality-specific CV/LLM work and neural execution have dedicated owners."
 ---
 
 # ML System Design
@@ -10,6 +10,12 @@ Use this skill to design or review ML systems end to end. Treat a model as only 
 ## Core Rule
 
 Do not start from model choice. First clarify the business problem, success criteria, constraints, price of mistakes, available data, baseline, validation schema, fallback, monitoring, and ownership.
+
+Translate product questions into the relevant lifecycle decision: whether rules,
+manual work, a vendor, or ML can improve the outcome; what first-release ambition
+is justified; whether an offline gain changes business outcomes; what evidence
+permits wider exposure; and who can operate and recover the system after launch.
+For a bounded question, read and answer that part without requiring a full design document.
 
 ## Boundaries
 
@@ -22,6 +28,29 @@ architecture, start with `$llm-system-design`; for how a text model is chosen or
 adapted use `$nlp-modeling-and-adaptation`; for self-hosted LLM runtime bottlenecks
 use `$llm-inference-optimization`. The LLM references in this skill remain as
 compatibility bridges, not detailed primary routes.
+
+Keep generic predictive data/label meaning, experiments, serving, and ML design
+decisions here. Use named companions only when their decision is needed:
+
+- `$data-engineering` implements ingestion, event-time processing, replay and
+  backfill mechanics; ML supplies feature/label meaning, prediction-time
+  availability, split constraints and semantic acceptance.
+- `$neural-training-systems` owns step correctness, memory, precision, collectives
+  and coherent restart. ML supplies objective, data/split, sample/order/batch
+  assumptions and quality gates, then checks returned lifecycle evidence.
+- `$ai-platform-llmops` owns shared training/serving infrastructure, fleet capacity,
+  registry, scheduling, controllers and supported edge rollout. ML chooses
+  deployment placement and defines quality, compatibility and fallback acceptance.
+- `$api-contract-engineering` owns HTTP/OpenAPI and consumer compatibility;
+  ML defines prediction meaning and degraded-result semantics.
+- `$system-design` owns service topology; `$software-engineering` owns code/build
+  lifecycle; `$qa-testing` owns classic verification strategy. ML retains semantic
+  and statistical acceptance.
+- `$sre-reliability-engineering` owns SLO operations, on-call and incident response;
+  ML supplies diagnosis, label-delay limits and fallback/retrain authority.
+- `$product-design` and `$business-product-consulting` help establish outcomes,
+  acceptable harm and economics. `$technical-writing` or `$execution-writing`
+  can shape the document or debrief while ML retains decision correctness.
 
 ## Reference Routing
 
@@ -42,6 +71,8 @@ Read only the references needed for the current task.
 - For measuring real effect, human evaluation, simulation, A/B tests, and reporting, read `references/12_measuring_ab_reporting.md`.
 - For API design, release cycle, operations, overrides, and fallbacks, read `references/13_integration_api_release_fallbacks.md`.
 - For serving, latency/throughput/cost tradeoffs, profiling, and inference optimization, read `references/14_serving_inference_optimization.md`.
+- For a performance comparison or vendor claim, read `references/benchmark-contract-and-claims.md`; its worksheet is optional context for a bounded benchmark.
+- For cloud, edge or hybrid placement and sustained device constraints, read `references/deployment-placement-and-device-envelope.md`.
 - For monitoring, drift, reliability, accountability, bus factor, documentation, and complexity, read `references/15_monitoring_ownership_maintenance.md`.
 - For a legacy overview of LLM selection/adaptation before handing off to the new
   primary owner, read `references/16_llm_model_selection_and_adaptation.md`.
@@ -56,6 +87,8 @@ Read only the references needed for the current task.
    - Metrics or experiment design: read `05`, `07`, `09`, `12`.
    - Data/validation/debugging issue: read `06`, `07`, `09`, `11`, and `15` if production is involved.
    - Production, serving, or reliability review: read `13`, `14`, `15`, and `08` for fallback/baseline behavior.
+   - Whether ML is justified, build/buy/manual alternatives, or first-release ambition: read `02`, `03`, `08`.
+   - Benchmark validity or deployment placement: read the corresponding focused reference, adding `05`, `07`, `13`, or `14` only for unresolved quality, evaluation, release, or serving decisions.
    - Computer-vision architecture or task decomposition: start with `$computer-vision-system-design`; use the dedicated data, modeling, evaluation, or inference owner when that decision is already clear.
    - LLM product architecture, provider/model routing, prompt/RAG/agent/adaptation choice, or product budget: start with `$llm-system-design`.
    - Text-model selection, fine-tuning, PEFT, tokenizer, or adaptation question: start with `$nlp-modeling-and-adaptation`, then use the relevant ML lifecycle references.
@@ -102,6 +135,9 @@ Lead with risks and missing decisions:
 - Prefer a simple working baseline before complex ML unless the references justify skipping it.
 - Tie offline metrics to product/business metrics.
 - Make validation resemble production use.
+- Evaluate validation-derived choices on an outer surface; keep fixed comparability and fresh relevance visible.
 - Treat data, labels, metadata, and split design as first-class architecture.
 - Do not call a model production-ready without integration, fallback, monitoring, and ownership.
+- Attribute behavior to the complete semantic release bundle and distinguish what replay, shadow, canary, A/B, and rollout actually proved.
+- Diagnose data, skew, model/objective, and runtime failures before choosing retraining.
 - Keep recommendations scoped to the user's system and constraints.

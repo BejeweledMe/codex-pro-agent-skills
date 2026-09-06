@@ -1,0 +1,4 @@
+interface:
+  display_name: "Platform DevOps Engineering"
+  short_description: "Deliver and recover controlled infrastructure"
+  default_prompt: "Use $platform-devops-engineering to implement a verifiable infrastructure change with explicit identity, apply authority, and recovery."

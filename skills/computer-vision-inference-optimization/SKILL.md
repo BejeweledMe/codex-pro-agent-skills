@@ -30,7 +30,8 @@ serving rollback. Architecture retraining, QAT, pruning-aware training, or disti
 belongs to `$computer-vision-modeling-and-training`; quality acceptance belongs to
 `$computer-vision-evaluation`.
 
-Use `$system-design` for APIs, queues, storage, tenancy, and distributed topology;
+Use `$api-contract-engineering` for HTTP/OpenAPI artifacts and wire compatibility.
+Use `$system-design` for queues, storage, tenancy, and distributed topology;
 `$sre-reliability-engineering` for SLOs, incidents, alerts, and on-call. If a VLM trace
 localizes the bottleneck to token generation, KV cache, prefill, or decode, use
 `$llm-inference-optimization` for that stage.

@@ -31,6 +31,18 @@ UI не просто визуальное оформление. Это мест�
 
 Если flow связан с AI, добавьте capabilities, limits, confidence, correction, feedback and fallback.
 
+## Deferred Readiness And Async Acceptance
+
+For a flow with deferred code, data, or rendering, define when useful content is visible and when the first meaningful action succeeds. A painted control is not evidence that the user can operate it.
+
+- Specify early-input behavior: accepted immediately, visibly held pending, or rejected with an understandable unavailable state. If input is queued or replayed, define what the user sees and how repeated activation avoids duplicate work.
+- Make pending, timeout, error, and retry states truthful. Keep fallback geometry and semantic order stable enough that replacement does not move an action out from under the user or make the journey confusing.
+- Define where focus stays or moves when content activates, is replaced, fails, or disappears. Preserve keyboard and touch completion, visible focus, and meaningful status/error announcements; do not make readiness depend on hover.
+- For stale or asynchronous data, state the acceptable age and what happens after a write: whether the user must see their change immediately, may see pending confirmation, or must resolve a conflict. Distinguish local feedback, server acceptance, and an unknown outcome; a timeout alone does not mean the operation failed.
+- Decide what a late result may change after navigation, cancellation, or a newer edit, and provide a recovery path when the promised state cannot be confirmed. Product acceptance cannot guarantee backend freshness or conflict handling without engineering evidence.
+
+Check the journey under delayed code/data, early and repeated input, replacement of focused content, stale reads, and failed confirmation on representative devices and input modes. Record first-action success as well as visual progress. Pass these acceptance criteria to `$web-frontend-engineering` for implementation and to `$qa-testing` when a general verification strategy is needed. These checks extend the existing accessibility core; they do not establish WCAG conformance.
+
 ## Usability Risk
 
 Usability risk не закрывается красивым интерфейсом. Нужно проверить:

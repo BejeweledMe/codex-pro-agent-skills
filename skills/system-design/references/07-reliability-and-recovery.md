@@ -23,7 +23,18 @@ Classify each dependency:
 - `control-plane`: needed for change or recovery but perhaps not steady-state traffic;
 - `shared`: creates correlated blast radius across otherwise separate components.
 
-For sequential hard dependencies, end-to-end availability is bounded by their combined reliability. Parallel replicas help only when failure modes are independent and failover works.
+For sequential hard dependencies, the journey requires their joint availability.
+Multiplying individual availability figures assumes independence. Redundant paths
+can improve availability, but their benefit depends on the joint failure model,
+surviving capacity, and working failover. Correlation alone does not establish a
+universal direction or size of error in an independence-based estimate.
+
+Trace cold-start and recovery dependencies separately from steady-state traffic.
+A running data plane may survive a control-plane outage while replacement nodes
+cannot obtain identity, configuration, or storage access. Find cycles such as
+recovery tooling hosted only on the system it must restore. Provide an exercised,
+scoped route that survives the named failure; another region may still share
+credentials, control planes, or bootstrap dependencies.
 
 ## Resilience Controls
 
@@ -59,6 +70,27 @@ Define:
 - Communication, authority, and manual override.
 
 Backups are not proven until a restore succeeds within the required time and the restored data passes integrity checks.
+
+Include relevant authority and security state in restore acceptance: current
+authorization, applicable revocations, deduplication records, fencing state,
+configuration, and compatible software/data versions. Restoring older state must
+not silently re-enable stale writers, prohibited access, duplicate effects, or
+deleted serving data. Apply the declared deletion/retention policy to historical
+copies as well.
+
+Where compromise is in the failure model, identify a surviving trusted recovery
+basis; backups and spare credentials under the same compromise do not establish
+one. Keep degraded-mode freshness and authorization limits explicit, including
+the capacity and access needed for responders and security controls.
+
+Use [distributed-guarantees-and-recovery.md](distributed-guarantees-and-recovery.md)
+for history, effect, and replay checks. `$database-engineering` supplies physical
+restore evidence; `$data-engineering` rebuilds maintained views;
+`$platform-devops-engineering` applies or reconciles infrastructure; and
+`$sre-reliability-engineering` owns operational recovery judgment and drills.
+Control changes belong to `$application-security-engineering`. The architecture
+must expose their restore order, required evidence, and unresolved cross-system
+outcomes.
 
 ## Regional Strategy
 

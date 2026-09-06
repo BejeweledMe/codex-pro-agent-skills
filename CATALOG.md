@@ -27,10 +27,10 @@ because a request touches the same product.
 |---|---|---|
 | User problem, discovery, UX, requirements, design system | `product-design` | `business-product-consulting` for strategic or executive choices; the appropriate implementation domain after validation |
 | Business case, market or portfolio choice, operating model, executive recommendation | `business-product-consulting` | `product-design` for user evidence and UX; the affected engineering domain for implementation |
-| Classical service architecture | `system-design` | `software-engineering` for changeability, `qa-testing` for verification, `sre-reliability-engineering` for operation |
+| Classical service architecture | `system-design` | `api-contract-engineering` for HTTP artifacts; backend/database/data/platform owners for implementation; SWE/QA/SRE for change, verification, and operation |
 | Computer-vision problem, sensor, task, or end-to-end perception pipeline | `computer-vision-system-design` | CV data, modeling, evaluation, and inference specialists for their decision surfaces; classical service owners for the surrounding platform |
 | iOS product or an unknown native/cross-platform split | `ios-app-development` | `swift-skill` for native implementation, `flutter-skill` for Flutter, both only at a defined mixed boundary |
-| Telegram Mini App | `telegram-mini-apps` | `system-design`, `software-engineering`, or `qa-testing` only for the non-Telegram layer they own |
+| Telegram Mini App | `telegram-mini-apps` | `web-frontend-engineering` for generic browser state/rendering; `application-security-engineering` for general controls; system-design, software-engineering, and qa-testing for surrounding architecture, change, and verification; Telegram-specific authorization remains local |
 
 ## Writing Operations
 
@@ -57,20 +57,20 @@ operation.
 
 | Question | Primary skill | Delegate detailed work to |
 |---|---|---|
-| How should a classical service, API, queue, database, or distributed system work? | `system-design` | `sre-reliability-engineering`, `software-engineering`, `qa-testing` |
-| How should a predictive or classical ML system be designed, trained, validated, and operated? | `ml-system-design` | `nlp-modeling-and-adaptation` for text-model changes |
+| How should a classical service boundary, data authority, queue, or distributed guarantee work? | `system-design` | API, backend, database, data, or platform owners for implementation; SRE for reliability judgment |
+| How should a predictive or classical ML lifecycle, benchmark claim, or deployment choice work? | `ml-system-design` | Modality owners for model choices; `neural-training-systems` for neural execution; `ai-platform-llmops` for shared infrastructure |
 | How should a computer vision product or perception pipeline be framed and decomposed? | `computer-vision-system-design` | CV data, modeling, evaluation, and inference specialists; generic `system-design` and SRE only for the surrounding service |
 | How should visual data, labels, splits, leakage, augmentation, or active-learning loops be handled? | `computer-vision-data-and-labeling` | `computer-vision-evaluation`, `computer-vision-modeling-and-training` |
 | Which vision model family or adaptation method should be used? | `computer-vision-modeling-and-training` | `computer-vision-data-and-labeling`, `computer-vision-evaluation`, `computer-vision-inference-optimization` |
 | How should CV quality be measured, debugged, calibrated, and released? | `computer-vision-evaluation` | `computer-vision-data-and-labeling`, `computer-vision-modeling-and-training`, `agent-llm-evals` only for LLM/VLM/agent harnesses |
 | Why is a non-LLM CV pipeline slow, expensive, or hard to deploy? | `computer-vision-inference-optimization` | `computer-vision-modeling-and-training`, `computer-vision-evaluation`, `system-design`, `sre-reliability-engineering` |
-| How should an LLM product be composed from prompts, RAG, agents, models, and fallbacks? | `llm-system-design` | RAG, agent, adaptation, inference, eval, and security specialists |
+| How should an LLM product be composed from prompts, RAG, agents, models, and fallbacks? | `llm-system-design` | RAG, agent, adaptation, inference, eval, and security specialists; `ai-platform-llmops` for shared infrastructure and `neural-training-systems` for neural execution |
 | Which text model family or adaptation method should we use? | `nlp-modeling-and-adaptation` | `llm-system-design`, `agent-llm-evals` |
-| Why is a self-hosted LLM slow, expensive, or out of capacity? | `llm-inference-optimization` | `llm-system-design`, `sre-reliability-engineering` |
-| How should documents be retrieved and grounded? | `rag-engineering` | `agent-llm-evals`, `genai-security-testing` |
+| Why is self-hosted LLM request execution slow, expensive, or out of capacity? | `llm-inference-optimization` | `ai-platform-llmops` for provisioning/controller/fleet policy; product owner for acceptable degradation; SRE for operational response |
+| How should documents be retrieved and grounded? | `rag-engineering` | `agent-llm-evals` for harnesses, `genai-security-testing` for authorized boundary tests, `data-engineering` for generic publication and replay machinery |
 | How should an LLM agent call tools and recover? | `agent-workflows` | `agent-llm-evals`, `genai-security-testing` |
 | How should an LLM system be measured and released? | `agent-llm-evals` | the affected domain skill |
-| How should an owned LLM/RAG/agent system be hardened and authorized-tested? | `genai-security-testing` | `agent-llm-evals`, `sre-reliability-engineering` |
+| How should an owned LLM/RAG/agent system be hardened and authorized-tested? | `genai-security-testing` | `application-security-engineering` for general controls, `security-review` for independent assessment, eval/SRE owners for their evidence and response |
 
 Use one primary skill for the decision, then load companion skills only for their
 specialist implementation. This prevents a broad system-design request from dragging
@@ -79,6 +79,32 @@ every LLM reference into context.
 For computer vision, choose the unresolved decision surface first. Classification,
 retrieval, detection, segmentation, OCR/documents, and video/tracking are narrow
 references within those owners rather than separate top-level skills.
+
+## Implementation And Assessment Owners
+
+Start directly with these owners when the unresolved question is already at their
+boundary. A small implementation change need not pass through a complete system
+design, security council, or ML lifecycle.
+
+| Question | Primary skill | Boundary retained by neighbors |
+|---|---|---|
+| How should browser UI state, rendering, loading, focus, and first-action behavior work? | `web-frontend-engineering` | Product defines acceptable interaction; API owns wire compatibility; Node owns standalone services |
+| How should a Python handler, task, async resource, or Session/UoW behave? | `python-backend-engineering` | API owns observable contracts; database owns engine proof; system owns cross-service guarantees |
+| How should a Node/TypeScript service manage async outcomes, streams, workers, and shutdown? | `node-typescript-backend-engineering` | Frontend owns browser UI; API owns wire compatibility; system/data own durable cross-service effects |
+| How should an HTTP/OpenAPI artifact be authored, debugged, and evolved across consumers? | `api-contract-engineering` | System defines domain obligations; backend executes handlers and effects; AppSec chooses security controls |
+| How should schema, constraints, isolation, SQL plans, maintenance, or restore work? | `database-engineering` | System owns source authority/cross-system promises; data owns derived pipelines; backend owns Session use |
+| How should temporal data, CDC, transforms, publication, backfill, or replay remain correct? | `data-engineering` | Database proves engine behavior; ML owns label/feature semantics; RAG owns retrieval quality |
+| How should infrastructure intent safely build, apply, reconcile, and recover? | `platform-devops-engineering` | SWE owns source/candidate lifecycle; SRE judges user reliability; AppSec chooses control policy |
+| How should application security controls be designed or repaired? | `application-security-engineering` | Platform enforces build/deploy identity; GenAI owns specialist LLM/RAG/agent threat analysis, hardening and authorized tests; review assesses evidence |
+| Are security claims supported for this scoped design, dependency, change, or release? | `security-review` | Implementers fix controls; accountable owners accept risk; review does not grant active-test authority |
+| How should a neural update execute correctly and efficiently, including distributed restart? | `neural-training-systems` | ML/CV/NLP own objective/data/quality; AI platform owns capacity/placement; inference owns deployed execution |
+| How should predictive/GenAI serving and training-job infrastructure be operated? | `ai-platform-llmops` | Runtime supplies service curves/KV/readiness constraints; training owns updates/collectives; generic platform owns substrate |
+
+Pass only the useful boundary contract: invariant or objective, versions and
+authority, observed evidence, supported transition, and recovery constraints.
+Runtime admission and measured warmup are not controller-level replica policy.
+Security implementation and independent assessment are distinct responsibilities,
+not two labels for the same author approving their own work.
 
 ## Installation Bundles
 
@@ -93,7 +119,7 @@ opt-in through a CV bundle, `all`, or explicit skill paths.
 | `base` | General professional engineering and writing |
 | `writing-specialists` | Full writing, source, research, decision, and presentation family |
 | `product-and-consulting` | Product discovery, UX, business framing, and stakeholder decisions |
-| `service-platform` | Classical services, engineering delivery, QA, and reliability |
+| `service-platform` | Classical services, API contracts, databases, infrastructure delivery, QA, and reliability |
 | `classic-ml` | Predictive/classical ML and text-model selection/adaptation |
 | `computer-vision-core` | CV-only decision surfaces for perception architecture, data, modeling, evaluation, and inference |
 | `computer-vision-training` | CV dataset, model-training/adaptation, and evaluation work with generic ML/QA companions |
@@ -105,6 +131,14 @@ opt-in through a CV bundle, `all`, or explicit skill paths.
 | `agent-systems` | Agent workflow, evaluation, safety, and production controls |
 | `ios-apps` | iOS, Swift, Flutter, and mixed-stack work |
 | `telegram-mini-apps` | Telegram Mini Apps |
+| `web-frontend` | Browser UI state, rendering, loading, accessibility, and verification |
+| `python-backend` | Python services, API contracts, database use, and verification |
+| `node-backend` | Node/TypeScript services, API contracts, database use, and verification |
+| `data-platform` | Database and data-pipeline correctness, recovery, and reliability |
+| `platform-delivery` | Infrastructure as code, builds, deployment, and reconciliation |
+| `application-security` | Application control design and independent security assessment |
+| `neural-training` | Neural step correctness, memory, distributed execution, and restart |
+| `ai-platform` | Predictive/GenAI serving and training-job infrastructure |
 | `all` | Every skill in this release |
 
 The machine-readable membership is [bundles.yaml](bundles.yaml). Use

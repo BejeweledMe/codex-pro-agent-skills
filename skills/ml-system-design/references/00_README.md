@@ -20,6 +20,32 @@
   остаётся кратким совместимым обзором; для generic ML serving используйте
   [14](14_serving_inference_optimization.md).
 
+## Focused Decision Routes
+
+The numbered references remain the connected predictive/classical ML lifecycle.
+Use only the modules needed for the current decision.
+
+| Question | Reference |
+| --- | --- |
+| Do we need ML, should we build or buy, and how ambitious should the first release be? | [Problem framing](02_problem_framing.md), [alternatives and ambition](03_preliminary_research_build_vs_buy.md), [baselines](08_baselines.md) |
+| Does the metric imply affordable errors and review workload? | [Metrics and operating points](05_metrics_losses.md) |
+| Does selected data improve quality or total cost without losing coverage? | [Data and selection economics](06_data_labeling_metadata.md) |
+| Have selection and repeated tuning contaminated the release estimate? | [Validation and evaluation surfaces](07_validation_leakage_splits.md) |
+| Why is training failing, and what should change next? | [Error analysis](09_error_analysis.md), [training lifecycle](10_training_pipelines.md) |
+| What do replay, shadow, canary, A/B and rollout prove? | [Measurement](12_measuring_ab_reporting.md) |
+| Can the exact released behavior be traced, disabled and recovered? | [Release and fallback contracts](13_integration_api_release_fallbacks.md), [ownership and response](15_monitoring_ownership_maintenance.md) |
+| Is a speed, cost or energy comparison valid for this workload? | [Benchmark contract and claims](benchmark-contract-and-claims.md) |
+| Should execution be in the cloud, on devices, or split across tiers? | [Deployment placement and device envelope](deployment-placement-and-device-envelope.md) |
+
+ML retains product/data/split/objective validity and generic predictive serving.
+Use `$data-engineering` for pipeline/event-time/replay mechanics,
+`$neural-training-systems` for neural step/memory/precision/collective/restart
+mechanics, and `$ai-platform-llmops` for fleet capacity, registry, scheduling and
+controllers. Pass semantic constraints and receive implementation evidence;
+handoff does not transfer model selection or release quality authority.
+References [16](16_llm_model_selection_and_adaptation.md) and
+[17](17_llm_inference_serving_and_bottleneck_diagnosis.md) remain compatibility bridges.
+
 ## Lifecycle Map
 
 1. Понять, какую проблему решаем и зачем.

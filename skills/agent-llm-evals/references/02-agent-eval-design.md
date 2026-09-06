@@ -50,6 +50,13 @@ Use when: evaluating agents, workflows, tool use, handoffs, multi-turn conversat
 - Was the environment reset between trials?
 - Are failures independent, or are they caused by shared state?
 
+For workflows with durable memory, compaction, or resume, preserve the intended
+history within each trial and reset it between independent trials. Compare
+restored state and retained constraints with the task's canonical state; a
+plausible summary is insufficient evidence of recovery. Measure stale/conflicting
+memory, duplicate effects, and falsely claimed completion using the stage
+diagnostics in [search-selection-and-verification.md](search-selection-and-verification.md).
+
 ### Handoffs
 
 - Did the right agent take ownership?

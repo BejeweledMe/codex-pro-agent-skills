@@ -39,6 +39,12 @@ Ask not only "will this work?" but:
 - Does it require new monitoring, documentation or training?
 - Can we roll back without damaging trust?
 
+## Displaced Cost In Architecture Choices
+
+For build/buy or integrated/unbundled alternatives, compare total ownership cost over the same horizon: implementation or license, integration, contracts, data movement, operations, recovery, migration, and exit. Unbundling can improve specialization while moving coordination and failure handling onto the team; an integrated product can reduce that work while introducing capability or switching constraints. Identify which requirement justifies the added burden, who carries it, and what evidence would change the decision.
+
+For a business invariant, compare prevention through coordination with later correction only when the violation is reversible and the affected outcome permits compensation. Price remediation, support, delay, and customer harm alongside coordination latency or unavailability. Record the accountable business/domain owner's acceptance of any relaxed constraint and the practical correction path; technical convenience does not authorize weakening an invariant, and an irreversible effect cannot be made acceptable by calling the remedy an apology.
+
 ## Guardrails
 
 Define before launch:

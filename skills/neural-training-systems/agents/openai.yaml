@@ -1,0 +1,4 @@
+interface:
+  display_name: "Neural Training Systems"
+  short_description: "Diagnose, optimize, and recover neural training"
+  default_prompt: "Use $neural-training-systems to diagnose this training run and implement the smallest verified correctness, performance, or recovery fix."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Platform and LLMOps"
+  short_description: "Build and operate model fleets and AI capacity"
+  default_prompt: "Use $ai-platform-llmops to design or improve this AI serving, capacity, or fleet rollout control plane."
+policy:
+  allow_implicit_invocation: true

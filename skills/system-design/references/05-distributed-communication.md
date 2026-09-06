@@ -11,9 +11,17 @@ Every remote call can be slow, unavailable, duplicated, or partially completed. 
 
 A timeout means the caller stopped waiting; it does not prove the remote operation did not happen.
 
+Cancellation can also race with completion. Preserve operation identity and
+define late-result handling; discarding a response cannot discard an already
+committed effect. Use the outcome procedure in
+[distributed-guarantees-and-recovery.md](distributed-guarantees-and-recovery.md)
+when retry safety or recovery depends on resolving the uncertainty.
+
 ## Retries
 
-Retry only transient failures and only when the operation is safe to repeat or carries an idempotency identity.
+Retry only failures the contract permits retrying, and only when the operation is
+safe to repeat or protected by an enforced idempotency contract. Carrying a key
+alone does not make the effect safe.
 
 Use:
 
@@ -38,6 +46,15 @@ For retried commands:
 
 Natural idempotency such as `set value to X` is preferable to fragile deduplication where the domain allows it.
 
+Check ordering and concurrent writers as well: a delayed repeat of an old `set`
+can overwrite a newer value. Use a version/ordering precondition where that
+outcome is forbidden. Reproducible replay may require preserved order and inputs;
+these are not universal requirements of every idempotent operation.
+
+Deduplication retention and restore behavior must cover the promised retry or
+effectful replay horizon. If old identities can expire, define how older requests
+are rejected, reconciled, or replayed without repeating accepted effects.
+
 ## Queues And Streams
 
 Define the contract explicitly:
@@ -53,6 +70,20 @@ Define the contract explicitly:
 
 End-to-end exactly-once effects require coordination with the destination state and external side effects; a transport guarantee alone is insufficient.
 
+Distinguish append order, delivery order, processing order, and visible effect
+order. Per-partition delivery does not preserve effect order if handlers complete
+concurrently or a failed message is bypassed. A dead-letter queue needs an owner
+and a repair/disposition path; placing a message there is not successful
+completion.
+
+Select a retained log when replay and scoped order justify its partition and
+retention constraints. A work queue may suit independent tasks with variable
+duration, but acknowledgment/redelivery need not preserve history or order.
+State the actual contract rather than inferring it from a product name. Use
+[distributed-guarantees-and-recovery.md](distributed-guarantees-and-recovery.md)
+for retention loss, snapshot/log recovery, and safe replay. Maintained pipeline
+execution belongs to `$data-engineering`.
+
 ## Backpressure And Overload
 
 - Bound queues, in-flight work, connection pools, and per-tenant concurrency.
@@ -67,12 +98,17 @@ End-to-end exactly-once effects require coordination with the destination state 
 
 Avoid distributed coordination where partitioned ownership or deterministic conflict resolution can solve the problem. When coordination is required:
 
-- Use leases with expiration rather than assuming a process remains leader forever.
-- Use fencing tokens so a stale leader cannot continue mutating protected state.
+- If using leases, define expiration and renewal; a paused holder can resume after expiry, so a lease alone does not enforce exclusive mutation.
+- When fencing supplies stale-writer exclusion, enforce tokens at the protected resources. Define scope, issuance, durable comparison, and installation of the successor's fence before relying on exclusive ownership.
 - Treat clocks as imperfect; do not infer a total event order from wall time alone.
 - Make lock scope, timeout, renewal, failure, and recovery explicit.
 - Ensure the coordination system's availability does not silently cap the whole service.
 - Test pause, restart, network partition, duplicate leader, and delayed message scenarios.
+
+The fencing and authority-transition procedure is in
+[distributed-guarantees-and-recovery.md](distributed-guarantees-and-recovery.md).
+A coordination service cannot fence an external effect whose enforcement boundary
+does not participate in the protocol.
 
 ## Communication Review
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Python Backend Engineering"
+  short_description: "Build reliable Python request and task workflows"
+  default_prompt: "Use $python-backend-engineering to implement or debug this Python backend workflow, including its validation, transaction, side effects, and resource lifecycle."
+policy:
+  allow_implicit_invocation: true

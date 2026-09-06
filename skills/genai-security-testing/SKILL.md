@@ -28,6 +28,12 @@ For composition and model/provider/product fallback decisions, start with
 evaluation harnesses use `$agent-llm-evals`. Do not infer authorization from the use
 of any companion skill.
 
+Use `$application-security-engineering` for general application-control design and
+remediation, and `$security-review` for a fresh scoped assurance verdict. This
+skill retains LLM/RAG/agent threat modeling, security design and review,
+hardening, and authorized testing with observed effects. Companion routing
+never grants additional testing authority.
+
 ## Reference Routing
 
 - Read [threat model and boundaries](references/01_threat_model_boundaries.md) for every broad security design or review.

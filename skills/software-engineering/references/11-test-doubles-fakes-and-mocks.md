@@ -23,6 +23,45 @@ interaction test in order to keep tests useful and maintainable.
 - When interaction testing is necessary, verify only meaningful externally relevant interactions.
 - Avoid mocks for value objects, simple data structures, or dependencies that should be real.
 
+## Authoritative Fakes And Real-Adapter Evidence
+
+For a shared dependency, prefer a supported fake maintained by the team that owns
+the API implementation. That team owns its modeled behavior, supported versions,
+known omissions, and updates when the real contract changes. A caller-created
+imitation is local test support until its fidelity has evidence.
+
+Run common behavioral cases against the fake and a controlled real implementation.
+Choose cases from the promised contract: successful operations, relevant failures,
+state transitions, and persistence or transaction outcomes where applicable.
+Assert externally meaningful results, not identical internal call sequences.
+
+When the fake passes and the real adapter fails, compare version, configuration,
+fixture, and contract assumptions before changing either implementation. Add the
+case that exposes drift to the shared evidence, repair the responsible side, and
+verify both. Agreement on shared cases only establishes the behaviors exercised.
+
+Keep targeted real-adapter integration checks for behavior the fake cannot prove,
+such as serialization, actual commit/rollback, error mapping, or environment wiring.
+Use an owned, repeatable integration target with controlled data and configuration.
+Record/replay can help when a fake is too expensive, but recordings have versions
+and fidelity limits; refreshing them requires an owned environment.
+
+Use
+`$api-contract-engineering` for disputed observable OAS/wire compatibility and
+`$database-engineering` for engine guarantees. These handoffs do not remove the
+implementation team's obligation to maintain its adapter and fake.
+
+Use-case tests with fakes can cover orchestration and preconditions quickly;
+domain tests remain useful for intricate or combinatorial rules. Adapter tests
+prove the mapping and effect boundary, while a small number of edge-to-edge tests
+prove wiring and parsing. Choose by the missing behavior evidence, preserving
+the size/scope distinction in
+[09-testing-strategy-and-confidence.md](09-testing-strategy-and-confidence.md).
+
+Source basis: *Software Engineering at Google*, Test Doubles; *Architecture
+Patterns with Python* (Cosmic Python), testing and adapter hardening. Shared
+fake/real cases do not imply a particular consumer-driven contract-testing tool.
+
 ## Anti-Patterns
 
 - Defaulting to mocks because mocking is easy.

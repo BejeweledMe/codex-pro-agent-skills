@@ -3,8 +3,9 @@
 ![Codex Skills hero](assets/codex-skills-hero.png)
 
 A practical library of focused skills for professional Codex work: system design,
-software delivery, product and business decisions, ML, LLMs, agents, computer vision,
-mobile development, and technical communication.
+software delivery, web and backend implementation, data, infrastructure and security,
+product and business decisions, ML, LLMs, agents, computer vision, mobile development,
+and technical communication.
 
 A skill is a reusable set of instructions that helps Codex approach a particular kind
 of task. A bundle is a convenient installation group. You do not need to install
@@ -19,6 +20,10 @@ appear in more than one bundle because real projects cross domain boundaries.
 | Area | What it helps with | Useful bundles |
 |---|---|---|
 | Core engineering and systems | Service architecture, maintainable software, QA, and production reliability | `base`, `service-platform` |
+| Web, backend, and API contracts | Browser UI, Python and Node services, HTTP/OpenAPI compatibility | `web-frontend`, `python-backend`, `node-backend` |
+| Data and infrastructure | Database access and recovery, temporal pipelines, infrastructure delivery | `data-platform`, `platform-delivery` |
+| Application security | Control implementation and independent security assessment | `application-security` |
+| Neural training and AI infrastructure | Training execution and recovery, model-serving and training-job platforms | `neural-training`, `ai-platform` |
 | Product, UX, and business strategy | User research, flows, prototype validation, design systems, business cases, and strategic choices | `product-and-consulting` |
 | Classical ML and NLP | Predictive ML lifecycle, data, validation, text-model selection, and adaptation | `classic-ml` |
 | LLM products and platforms | Prompt, RAG, and agent choices; model routing, adaptation, serving, cost, and latency | `llm-product`, `llm-platform`, `llm-adaptation` |
@@ -38,19 +43,25 @@ logical structure comes from routing between skills.
 Codex starts with the skill that owns the unresolved decision. It then loads a
 specialist or companion only when that part of the task needs deeper treatment.
 `system-design` is therefore not a mandatory parent of every architecture skill: it
-owns APIs, storage, queues, service boundaries, and distributed-system concerns,
-while ML, LLM, and CV skills own their domain-specific decisions.
+owns service boundaries, data authority, queues, and distributed-system guarantees.
+HTTP/OpenAPI artifact compatibility belongs to `api-contract-engineering`; language,
+database, data-pipeline, and infrastructure implementation have their own owners.
+ML, LLM, and CV skills retain domain objectives and acceptance.
 
 ```mermaid
 flowchart TB
-    Q{"What is the main design question?"}
+    Q{"What is the unresolved decision?"}
 
     Q --> SD["system-design<br/>services and distributed architecture"]
     Q --> ML["ml-system-design<br/>predictive ML lifecycle"]
     Q --> LLM["llm-system-design<br/>LLM product composition"]
     Q --> CV["computer-vision-system-design<br/>visual pipeline"]
+    Q --> IMP["Implementation decision<br/>frontend, backend, API, database, data, platform"]
+    Q --> SEC["Security decision<br/>application controls or independent assessment"]
+    Q --> NT["neural-training-systems<br/>step, memory, collective and restart evidence"]
+    Q --> AP["ai-platform-llmops<br/>capacity, placement, registry and fleet"]
 
-    ML -.->|"APIs, storage, queues"| SD
+    ML -.->|"storage, queues, distributed guarantees"| SD
     LLM -.->|"service layer and capacity"| SD
     CV -.->|"surrounding platform"| SD
 
@@ -60,6 +71,9 @@ flowchart TB
     LLM --> LS["genai-security-testing"]
     LLM --> LN["nlp-modeling-and-adaptation"]
     LLM --> LI["llm-inference-optimization"]
+    ML -.->|"training execution when needed"| NT
+    ML -.->|"infrastructure implementation when needed"| AP
+    LI -.->|"replica and controller policy"| AP
 
     CV --> CD["CV data and labeling"]
     CV --> CM["CV modeling and training"]
@@ -67,9 +81,10 @@ flowchart TB
     CV --> CI["CV inference optimization"]
 ```
 
-Solid arrows show a route to a domain or specialist. Dashed arrows show when a domain
-skill may add classical `system-design` for the surrounding service. They do not
-represent inheritance or an automatic runtime pipeline.
+Solid arrows show a route to a domain or specialist. Dashed arrows show optional
+handoffs for the labeled decision, including surrounding services, training
+execution, or shared AI infrastructure. They do not represent inheritance or an
+automatic runtime pipeline.
 
 For the complete ownership and handoff rules, see the
 [skill catalog](CATALOG.md).
@@ -94,7 +109,8 @@ cd codex-pro-agent-skills
 The helper expects Git, Python 3, Ruby, and the official Codex skill installer in its
 default Codex location.
 
-Restart Codex after installing or updating skills so it can discover the new files.
+Codex normally discovers new and updated skills automatically. If they do not
+appear, restart Codex. See [OpenAI's skill documentation](https://learn.chatgpt.com/docs/build-skills).
 
 <details>
 <summary><strong>Choose a bundle</strong></summary>
@@ -110,7 +126,7 @@ Run this command to see the current bundle list:
 | `base` | General engineering and writing |
 | `writing-specialists` | Full writing, research, decision, and presentation family |
 | `product-and-consulting` | Product design, UX, business framing, and stakeholder decisions |
-| `service-platform` | Classical systems, delivery, QA, and reliability |
+| `service-platform` | Classical systems, API contracts, databases, infrastructure delivery, QA, and reliability |
 | `classic-ml` | Predictive ML and text-model selection or adaptation |
 | `computer-vision-core` | The five CV decision owners without the general engineering stack |
 | `computer-vision-training` | CV data, training, adaptation, and evaluation |
@@ -122,6 +138,14 @@ Run this command to see the current bundle list:
 | `agent-systems` | Agent workflows, evaluation, safety, and production controls |
 | `ios-apps` | iOS, Swift, Flutter, and mixed-stack application work |
 | `telegram-mini-apps` | Telegram Mini App development and release |
+| `web-frontend` | Browser UI state, rendering, loading, accessibility, and verification |
+| `python-backend` | Python services, API contracts, database use, and verification |
+| `node-backend` | Node/TypeScript services, API contracts, database use, and verification |
+| `data-platform` | Database and data-pipeline correctness, recovery, and reliability |
+| `platform-delivery` | Infrastructure as code, builds, deployment, and reconciliation |
+| `application-security` | Application control design and independent security assessment |
+| `neural-training` | Neural step correctness, memory, distributed execution, and restart |
+| `ai-platform` | Predictive/GenAI serving and training-job infrastructure |
 | `all` | Every skill currently published by this repository |
 
 The machine-readable source of truth is [bundles.yaml](bundles.yaml).
@@ -216,10 +240,54 @@ matches.
 <details>
 <summary><strong>Core engineering and systems</strong></summary>
 
-- `system-design`: Services, APIs, storage, queues, capacity, and distributed systems.
+- `system-design`: Service boundaries, data authority, queues, capacity, and distributed guarantees.
 - `software-engineering`: Long-lived software design, safe changes, testing, and delivery.
 - `qa-testing`: Software QA strategy, automated suites, and quality gates.
 - `sre-reliability-engineering`: SLOs, observability, incidents, on-call, and reliability.
+
+</details>
+
+<details>
+<summary><strong>Web, backend, and API implementation</strong></summary>
+
+- `web-frontend-engineering`: Browser UI state, React/Next rendering boundaries,
+  loading, focus, truthful deferred states, and measured performance.
+- `python-backend-engineering`: Python request/task lifecycles, async capacity,
+  framework boundaries, Session/UoW ownership, durable effects, and packaging.
+- `node-typescript-backend-engineering`: Node JavaScript/TypeScript service
+  lifecycles, streams, cancellation, workers, HTTP adapters, and runtime evidence.
+- `api-contract-engineering`: HTTP/OpenAPI artifacts, media and error behavior,
+  consumer/provider compatibility, and safe contract evolution.
+
+</details>
+
+<details>
+<summary><strong>Data, infrastructure, and application security</strong></summary>
+
+- `database-engineering`: Schema and constraints, transactions, locking, SQL
+  access paths, maintenance, safe schema changes, and restore evidence.
+- `data-engineering`: Ingestion, temporal transformations, CDC, publication,
+  replay/backfill, lineage, quality, and deletion across derived data.
+- `platform-devops-engineering`: Infrastructure as code, container/runtime
+  boundaries, Kubernetes, delivery identity, admission, and reconciliation.
+- `application-security-engineering`: Threat-informed application controls,
+  identity/authorization, trust boundaries, supplier policy, and secure recovery.
+- `security-review`: Independent, scoped assessment of security claims and
+  evidence. Review does not grant testing authority or certify compliance.
+
+</details>
+
+<details>
+<summary><strong>Neural execution and AI infrastructure</strong></summary>
+
+- `neural-training-systems`: Neural update correctness, live memory, precision,
+  parallelism, collectives, coherent restart, and time-to-quality.
+- `ai-platform-llmops`: Predictive and GenAI serving platforms, registry/release,
+  accelerator capacity, training-job scheduling, fleet and supported edge operation.
+
+Model owners retain objectives, data, and quality. Training owns updates and
+restart; inference owns request execution; AI platform owns placement and
+controller-level scaling. These are optional decision owners, not a mandatory stack.
 
 </details>
 
@@ -258,9 +326,11 @@ installation bundle.
 - `rag-engineering`: Ingestion, retrieval, reranking, grounding, diagnostics, and
   release of RAG systems.
 - `llm-inference-optimization`: Self-hosted LLM latency, throughput, batching,
-  quantization, capacity, and cost.
+  quantization, runtime capacity, and cost.
 
-Text-model training and adaptation route to `nlp-modeling-and-adaptation`.
+Text-model selection and adaptation route to `nlp-modeling-and-adaptation`.
+Neural execution and coherent restart route to `neural-training-systems`; shared
+serving/training infrastructure routes to `ai-platform-llmops`.
 
 </details>
 

@@ -34,13 +34,16 @@ bundles:
       - execution-writing
       - information-presentation
   service-platform:
-    description: Classical services, software delivery, quality, and reliability.
+    description: Classical services, API contracts, databases, infrastructure delivery, quality, and reliability.
     skills:
       - system-design
       - software-engineering
       - qa-testing
       - sre-reliability-engineering
       - technical-writing
+      - platform-devops-engineering
+      - database-engineering
+      - api-contract-engineering
   classic-ml:
     description: Classical and predictive ML systems, including text model selection and training.
     skills:
@@ -67,6 +70,7 @@ bundles:
       - ml-system-design
       - software-engineering
       - qa-testing
+      - neural-training-systems
   computer-vision-systems:
     description: Production computer vision pipeline, serving, reliability, and quality work.
     skills:
@@ -91,6 +95,7 @@ bundles:
       - software-engineering
       - qa-testing
       - sre-reliability-engineering
+      - neural-training-systems
   llm-product:
     description: Design and release a user-facing LLM product.
     skills:
@@ -113,6 +118,8 @@ bundles:
       - system-design
       - sre-reliability-engineering
       - software-engineering
+      - ai-platform-llmops
+      - platform-devops-engineering
   llm-adaptation:
     description: Adapt, evaluate, and deploy a text or LLM model.
     skills:
@@ -122,6 +129,7 @@ bundles:
       - genai-security-testing
       - ml-system-design
       - software-engineering
+      - neural-training-systems
   agent-systems:
     description: Design, test, secure, and operate LLM agent workflows.
     skills:
@@ -147,11 +155,74 @@ bundles:
       - system-design
       - qa-testing
       - software-engineering
+  web-frontend:
+    description: Browser UI implementation, interaction quality, and verification.
+    skills:
+      - web-frontend-engineering
+      - product-design
+      - software-engineering
+      - qa-testing
+  python-backend:
+    description: Python service implementation, API contracts, data access, and verification.
+    skills:
+      - python-backend-engineering
+      - api-contract-engineering
+      - database-engineering
+      - software-engineering
+      - qa-testing
+  node-backend:
+    description: Node and TypeScript services, API contracts, data access, and verification.
+    skills:
+      - node-typescript-backend-engineering
+      - api-contract-engineering
+      - database-engineering
+      - software-engineering
+      - qa-testing
+  data-platform:
+    description: Database and data pipeline correctness, recovery, and reliability.
+    skills:
+      - data-engineering
+      - database-engineering
+      - system-design
+      - sre-reliability-engineering
+  platform-delivery:
+    description: Infrastructure as code, delivery, reconciliation, and reliability.
+    skills:
+      - platform-devops-engineering
+      - system-design
+      - software-engineering
+      - qa-testing
+      - sre-reliability-engineering
+  application-security:
+    description: Application control implementation and independent security assessment.
+    skills:
+      - application-security-engineering
+      - security-review
+      - software-engineering
+      - qa-testing
+  neural-training:
+    description: Neural update correctness, memory, distributed execution, and recovery.
+    skills:
+      - neural-training-systems
+      - ml-system-design
+      - software-engineering
+      - qa-testing
+  ai-platform:
+    description: Predictive and GenAI serving and training-job infrastructure.
+    skills:
+      - ai-platform-llmops
+      - platform-devops-engineering
+      - system-design
+      - sre-reliability-engineering
+      - software-engineering
   all:
     description: Every skill currently published by this repository.
     skills:
       - agent-llm-evals
       - agent-workflows
+      - ai-platform-llmops
+      - api-contract-engineering
+      - application-security-engineering
       - audience-adaptation
       - business-product-consulting
       - computer-vision-data-and-labeling
@@ -159,6 +230,8 @@ bundles:
       - computer-vision-inference-optimization
       - computer-vision-modeling-and-training
       - computer-vision-system-design
+      - data-engineering
+      - database-engineering
       - execution-writing
       - flutter-skill
       - genai-security-testing
@@ -174,13 +247,19 @@ bundles:
       - llm-inference-optimization
       - llm-system-design
       - ml-system-design
+      - neural-training-systems
       - nlp-modeling-and-adaptation
+      - node-typescript-backend-engineering
+      - platform-devops-engineering
       - product-design
+      - python-backend-engineering
       - qa-testing
       - rag-engineering
+      - security-review
       - software-engineering
       - sre-reliability-engineering
       - swift-skill
       - system-design
       - technical-writing
       - telegram-mini-apps
+      - web-frontend-engineering

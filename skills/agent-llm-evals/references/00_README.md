@@ -13,12 +13,14 @@ Use these files for LLM evals, agent workflow evals, grader design, trace/transc
 - `07-eval-pyramid-and-feedback-loops.md`: eval pyramid and feedback-loop placement.
 - `08-continuous-evaluation-gates.md`: CI/CD-style eval gates.
 - `09-rag-and-security-eval-protocols.md`: boundaries for RAG stage evals and authorized security/safety evaluation.
+- `search-selection-and-verification.md`: stage metrics, Pass@K versus Selected@K, independent acceptance, coupled generator/verifier evaluation, revision and memory failures, and review/redo economics.
 
 ## Domain Boundaries
 
 - `$rag-engineering` defines corpus, stage contract, qrels, retrieval/context evidence, and RAG failure taxonomy; this skill defines harness, graders, calibration, release gates, and regression operations.
 - `$agent-workflows` defines tool/state/terminal contracts; this skill tests them.
 - `$genai-security-testing` defines authorization, threat model, isolation, test slices, and stop conditions; this skill implements repeatable evaluation and CI evidence.
+- `$ml-system-design` and the product decision owner own classical experiment design and A/B statistics; this skill supplies task and workflow evaluation evidence.
 
 ## Source Notes
 

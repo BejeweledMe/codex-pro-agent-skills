@@ -23,9 +23,11 @@ A fake is a lightweight implementation of an API that behaves like the real impl
 Good fakes:
 
 - Match the public API contract.
-- Are maintained by or with the API owner.
+- Are maintained by or with the owner of the production API or adapter they represent.
 - Have contract tests that run against both real and fake implementations where feasible.
 - Cover important error and edge cases without pretending to be production.
+
+For persistence or other stateful adapters, share assertions at the application's public port and document what the fake cannot represent. Add narrow real-adapter checks for relevant mapping, query, commit, rollback, constraint, or concurrency behavior; an in-memory fake passing service tests cannot establish those engine semantics. Keep fake behavior and contract evidence with the owner of the production implementation or adapter rather than accumulating unrelated caller imitations. Use `$api-contract-engineering` when the disputed behavior is specifically an observable HTTP/OpenAPI contract.
 
 ## Stubs And Mocks
 

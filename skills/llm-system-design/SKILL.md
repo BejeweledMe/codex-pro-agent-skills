@@ -42,13 +42,22 @@ Read only the files needed for the current request.
 
 - whether the product needs an LLM at all, and the choice between prompt, RAG,
   agent workflow, or behavior adaptation;
-- provider/API versus self-hosted placement, model portfolio and request routing;
+- product-level choice between a managed provider and a self-hosted route, model
+  portfolio, and request-routing policy;
 - prompt and context architecture, context/token budgets, product latency/cost
   targets, user-visible degradation, and release topology;
 - tenant isolation and versioning of the complete LLM product bundle.
 
 ### Not This Skill
 
+- Shared registry, replica placement, controller scaling, fleet routing, and
+  training-job infrastructure belong to `$ai-platform-llmops`. Keep product
+  quality, cost, autonomy, and fallback requirements here.
+- Neural step/memory/collective execution and coherent training-state restart
+  belong to `$neural-training-systems`; model and adaptation choices stay with
+  their modeling owner.
+- HTTP/OpenAPI artifacts and observable wire/consumer compatibility belong to
+  `$api-contract-engineering`.
 - Retrieval, chunking, index construction, reranking, and recall diagnosis belong
   to `$rag-engineering`.
 - Tool loops, state machines, handoffs, retries, and multi-agent execution belong
@@ -65,7 +74,7 @@ Read only the files needed for the current request.
 - Eval harnesses, graders, regression gates, and calibration belong to
   `$agent-llm-evals`; threat modeling and authorized boundary testing belong to
   `$genai-security-testing`.
-- Generic storage, queues, service contracts, and distributed infrastructure belong
+- Generic storage, queues, architectural service guarantees, and distributed topology belong
   to `$system-design`; SLOs, incidents, and on-call operations belong to
   `$sre-reliability-engineering`.
 

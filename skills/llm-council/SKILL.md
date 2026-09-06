@@ -13,6 +13,14 @@ Use this skill to build or reason about a transparent multi-model deliberation s
 
 Do not treat the final synthesis as automatically correct. Preserve raw model outputs, peer reviews, ranking parse results, and the anonymized label mapping so a user can audit how the answer was produced.
 
+Council agreement is not independent corroboration: models may repeat the same
+source, omission or assumption. Attach consequential claims to primary evidence
+or an independently observed result, and preserve unresolved disagreements and
+source limitations through synthesis. A preference ranking selects useful answers;
+it does not prove their facts. Where acceptance matters, use evidence not optimized
+by the answer-selection process, such as a held-out invariant, verified source,
+controlled execution result or authorized human decision.
+
 ## Reference Repository
 
 The public reference is `https://github.com/karpathy/llm-council`. If the task depends on exact implementation details, inspect the current repository before making claims or code changes. As of the reference reviewed for this skill, the project is a local FastAPI plus React app using OpenRouter, not a ready-made Codex skill.
@@ -51,6 +59,14 @@ The public reference is `https://github.com/karpathy/llm-council`. If the task d
 - Keep anonymization server-side or in a trusted layer before review prompts are built.
 - Store conversations separately from ephemeral UI metadata unless there is a clear product reason to persist the metadata.
 - Make prompt formats strict enough to parse, but retain raw text for validation when parsing fails.
+- Record requested model/alias separately from actual model identity reported by the
+  provider, along with session/run identity and terminal status when available.
+  Missing runtime identity is unknown, not inferred from a filename. Disclose any
+  fallback or substitution; never count a resumed or copied answer as a fresh
+  independent lane.
+- Use `$agent-workflows` for tool/state execution and recovery, not this deliberation
+  skill by default. A routine task does not require a council merely because one is
+  available.
 
 ## Design Review Checklist
 

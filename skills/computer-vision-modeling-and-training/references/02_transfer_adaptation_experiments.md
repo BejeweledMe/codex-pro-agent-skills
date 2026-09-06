@@ -41,3 +41,28 @@ what caused the result.
 Use overfit-on-a-small-clean-slice, learning curves, gradient/activation checks, label
 and transform visualization, and fixed failure cases to distinguish pipeline bugs,
 underfitting, overfitting, optimization failure, and data mismatch.
+
+## Execution And Recovery Boundary
+
+Use `$neural-training-systems` for full training-memory accounting, step critical
+path, parallelism/collectives and consistent checkpoint/restart. Supply the visual
+task/objective, shapes and augmentation, sampler and effective batch, trainable
+parameters, precision constraints, quality/slice floors and experiment identity.
+Keep model-family, objective, adaptation and interpretation decisions here.
+
+Accept execution changes only with preserved update semantics and target quality,
+measured time-to-quality/resource evidence, and coherent recovery of training
+state and data position. More devices or higher utilization alone is not progress.
+
+## Compression Must Produce An Executable Artifact
+
+For QAT, pruning or distillation, identify the resulting representation and target
+runtime support before investing in training. Zeros in a dense tensor are not an
+executable sparse path; a low-rank factorization helps only if the deployed
+operators use its factors. Record masks/layout, scales/metadata, conversion and
+fallback requirements with the artifact, then verify the relevant visual slices.
+
+Hand exported execution, memory/latency, actual kernel dispatch and postprocessing
+compatibility to `$computer-vision-inference-optimization`. Retain training and
+task-quality acceptance here; neither parameter-count reduction nor successful
+conversion proves a production speedup.

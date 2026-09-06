@@ -26,6 +26,35 @@ choosing versioning policy, or reviewing dependency risk.
 - Consider minimum-version-style update strategies where they fit the ecosystem, while still validating with tests.
 - When exporting a dependency, be clear about compatibility promises and support expectations.
 
+## Build Properties And Evidence Continuity
+
+Keep distinct claims separate: a hermetic build constrains undeclared inputs;
+reproducibility concerns obtaining the same output from the specified inputs;
+integrity and provenance evidence help verify which output came from which
+source and build process. None alone proves functional correctness or safe release.
+
+When a dependency or build change alters output unexpectedly, compare declared
+inputs, toolchain, dependency resolution, environment, and artifact identity.
+Repair hidden inputs or invalid cache assumptions before accepting new evidence.
+Use the candidate contract in
+[17-ci-cd-release-and-production-safety.md](17-ci-cd-release-and-production-safety.md)
+to attach results to the actual output. Infrastructure execution and promotion
+mechanics belong to `$platform-devops-engineering`.
+
+For accepted security requirements on dependencies, builders, and evidence stores,
+use [20-secure-development-lifecycle-hooks.md](20-secure-development-lifecycle-hooks.md).
+Security policy belongs to `$application-security-engineering`; ordinary dependency
+updates still require engineering compatibility and maintenance evidence.
+
+One-version and live-at-head practices depend on repository shape, ownership,
+build capacity, and migration tooling. Minimum-version selection, dependency
+isolation such as shading, and bounded compatibility windows solve different
+coordination problems; none is a universal maturity level. The book does not
+establish live-at-head across large external ecosystems as a proven default.
+
+Source basis: *Software Engineering at Google*, Build Systems, Dependency Management,
+and Continuous Delivery; *Building Secure and Reliable Systems*, change integrity.
+
 ## Anti-Patterns
 
 - Build scripts whose true inputs are undocumented.

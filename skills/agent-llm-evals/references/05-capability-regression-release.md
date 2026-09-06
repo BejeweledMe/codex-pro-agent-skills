@@ -56,6 +56,21 @@ Use:
 
 Also track variance by task. A suite average can hide unstable critical cases.
 
+For retained pools of K candidates, `Pass@K` or coverage@K is the empirical
+pool-level form of the `pass@k` success event above: at least one candidate
+meets the acceptance criterion. `Selected@K` measures whether the
+selector actually chooses a passing candidate. For the same fixed pools and
+criterion, `Selected@K <= Pass@K`; their difference is the oracle gap. Adaptive
+revision or stateful search changes the process and must be evaluated separately.
+Candidate presence alone does not measure what the user receives.
+
+Keep this distinction separate from `pass^k`, which concerns success across all
+k repeated trials. Report the trial unit, K, budgets, and dependencies between
+runs; do not infer repeated reliability from independent-run assumptions when
+state or failures are shared. See
+[search-selection-and-verification.md](search-selection-and-verification.md)
+for stage metrics and fixed-pool diagnosis.
+
 ## Release Readiness
 
 Before release, define:
@@ -70,6 +85,12 @@ Before release, define:
 - Canary and A/B plan.
 - Rollback or kill-switch criteria.
 
+For applicable workflows, also define gates for verifier false accepts, revision
+regressions, state restoration, required abstention/escalation, and irreversible
+effects. Keep severe failures visible separately from aggregate quality. Include
+human review and redo in latency and cost budgets. Thresholds and action
+authority come from the product, workflow, domain, and security contracts.
+
 ## Model And Prompt Changes
 
 Treat model upgrades like risky dependency changes:
@@ -77,8 +98,21 @@ Treat model upgrades like risky dependency changes:
 - Run regression suite before switching.
 - Compare capability suite for expected improvements.
 - Inspect traces for behavior shifts, not only final scores.
-- Recalibrate LLM judges if judge model changes.
+- Recalibrate LLM judges if the judge model changes or the proposal/evidence distribution changes.
 - Keep old prompt/model fallback path when product risk justifies it.
+
+Treat generator and verifier as a versioned coupled evaluation unit. Record the
+model, prompt, decoding/search policy, selector, verifier/rubric, workflow
+scaffold, tools, memory policy, corpus/index, trace format, and execution
+environment where they affect behavior. Keep dataset and acceptance-check
+versions with the result.
+
+After an affected component changes, compare capability and regression evidence,
+recheck selector/verifier errors on the new proposals, and inspect stopping and
+terminal decisions. Use fixed-pool replay to isolate selection changes where
+possible, followed by end-to-end trials on the changed bundle. A search winner
+still needs acceptance evidence independent of the optimized score before
+promotion.
 
 ## Anti-Patterns
 

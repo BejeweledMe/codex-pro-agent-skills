@@ -14,6 +14,13 @@
 - снижать toil и повторяемые инциденты;
 - фиксировать решения и action items.
 
+Match effort to the unresolved decision. Use the relevant part of this operating
+model for a narrow question; broad readiness and incident work may need several.
+SRE supplies live reliability evidence and recovery acceptance. System design
+owns topology, software engineering owns candidate/release lifecycle, and platform
+engineering applies and reconciles infrastructure. Pass state/candidate identity,
+observations, transition constraints, recovery evidence, and owner.
+
 ## Базовый цикл работы агента
 
 1. Определить контекст:
@@ -28,7 +35,7 @@
    - latency;
    - quality/freshness, если 200 OK недостаточно.
 3. Проверить error budget:
-   - сколько минут;
+   - allowance in units matching the SLI: events, timeslices, or unavailable duration;
    - burn rate;
    - policy;
    - последствия для релизов.
@@ -45,6 +52,7 @@
    - graceful degradation;
    - rollback;
    - blast radius.
+   - surviving recovery tools and authority, plus integrity checks for restored state.
 6. Проверить process readiness:
    - on-call;
    - runbooks;
@@ -91,7 +99,7 @@
 - Метрики покрывают inbound RED и outbound dependencies.
 - Для async/queues есть lag, queue length, processing latency.
 - Для Kubernetes есть resources, probes, graceful shutdown, PDB/HPA при необходимости.
-- Dangerous operations имеют dry-run, validation, rollback.
+- Consequential operations have validated pre/postconditions, explicit abort criteria, and a rehearsed rollback or safe alternate recovery path; see [07-incident-management.md](07-incident-management.md).
 - Новая зависимость отражена в SLO/composite reliability.
 
 Output style:
@@ -121,6 +129,12 @@ Output style:
 3. Mitigation: rollback, failover, throttling, feature disable, fallback.
 4. Diagnosis: root-cause can wait, если сервис ещё лежит.
 5. Learning: postmortem после стабилизации.
+
+Apply only the parts needed for the incident. A measurement anomaly requires
+population/accounting evidence; a queue anomaly requires flow and useful
+completion; recovery requires more than a green process. Use
+[16-recovery-and-integrity.md](16-recovery-and-integrity.md) for integrity, retry
+feedback, gray failures, or unavailable recovery dependencies.
 
 ## Режим: postmortem assistant
 
@@ -214,3 +228,4 @@ owner: team-a, deadline: YYYY-MM-DD, priority: P1.
 - Toil/automation: [13-toil-automation.md](13-toil-automation.md)
 - Business/culture: [14-business-culture-war-stories.md](14-business-culture-war-stories.md)
 - Tools/glossary: [15-tools-glossary.md](15-tools-glossary.md)
+- Recovery and integrity: [16-recovery-and-integrity.md](16-recovery-and-integrity.md)

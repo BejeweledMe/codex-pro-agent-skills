@@ -23,6 +23,40 @@ search, or deciding how tooling should enter the engineering workflow.
 - Let teams customize checks when local context matters, while preserving shared standards.
 - Measure tool adoption and friction through developer behavior and feedback.
 
+## Effective False-Positive Economics
+
+Evaluate whether a diagnostic is useful at the point where it interrupts work.
+A technically correct report can still be an effective false positive when it is
+irrelevant to the project, unactionable by the recipient, or offers too little
+benefit for the required change.
+
+Before widening enforcement, sample findings and inspect dismissals, suppressions,
+fixes, configuration, and developer feedback. Distinguish:
+
+- An analyzer defect: repair the check.
+- A project-context mismatch: narrow or correct configuration.
+- A valid but low-value interruption: change placement or retire the check.
+- A useful finding with an unclear remedy: improve the diagnostic or suggested fix.
+
+Suppression rate alone does not prove a check is bad; inspect reasons. Track useful
+findings alongside investigation time and blocked-change cost. The analyzer owner
+should state which result will justify expansion, repair, demotion, or retirement
+and when that decision will be revisited.
+
+Introduce a check in an advisory stage, validate its remedy, and resolve existing
+findings in the intended enforcement scope before blocking new violations there.
+For formatting rules, establish a working formatter and clean baseline first.
+Build-breaking checks need an expectation of near-zero effective false positives;
+use local evidence, not a copied historical percentage.
+
+Provide an owned, explained exception path for legitimate cases. A rising rate of
+false blocks calls for analyzer/configuration repair or narrower enforcement.
+Verify closure through sampled outcomes and reduced interruption cost, not merely
+fewer displayed findings.
+
+Source basis: *Software Engineering at Google*, Style Guides and Rules and Static
+Analysis. Historical adoption thresholds describe their setting, not universal gates.
+
 ## Anti-Patterns
 
 - Tools that live outside the main workflow and require extra ceremony.

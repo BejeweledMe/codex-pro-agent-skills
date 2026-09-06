@@ -1,0 +1,4 @@
+interface:
+  display_name: "Application Security Engineering"
+  short_description: "Build and remediate application security controls"
+  default_prompt: "Use $application-security-engineering to implement security controls for this application and verify the affected boundaries."

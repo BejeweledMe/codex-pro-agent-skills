@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Assess security claims against scoped evidence"
+  default_prompt: "Use $security-review to assess this change, release, or dependency and report evidence-backed findings, limits, and remediation criteria."

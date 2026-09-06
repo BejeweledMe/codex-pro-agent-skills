@@ -81,6 +81,8 @@ Goal: detect distribution drift and unknown unknowns with limited blast radius.
 - Prefer small, frequent releases when the pipeline is mature enough.
 - Define rollback/rollforward criteria before launch.
 
+For stateful changes, make recovery evidence conditional on the failure being guarded: the candidate/configuration, persisted state and progress position, exercised fault, recovered user-visible result, and owner. A green process restart or successful infrastructure preview cannot prove restored data or workload behavior. Use [data and infrastructure recovery checks](data-infrastructure-and-recovery-checks.md) when those risks matter, with platform execution and SRE recovery acceptance assigned to their owners.
+
 ## Anti-Patterns
 
 - Running every test on presubmit and making developers wait for broad flaky suites.

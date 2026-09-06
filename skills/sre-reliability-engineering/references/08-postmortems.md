@@ -38,6 +38,37 @@ Blameless не означает "без ответственности". Это 
 - P1/P2 action items должны закрываться до статуса "все работы завершены".
 - Делайте sharing sessions по важным постмортемам между командами.
 
+## From trigger to verified corrective work
+
+The trigger is the observed initiating event. Contributing causes are conditions
+that made the failure possible or amplified its impact. Preserve multiple
+compatible explanations until evidence distinguishes them.
+
+For each material cause, record the supporting observation, uncertainty, a
+counterfactual such as "would this control have prevented or bounded this
+failure?", the owner able to change it, and a verifiable action. Do not treat a
+recent release, correlation, or team label as a complete causal explanation.
+
+| Contributing condition | Primary corrective owner | Evidence that closes the action |
+| --- | --- | --- |
+| Missing behavioral coverage | QA with the implementation owner | A meaningful check detects the failure and passes for the corrected behavior |
+| Code/configuration bypassed candidate safeguards | Software engineering; platform for apply/reconcile enforcement | The corrected path rejects the unsafe transition and is installed where used |
+| Capacity or dependency assumption failed | System design with platform/runtime owners | Representative load and failure evidence supports the revised contract |
+| Alert, escalation, runbook, or recovery control failed | SRE/service owner | A bounded exercise demonstrates observation, action, and recovery |
+| Source data or model semantics failed | Data or model owner | Corrected invariants or quality criteria hold through replay/recovery and relevant slices |
+| A known risk was accepted | Named product/risk authority | The acceptance is revisited with actual impact, bounded mitigation, and an owned disposition |
+
+Track aged critical actions and repeated causes to direct organizational
+investment. A threshold such as P1 actions older than 30 days is a local review
+policy, not a universal SLA or team ranking. Closing an issue is not evidence
+that the fix reached production or reduced recurrence.
+
+Use `$technical-writing` for structure and audience clarity when needed; SRE and
+the contributing engineering owners retain the timeline, causal evidence, action
+status, and technical truth.
+
+Source: *SRE: Коллективный разум*, trigger/cause analysis and Chapter 9 follow-through.
+
 ## Антипаттерны
 
 - Постмортем из одного предложения.
@@ -60,7 +91,7 @@ Blameless не означает "без ответственности". Это 
 - Есть ли несколько изменяемых причин, а не поиск одного виноватого?
 - Каждый action item имеет owner, priority, deadline и issue?
 - Есть ли задачи, которые меняют систему, а не поведение конкретного человека?
-- Есть ли follow-up через 2-4 недели?
+- Is follow-up scheduled according to action risk and dependencies? Two to four weeks is an illustrative interval; urgent controls may need earlier verification.
 - Попали ли уроки в runbook, alert, dashboard, tests или architecture review?
 
 Квартальный мета-анализ:

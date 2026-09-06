@@ -1,0 +1,4 @@
+interface:
+  display_name: "Node and TypeScript Backend Engineering"
+  short_description: "Build reliable Node.js and TypeScript backends"
+  default_prompt: "Use $node-typescript-backend-engineering to implement or review this backend change, including runtime ownership, bounded work, and focused verification."

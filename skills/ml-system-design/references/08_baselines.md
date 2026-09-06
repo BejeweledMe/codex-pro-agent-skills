@@ -56,6 +56,20 @@ Baseline может быть не нужен или не быть отдельн
 - с первого релиза требуется высокая точность, а слабое автоматическое решение опасно;
 - корректнее сразу передать управление человеку, чем отдавать плохое prediction.
 
+## Baseline-to-Operations Handoff
+
+If the baseline is a fallback candidate, exercise it through the intended
+production input, feature, output and decision path. Check representative
+quality, latency, missing-input behavior and downstream interpretation.
+Shared dependencies matter: a baseline using the failed feature service is
+not a working recovery path for that outage.
+
+The modelling owner supplies the evaluated baseline and its allowed population;
+the serving responder accepts the switch procedure, capacity, observability
+and maintenance responsibility. Use the trigger, authority, drill and exit
+contract in [integration](13_integration_api_release_fallbacks.md). Where a weak
+prediction is unacceptable, validate refusal, deferral or human handoff instead.
+
 ## Checklist
 
 - Какой самый простой рабочий вариант?

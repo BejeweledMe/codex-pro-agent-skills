@@ -8,8 +8,17 @@ output validation, response streaming, audit fields, and fallback. The path shou
 show which components are synchronous, which side effects are possible, and which
 data is available to each stage.
 
-Use `$system-design` for the detailed API, queue, storage, and distributed-system
-contracts. This file owns only the LLM-specific composition and decision points.
+Use `$system-design` for service boundaries, queues, storage, and distributed
+guarantees; use `$api-contract-engineering` for HTTP/OpenAPI artifacts and
+observable consumer compatibility. This file owns LLM product composition and
+the requirements handed to those implementations.
+
+Pass the workload, compatible bundle, quality/latency/cost envelope, current
+authority, and recovery constraints to `$ai-platform-llmops` for registry,
+placement, replica/controller policy, and fleet operation. Runtime request
+execution belongs to `$llm-inference-optimization`; neural update, memory,
+collective, and coherent training-restart mechanics belong to
+`$neural-training-systems`. Load only the owner of an unresolved decision.
 
 ## Product Budgets
 

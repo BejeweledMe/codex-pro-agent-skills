@@ -11,9 +11,10 @@ Use these files for classic software QA and automated testing work. This referen
 - `05-integration-and-larger-tests.md`: fidelity, system tests, configuration, load, exploratory testing.
 - `06-ci-cd-quality-gates.md`: presubmit, post-submit, release candidates, staged rollout.
 - `07-checklists-and-templates.md`: reusable QA templates.
+- `data-infrastructure-and-recovery-checks.md`: risk-to-layer fixtures, differential outputs, SQL regression, and restart-state evidence.
 
 ## Source Notes
 
 - Google Testing Blog: [Just Say No to More End-to-End Tests](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html).
 - Martin Fowler: [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html).
-- External testing publications are used only as broad public themes, not as detailed source attribution.
+- The original testing notes use broad public themes. Selected additions draw on Software Engineering at Google (test size and doubles), Infrastructure as Code, 3e (fixtures and outcome testing), Architecture Patterns with Python / Cosmic Python (real persistence tests), Designing Data-Intensive Applications, 2e (verification and recovery), Use The Index, Luke! (query diagnosis), and Web Browser Engineering (incremental comparisons). These are bounded mechanisms, not complete source coverage or current engine/framework conformance claims.

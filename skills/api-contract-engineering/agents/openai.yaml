@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Contract Engineering"
+  short_description: "Author and evolve interoperable HTTP contracts"
+  default_prompt: "Use $api-contract-engineering to author or review this HTTP API contract and verify provider and consumer compatibility."

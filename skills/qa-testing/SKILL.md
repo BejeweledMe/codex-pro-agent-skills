@@ -25,6 +25,11 @@ calibration, robustness, and model-release evidence use `$computer-vision-evalua
 for LLM/RAG/agent security testing use `$genai-security-testing`. Do not force those
 nondeterministic or model-quality concerns into a classic test-pyramid decision.
 
+Keep general verification strategy here; use the frontend or language backend owner
+for local test runners, `$database-engineering` for engine behavior and plan diagnosis,
+and `$platform-devops-engineering` for infrastructure execution. Pass the risk,
+fixture, expected outcome, environment limits, and failure evidence to the owner.
+
 ## Reference Routing
 
 Read only the references needed for the current task.
@@ -37,6 +42,7 @@ Read only the references needed for the current task.
 - For integration, contract, system, E2E, configuration, load, exploratory, and larger tests, read `references/05-integration-and-larger-tests.md`.
 - For presubmit, post-submit, nightly, release-candidate, staging, canary, feature flags, rollback, and production quality gates, read `references/06-ci-cd-quality-gates.md`.
 - For reusable templates and checklists, read `references/07-checklists-and-templates.md`.
+- For data or infrastructure fixtures, incremental/full comparisons, SQL regressions, and restart-state evidence, read `references/data-infrastructure-and-recovery-checks.md`.
 
 ## Workflow
 
@@ -86,4 +92,4 @@ Lead with risks and missing decisions:
 - Do not rely on E2E tests when smaller tests can catch the same risk faster and more clearly.
 - Do not keep flaky tests in blocking paths without owner, classification, and remediation plan.
 - Do not treat coverage percentage as proof that meaningful behavior is tested.
-- Do not attribute detailed practices to external testing publications unless the user provides them; the bundled notes use only public page themes.
+- Do not attribute detailed practices to a publication without inspected source text or a verified source-backed extract; distinguish the bounded additions in `references/00_README.md` from complete source coverage.

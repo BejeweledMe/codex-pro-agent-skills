@@ -1,0 +1,6 @@
+interface:
+  display_name: "Database Engineering"
+  short_description: "Design and operate reliable SQL databases"
+  default_prompt: "Use $database-engineering to diagnose or improve this database's correctness, SQL performance, change safety, or recovery."
+policy:
+  allow_implicit_invocation: true

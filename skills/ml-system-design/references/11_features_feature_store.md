@@ -77,6 +77,20 @@ Feature catalog должен отвечать:
 - непонятный ownership;
 - feature dependencies без lineage.
 
+## Semantic Change and Consumer Evidence
+
+Treat target encodings, embeddings and predictions from upstream models as
+versioned learned dependencies. Feature selection and encoding choices obey
+the outer-evaluation rule in [validation](07_validation_leakage_splits.md).
+Do not silently overwrite historical feature meaning: version the definition
+or record explicit timestamp/version semantics for a backfill.
+
+After a definition or upstream model change, identify affected consumers and
+compare historical and serving values at the same prediction-time boundary.
+Reevaluate affected models and decisions; repair parity or restore a compatible
+bundle if the change breaks acceptance. `$data-engineering` owns backfill and
+publication mechanics; ML defines the semantic comparison and quality gate.
+
 ## Checklist
 
 - Feature доступна в production в момент prediction?

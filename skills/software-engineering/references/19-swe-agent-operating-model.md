@@ -25,6 +25,37 @@ This is an applied synthesis for agents, not a claim tied to one source section.
 - For APIs and shared behavior, plan compatibility, deprecation, and large-scale migration upfront.
 - For production-facing changes, require staged rollout, observability, rollback, and ownership proportional to risk.
 
+## Proportional Process And Architecture
+
+Use existing project context to choose the smallest intervention that addresses
+the actual failure or future-change pressure. Routine, reversible work does not
+need a new design document, broad test program, or additional abstraction.
+Shared long-lived behavior warrants stronger compatibility and migration evidence.
+
+Before adding a pattern, name the pressure and the observable improvement:
+
+| Observed pressure | Candidate intervention | Evidence that it helps |
+| --- | --- | --- |
+| Business decisions are entangled with I/O | Extract a narrow decision boundary or functional core | Relevant behavior can be exercised without infrastructure; real wiring still works |
+| Persistence APIs leak across use cases | Introduce a narrow application-shaped port | A representative change touches fewer unrelated callers; fake and real adapter agree on promised behavior |
+| Commit/rollback ownership is unclear | Give the use case an explicit transaction boundary | Real-adapter checks prove success and failure outcomes |
+| Query shape or selected integration seams evolve independently | Consider a read model or event boundary for that pressure | The target workflow improves and its freshness, delivery, and recovery obligations are explicit |
+
+Simple CRUD may need none of these patterns. Repository/UoW/events/CQRS/DI is not
+a required stack, and a convenient fake does not prove the real adapter correct.
+Framework and database implementation detail belongs with the relevant backend
+and database owner; cross-system delivery guarantees belong with system/data owners.
+
+For modernization, choose one capability and prove a thin end-to-end path through
+real adapters. Cut over in reviewable increments with a recovery path, then remove
+the displaced code. If the first target is too coupled, shrink the target before
+adding layers. Stop adding abstractions when they increase indirection without
+improving the named change, testability, or ownership problem.
+
+Source basis: *Architecture Patterns with Python* (Cosmic Python), conditional
+architecture, testing, adapter hardening, and application evolution. Its teaching
+examples do not establish current framework APIs or durable messaging guarantees.
+
 ## Anti-Patterns
 
 - Producing code without considering future maintenance.

@@ -23,6 +23,26 @@ configuration, load, rollouts, disaster recovery, or user-visible system behavio
 - Make failures actionable: logs, traces, clear assertions, and owned dashboards.
 - Run expensive or less deterministic tests where they fit CI/CD without blocking routine development unnecessarily.
 
+## Feature And Environment Ownership
+
+For a larger test, identify both the owner of the behavior asserted and the owner
+of the environment/dependency that makes the assertion possible. These may be
+the same person. Preserve enough fixture, configuration, dependency-version, and
+failure evidence to distinguish a product regression from environment failure.
+
+If only the shared environment fails, its owner restores it while the feature
+owner tracks the missing evidence. If behavior fails in a healthy environment,
+the implementation owner fixes the regression. An unresolved classification
+still needs a restoration owner; it is not a reason to leave the suite ignored.
+
+Apply the size budgets and quarantine safeguards in
+[09-testing-strategy-and-confidence.md](09-testing-strategy-and-confidence.md).
+Restore useful coverage and verify the relevant boundary before declaring the
+test repaired. Broad risk-coverage redesign belongs to `$qa-testing`; local
+test and environment maintenance remains with the engineering owners.
+
+Source basis: *Software Engineering at Google*, Larger Testing.
+
 ## Anti-Patterns
 
 - Adding broad end-to-end tests because confidence feels low but no specific risk is named.

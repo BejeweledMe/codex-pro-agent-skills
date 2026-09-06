@@ -54,6 +54,19 @@ State of the art не является целью сам по себе. Инно
 
 Практичный вопрос: какой минимальный уровень новизны нужен, чтобы система принесла value?
 
+## First-Release Ambition
+
+Choose minimum viable, operationally sufficient, or best-in-class ambition from
+the outcome, error cost, alternatives and maintenance capacity. State the quality
+floor and the conditions that would justify more investment or stopping the work.
+A baseline is comparison and recovery evidence; it does not set a ceiling on
+quality or justify releasing unsafe automation.
+
+A vendor or manual path can establish demand and collect useful evidence before
+building. Include integration, review work, upgrades, fallback and ongoing
+ownership in that comparison. Revisit the choice if the population, product
+action, vendor behavior or economics changes.
+
 ## Checklist
 
 - Какие решения уже существуют внутри компании?

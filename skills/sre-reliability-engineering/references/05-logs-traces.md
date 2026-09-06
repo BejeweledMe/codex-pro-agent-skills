@@ -16,10 +16,10 @@
   - структурированный JSON для машинной обработки.
 - Используйте OpenTelemetry как стандарт инструментирования для метрик, логов и трейсов.
 - Настройте context propagation между сервисами, очередями и фоновой обработкой.
-- На высоких нагрузках используйте tail sampling:
-  - сохранять 100% ошибок;
-  - сохранять медленные запросы;
-  - семплировать успешные быстрые запросы.
+- At high volume, consider tail sampling when the collector can retain enough context to decide:
+  - prioritize errors and slow requests; retaining 100% is a capacity-dependent objective, not a guaranteed or universal requirement;
+  - sample successful fast requests while preserving rare operations;
+  - measure collector drops, sampling decisions, and overload behavior so an error storm does not silently destroy evidence.
 - Используйте exemplars, чтобы на графике Prometheus/Grafana можно было перейти к конкретному trace.
 - Храните trace_id в логах, а не только в access log. Иначе цепочка распадается.
 - Для небольшого масштаба допустимы простые инструменты, но рост требует централизованного поиска:
@@ -71,7 +71,7 @@ Audit/compliance retention - отдельное требование. Его н�
 
 Проверка sampling:
 
-- Ошибки и slow traces сохраняются полностью.
+- Error and slow-trace retention meets the declared policy under representative load; any sampling or loss is visible and does not silently bias SLI calculations.
 - Низкочастотные endpoint не исчезают из выборки.
 - Успешные high-volume запросы не перегружают storage.
 

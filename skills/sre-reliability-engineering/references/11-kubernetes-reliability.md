@@ -6,26 +6,35 @@ Kubernetes даёт primitives для self-healing, scheduling и деклара
 
 Ключевая позиция: не существует универсального ответа "CPU limits всегда убрать" или "всегда оставить". Решение зависит от runtime, QoS, кластера, требований к latency и качества мониторинга.
 
+Platform engineering implements manifests, runtime settings, scheduling, and
+controllers. SRE judges their behavior through user outcomes, capacity,
+degradation, and recovery evidence. Check actual Kubernetes, runtime, ingress,
+and controller versions before relying on detailed timing or defaults.
+
 ## Практики
 
 - Для ресурсов учитывайте runtime:
-  - Go: `GOMAXPROCS`, `GOMEMLIMIT`, automaxprocs; `GOMEMLIMIT` лучше держать около 80-90% memory limit.
-  - Java: heap около 75% container memory, запас на off-heap, metaspace, thread stacks, direct buffers.
-  - Python/Node.js: workers задавать явно, не полагаться на `os.cpu_count()` ноды.
-- Мониторьте CPU throttling. Практический ориентир: если throttled periods > 25%, нужно пересматривать requests/limits или конфигурацию.
+  - Go: inspect container awareness, `GOMAXPROCS`, `GOMEMLIMIT`, and any automaxprocs integration for the deployed runtime. An 80–90% memory-limit setting is an illustrative starting hypothesis; reserve measured space for memory outside the managed runtime and workload peaks.
+  - Java: budget heap plus off-heap, metaspace, thread stacks, and direct buffers. A 75% heap allocation is an example, not a safe fraction for every application.
+  - Python/Node.js: verify worker/thread sizing against the container's effective CPU and memory envelope rather than assuming a node CPU count is appropriate.
+- Monitor throttling alongside throttled time, CPU demand, queueing, and latency.
+  A throttled-period ratio above 25% is an investigation example, not an automatic
+  limits change or incident criterion. Distinguish quota effects, worker sizing,
+  and noisy-neighbor contention before changing resources.
 - Выбирайте QoS осознанно:
-  - critical services: часто Guaranteed, если нужна предсказуемость и защита от eviction;
+  - critical services: consider Guaranteed where its resource contract helps predictability; it does not eliminate node failure or eviction risk;
   - обычные services: CPU requests без CPU limits может быть уместно, memory requests/limits обязательны;
   - batch/CronJob: возможны более мягкие гарантии.
 - Настройте probes по назначению:
   - `livenessProbe`: жив ли процесс, без внешних зависимостей;
-  - `readinessProbe`: готов ли принимать трафик, может проверять зависимости;
+  - `readinessProbe`: can this instance accept the intended traffic? Include a dependency only when removing this pod improves outcomes; a shared dependency failure must not blindly make every replica unready;
   - `startupProbe`: защищает медленно стартующие приложения.
-- Формула для startupProbe:
-
-```text
-failureThreshold * periodSeconds > max_startup_time * 1.5
-```
+- Size the startup probe allowance from representative cold starts, initialization,
+  storage/dependency delays, and resource contention. `failureThreshold *
+  periodSeconds` is a rough failure-budget estimate; inspect timeout, delay, and
+  scheduling semantics in the actual stack. A 1.5× startup margin is an example,
+  not a guarantee. Verify that legitimate slow starts survive while stuck starts
+  are detected within the accepted recovery time.
 
 - Для rolling update:
   - приложение обрабатывает SIGTERM;
@@ -33,8 +42,11 @@ failureThreshold * periodSeconds > max_startup_time * 1.5
   - завершает текущие;
   - закрывает connections;
   - имеет `terminationGracePeriodSeconds`;
-  - часто полезен `preStop` sleep около 5 секунд для удаления pod из endpoints.
-- Добавляйте PDB для критичных сервисов.
+  - use a bounded drain/preStop delay only when measured endpoint and routing propagation requires it; five seconds is an example, not proof that traffic has stopped;
+  - account for preStop execution and application draining within the termination grace period, and observe rejected, lost, and unfinished requests.
+- Use PDBs where voluntary-disruption availability requires them. Check selectors,
+  healthy replica counts, replacement capacity, and the disruption operation;
+  PDBs do not establish protection from every failure or replace rollout policy.
 - HPA делайте устойчивым:
   - stabilization window;
   - scale up быстрее, чем scale down;
@@ -42,7 +54,7 @@ failureThreshold * periodSeconds > max_startup_time * 1.5
 - Не делайте один сверх-универсальный Helm chart на всё. Лучше library chart плюс service wrappers или kustomize/Jsonnet/cdk8s для сложных случаев.
 - Минимальный Kubernetes dashboard для SRE:
   - CPU throttling;
-  - memory > 90% limit;
+  - memory working set, peaks, OOMs, and remaining headroom; 90% of limit is an illustrative warning level to calibrate;
   - restarts за последний час;
   - pending pods;
   - node utilization;
@@ -67,17 +79,34 @@ Kubernetes reliability review:
 - Для каждого runtime заданы container-aware CPU/memory настройки?
 - Есть requests и memory limits?
 - Есть ли осознанное решение по CPU limits?
-- CPU throttling ниже проблемного порога?
+- Does throttling evidence explain user latency or lost throughput, and has the proposed resource/runtime change improved both without displacing risk?
 - Memory working set имеет запас до limit?
 - Liveness не зависит от внешних сервисов?
-- Readiness корректно снимает pod с трафика при деградации зависимости?
+- Does readiness remove unusable instances while avoiding a fleet-wide withdrawal during a shared dependency failure?
 - StartupProbe покрывает реальное время старта?
 - SIGTERM обработан в коде?
 - PDB не позволяет voluntary disruption уронить все replicas?
 - HPA не скейлит вниз слишком агрессивно?
-- Weekly/controlled rolling restart проходит без пользовательской деградации?
+- Does an authorized controlled restart or normal rollout demonstrate safe probes, draining, PDB behavior, and traffic redistribution under representative load?
 
-Проверка практикой: плановый rolling restart в рабочее время при команде на месте. Если пользователи заметили, probes/PDB/shutdown/traffic routing требуют исправления.
+Use restart exercises when they answer an unresolved recovery question, with
+available capacity, observers, blast-radius limits, and abort criteria. Weekly
+restarts are not a universal requirement; normal rollout evidence or a safer
+environment may answer the question. If users are affected, inspect probes,
+PDBs, shutdown, routing propagation, and replacement capacity before repeating.
+
+## Failure-to-action checks
+
+| Observation | Distinguishing evidence | Action and acceptance |
+| --- | --- | --- |
+| Restarts surge during dependency failure | Probe failures, termination reasons, and dependency timeline | Remove inappropriate liveness coupling; verify degradation without restart amplification |
+| New pods repeatedly die before ready | Startup durations, probe events, resource pressure, and initialization progress | Adjust the measured startup envelope or repair initialization; verify cold-start completion and bounded stuck-start detection |
+| Errors occur only during rollout | SIGTERM/preStop timeline, endpoint changes, in-flight requests, and grace expiry | Repair draining or routing coordination; verify completed requests and bounded termination |
+| Voluntary maintenance stalls | PDB selection/status, ready replicas, pending replacements, and available capacity | Restore feasible capacity or revise the disruption plan; verify the journey during the transition |
+| HPA oscillates or scales without recovery | Scaling decisions, metric delay, offered work, queue age, readiness/warmup, retries, and dependency capacity | Tune the controller with the platform owner or repair the actual bottleneck; verify stable SLO recovery and safe scale-down |
+
+Numerical examples in this reference are workload hypotheses. Refresh their
+assumptions after runtime, cluster policy, workload, probe, or routing changes.
 
 ## Связанные темы
 

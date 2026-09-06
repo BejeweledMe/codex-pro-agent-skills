@@ -27,12 +27,25 @@ SRE находится рядом с DevOps и Platform Engineering, но фок
 Минимальный стартовый цикл:
 
 1. Определить критичный сервис или CUJ.
-2. Выбрать 1-2 SLI: availability и latency.
+2. Choose the few SLIs that express the journey's success; include quality or freshness immediately when those determine whether the service works.
 3. Согласовать SLO и error budget policy.
 4. Настроить burn-rate alerting.
 5. Провести первый blameless postmortem после реального или учебного инцидента.
 6. Закрыть P1/P2 action items.
 7. Повторить и масштабировать.
+
+## Choosing how SRE is placed
+
+Choose placement by service scale, operational load, and authority to change contributing causes. These are organizational alternatives, not mandatory maturity stages.
+
+| Model | Useful when | Failure to watch | Operating check |
+| --- | --- | --- | --- |
+| Dedicated SRE team | Shared expertise and cross-service response justify a separate team | Responders become a repair queue without authority over causes | Product teams retain service ownership and commit capacity to corrective work |
+| Embedded SRE | Reliability decisions require deep product context | Isolation duplicates solutions and weakens cross-service learning | Maintain a route for shared standards, learning, and escalation |
+| Developer SRE champion | The reliability workload is bounded and does not justify a full-time role | Reliability becomes unpaid or unallocated extra work | Allocate time, backup coverage, and decision rights explicitly |
+| Evolving ownership | A central response team is transferring operations to product teams | Handoff occurs before access, skills, or runbooks are ready | Transfer responsibility with readiness evidence and a supported escalation path |
+
+Source: *SRE: Коллективный разум*, discussion of organizational placement models.
 
 ## Антипаттерны
 

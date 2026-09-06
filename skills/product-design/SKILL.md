@@ -24,8 +24,13 @@ recommendation, or a comparison of strategic alternatives. It may consume this
 skill's evidence but does not replace user research or UX design.
 
 After the product decision is made, delegate implementation architecture to the
-appropriate system, ML, LLM, or mobile skill. Do not let an implementation choice
+appropriate frontend, backend, system, ML, LLM, or mobile owner. Do not let an implementation choice
 stand in for validation of the user problem.
+
+For browser UI, give `$web-frontend-engineering` the acceptance journey, supported
+devices and input modes, visible and operable states, focus behavior, and failure
+criteria from `references/08-ui-ux-product-quality.md`; it owns rendering and loading
+implementation, while this skill owns acceptable user behavior.
 
 ## Reference Routing
 
@@ -53,7 +58,7 @@ Read only the references needed for the current task.
    - Product discovery: read `03`, `04`, `05`, `11`, `13`.
    - User research plan: read `04`, then `03`, `05`, and `11` if the research drives prioritization.
    - AI/ML product or assistant UX: read `06`, `07`, `05`, `08`, `11`, `13`.
-   - UI/UX review or frontend implementation: read `08`, then `07` for AI flows, `09` for design-system fit, and `12` for checklists.
+   - UI/UX acceptance review: read `08`, then `07` for AI flows, `09` for design-system fit, and `12` for checklists. Route browser state/rendering implementation to `$web-frontend-engineering`.
    - Design system work: read `09`, `10`, `11`, `13`.
    - Metrics, validation, or launch readiness: read `05`, `11`, `12`, and topic files for the relevant surface.
    - Fact-checking or source-sensitive work: use supplied sources or primary current

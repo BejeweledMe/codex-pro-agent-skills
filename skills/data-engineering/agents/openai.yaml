@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Engineering"
+  short_description: "Build and recover reliable data pipelines"
+  default_prompt: "Use $data-engineering to design or debug this pipeline's time, retry, publication, and recovery behavior."

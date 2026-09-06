@@ -29,6 +29,7 @@
 - [13-toil-automation.md](13-toil-automation.md): toil score, runbooks, git, автоматизация, self-service.
 - [14-business-culture-war-stories.md](14-business-culture-war-stories.md): бизнес-язык надёжности, культура, выгорание, war stories, change checklist.
 - [15-tools-glossary.md](15-tools-glossary.md): инструменты, SLO tooling, краткий глоссарий.
+- [16-recovery-and-integrity.md](16-recovery-and-integrity.md): integrity and lag incidents, retry feedback, gray failures, independent recovery paths, and restoration of trustworthy authority.
 - [sre-agent-operating-model.md](sre-agent-operating-model.md): как агенту применять знания из папки в проектировании, ревью, incident work и коде.
 
 ## Принципы обновления
@@ -36,4 +37,4 @@
 - Сохраняйте формат прикладных инструкций, а не учебника.
 - Если заметка содержит численные пороги, помечайте их как практический ориентир.
 - Инструменты и внешние сервисы могут устаревать. Перед применением проверяйте актуальность отдельно.
-- Любое расширение вне текущей базы помечайте как `external extension`.
+- Distinguish source guidance, local policy, and mathematical derivation. Keep unresolved source corrections explicit; examples do not establish current tool behavior or universal thresholds.

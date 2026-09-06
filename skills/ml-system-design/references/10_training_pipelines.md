@@ -63,6 +63,50 @@ Pipeline должен учитывать будущий рост данных и
 - negation property tests, где изменение смысла input должно менять prediction ожидаемым образом;
 - regression tests по fixed benchmark.
 
+## Semantic Release Output
+
+Training produces an attributable candidate with evidence, not just weights.
+Extend the versioned artifacts above with:
+
+- label schema/source and split identity, including which data influenced selection;
+- fitted transform state, feature definitions and upstream model dependencies;
+- calibration, threshold and postprocessing/decision policy;
+- exported representation, conversion settings, target runtime and dependency assumptions;
+- fixed/fresh quality results, critical slices, target-runtime compatibility and relevant benchmark evidence;
+- permitted use, known limits, monitoring expectations, fallback and compatible rollback target.
+
+This is a semantic bundle: the identities may live in existing artifact and
+release records rather than a new packaging system. Compare the exact exported
+candidate on representative inputs, including downstream decisions and affected
+slices. Shared preprocessing code or an unchanged schema is not proof of
+training-serving parity.
+
+Keep a compact dependency graph from sources/labels through fitted transforms,
+features and upstream predictions to models, decision policies and consumers.
+Use it to find what must be reevaluated after an upstream change and which
+state or cache entries remain compatible during rollback. A registry records
+the graph; model and data owners establish the meaning of its edges.
+Use the same graph before launch to establish which artifacts, derived state,
+caches, snapshots and replicas a source-record deletion reaches, who propagates
+the change, and what verifies it. Raw-record deletion, retraining and model
+unlearning are distinct claims; agree their applicable scope and evidence with
+the accountable owners rather than treating any one as proof of the others.
+
+## Execution Handoffs
+
+Keep objective, sample selection, split validity, experiment control and release
+acceptance in ML. For neural execution, send `$neural-training-systems` the
+objective, shapes, data/order/batch assumptions, quality target and reproducer.
+Receive step correctness, memory/precision/collective evidence, coherent-resume
+limits and time-to-quality results. A weights snapshot is not resume evidence.
+
+Send shared job/serving infrastructure requirements and recovery constraints to
+`$ai-platform-llmops`; it owns capacity, registry, placement implementation and
+scheduling. Send ingestion/transformation/replay mechanics to
+`$data-engineering`, retaining label and prediction-time semantic acceptance.
+Simple classical pipelines need neither a distributed training system nor a
+shared platform merely to satisfy this handoff model.
+
 ## Checklist
 
 - Можно ли воспроизвести модель через один workflow?

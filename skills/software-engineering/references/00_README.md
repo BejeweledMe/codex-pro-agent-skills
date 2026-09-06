@@ -35,6 +35,7 @@ software engineering отличается от программирования 
 - [17-ci-cd-release-and-production-safety.md](17-ci-cd-release-and-production-safety.md): CI, CD, flags, release trains, staged rollout.
 - [18-managed-compute-and-production-abstractions.md](18-managed-compute-and-production-abstractions.md): CaaS, failure-oriented software, state, abstractions.
 - [19-swe-agent-operating-model.md](19-swe-agent-operating-model.md): how an agent should apply the knowledge.
+- [20-secure-development-lifecycle-hooks.md](20-secure-development-lifecycle-hooks.md): integrate accepted security requirements, candidate evidence, and vulnerability feedback into ordinary delivery.
 
 ## Notes
 

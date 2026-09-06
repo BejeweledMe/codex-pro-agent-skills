@@ -25,6 +25,24 @@ A useful trace captures:
 - Important state changes.
 - Latency, token usage and cost.
 
+For search, revision, or persistent-state workflows, also capture the applicable
+evidence:
+
+- Candidate and pool IDs, candidate lineage, search scores, selected candidate,
+  and the acceptance verdict with its evidence reference.
+- Before/after revision artifacts and independently checked outcomes.
+- Memory reads/writes, provenance, relevant state versions, compaction or restore
+  events, and observed invariant/postcondition results.
+- Required versus observed abstention, escalation, handoff, and terminal state.
+- Duplicate or irreversible effects and their execution records.
+- Human review time, corrections, redo attempts, and time to verified completion.
+
+Link these events to the evaluated generator/verifier bundle, including the
+scaffold, corpus or index where used, trace format, and execution environment.
+Keep model-authored explanations distinguishable from actual tool events and
+verified outcomes. Retain evidence under the existing privacy and retention
+controls; do not require hidden chain-of-thought.
+
 Trace grading is useful for workflow-level questions:
 
 - Did the agent pick the right tool?

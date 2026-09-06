@@ -23,6 +23,9 @@ Delegate a non-Telegram backend's topology, storage, queues, and capacity to
 `$qa-testing` for general verification. Keep Telegram auth, client behavior, payment,
 and BotFather decisions here so generic skills do not override platform rules.
 
+Use `$web-frontend-engineering` for generic browser state, rendering, and loading implementation, carrying the Telegram WebView and lifecycle constraints from this skill.
+Use `$application-security-engineering` for general application-control design and remediation, while retaining Telegram-specific initData validation, authentication, and payment rules here.
+
 ## Reference Routing
 
 Read only the references needed for the current task.

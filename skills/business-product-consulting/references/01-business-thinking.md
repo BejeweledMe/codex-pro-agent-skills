@@ -56,6 +56,16 @@ Before implementation, translate the request into:
 
 Do not claim business value generically. Say which layer is expected to move and what would falsify that assumption.
 
+## Realized Economics
+
+For a cost or productivity claim, define the useful delivered outcome, required quality, accounting boundary, and comparison period. Compare total cost per accepted task, valid prediction, or completed workload at the same quality and service requirements. Count review, redo, support, failure/recovery waste, idle capacity, data staging, and egress where they fall inside that boundary; generated output or allocated compute time alone is not delivered value.
+
+Distinguish cash savings, avoided future spend, and released capacity. A utilization gain or faster step becomes savings only through a lower bill, shorter paid runtime, removed or avoided capacity, or another measured financial change. If staff time is released, identify the work it can realistically absorb and its value; do not book both unchanged payroll as cash savings and that same time as additional capacity. State the adoption, traffic, lifetime, and bottleneck assumptions that connect the local gain to the business result.
+
+For ML data-selection proposals, compare selection plus training on the selected data with full-data and random-subset alternatives under the same total budget and evaluation conditions. Include scoring, annotation, indexing, I/O, and justified future reuse, not just the smaller training bill. Use quality at fixed total cost or total cost to the required quality; a selector that loses protected rare or safety-relevant slices is not an economic success. Model/data owners establish those quality floors and measurements; this skill evaluates the business trade-off.
+
+Keep an estimate distinct from a realized result and show which changed cost or outcome supports the claim. Use current price and workload evidence for numerical projections; efficiency does not establish a universal savings ratio.
+
 ## Example Translation
 
 Request: "Add AI summary to tickets."

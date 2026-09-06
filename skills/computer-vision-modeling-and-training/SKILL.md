@@ -25,10 +25,14 @@ reproducible experiments.
 ## Boundaries And Handoffs
 
 This skill owns CV approach and architecture selection, objectives, adaptation,
-training controls, and training diagnosis. Dataset governance belongs to
+model/experiment controls, and data/objective/optimization/quality diagnosis. Dataset governance belongs to
 `$computer-vision-data-and-labeling`; task metrics, thresholds, robustness, and release
 evidence belong to `$computer-vision-evaluation`; runtime export, precision, batching,
 and measured serving bottlenecks belong to `$computer-vision-inference-optimization`.
+
+Use `$neural-training-systems` for execution memory, step profiling, precision
+mechanics, collectives, and coherent optimizer/data-state restart. Keep model and
+adaptation choices, visual failure analysis, and target quality here.
 
 Use `$nlp-modeling-and-adaptation` for a text model or tokenizer inside an OCR/VLM
 system, and `$llm-system-design` when prompt/RAG/agent composition is the primary
