@@ -342,7 +342,8 @@ serving/training infrastructure routes to `ai-platform-llmops`.
   release gates.
 - `genai-security-testing`: Defensive hardening and authorized testing of LLM, RAG,
   and agent systems.
-- `llm-council`: Independent multi-model review and synthesis.
+- `llm-council`: Run multi-model councils with independent answers, peer critique,
+  and evidence-aware synthesis; design or debug council systems when needed.
 
 </details>
 
