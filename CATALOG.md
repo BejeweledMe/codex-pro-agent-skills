@@ -38,7 +38,8 @@ because a request touches the same product.
 artifact. A more specific primary skill controls the evidence contract or deliverable
 workflow, but never overrides explicit language, reader, source boundary, required
 form, or length. `audience-adaptation` is a companion layer, not a competing primary
-operation.
+operation. `humanize-text` is a voice and surface-style companion for Russian or
+English prose; it preserves the primary owner's workflow and evidence boundary.
 
 | Reader need or artifact | Primary skill | Add only when needed |
 |---|---|---|
@@ -50,6 +51,7 @@ operation.
 | Correct mental model | `information-explanation` | `audience-adaptation` |
 | Recommendation among alternatives | `information-decision-support` | research or source-summary evidence route, `execution-writing` for a decision memo |
 | Edit, rewrite, restructure, or compress existing text without an artifact-specific contract | `information-editing` | `audience-adaptation` |
+| Humanize text, remove robotic phrasing, or apply a natural-voice pass | `information-editing` for ordinary rewrites; `information-writing` for new prose; artifact owner for specialized deliverables | `humanize-text` |
 | Create or substantively revise a technical document or engineering analysis | `technical-writing` | source/research route, `audience-adaptation` |
 | Status update, decision memo, or execution plan | `execution-writing` | `information-decision-support`, `audience-adaptation` |
 | Presentation or slide narrative for live delivery or independent reading | `information-presentation` | evidence route, `audience-adaptation` |

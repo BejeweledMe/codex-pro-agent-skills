@@ -24,6 +24,9 @@ compression that leaves that artifact contract intact.
 
 ## Editing modes
 
+Use `humanize-text` as a style companion when asked to humanize prose or remove
+robotic phrasing. Keep the requested editing scope and evidence boundary here.
+
 Choose the requested mode and keep its boundary clear:
 
 - **Copyediting**: correct grammar, consistency, punctuation, and local clarity without changing meaning or structure.

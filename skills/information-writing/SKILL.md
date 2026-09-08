@@ -52,6 +52,9 @@ Use `audience-adaptation` as a companion when the reader changes depth, evidence
 emphasis, or next action. Do not load every writing skill for one response; add only
 the primary operation and the companions that materially change the result.
 
+Use `humanize-text` as a voice and surface-style companion when asked for natural,
+less formulaic prose. Retain the selected primary operation and its evidence boundary.
+
 ## Write for the situation
 
 For new text, work top-down:

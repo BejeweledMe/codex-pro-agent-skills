@@ -17,6 +17,7 @@ bundles:
     skills:
       - information-writing
       - information-editing
+      - humanize-text
       - information-source-summary
       - information-research-synthesis
       - information-explanation
@@ -235,6 +236,7 @@ bundles:
       - execution-writing
       - flutter-skill
       - genai-security-testing
+      - humanize-text
       - information-decision-support
       - information-editing
       - information-explanation

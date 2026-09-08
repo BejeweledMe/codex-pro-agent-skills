@@ -46,6 +46,10 @@ procedures, and live versus independently read presentations.
 See [product and writing decisions](docs/product-and-writing-skill-decisions.md)
 for the exact owner mapping. This update introduces no new skills or bundles.
 
+The `humanize-text` companion adds a natural-voice pass for Russian and English
+prose while preserving meaning and the author's voice. It works with the relevant
+writing or editing owner and is included in `writing-specialists` and `all`.
+
 The repository is physically flat: every skill lives in `skills/<skill-name>`. Its
 logical structure comes from routing between skills.
 
@@ -374,6 +378,9 @@ serving/training infrastructure routes to `ai-platform-llmops`.
 
 <details>
 <summary><strong>Writing and communication</strong></summary>
+
+- `humanize-text`: Natural Russian or English voice and less robotic phrasing,
+  preserving meaning and the author's voice as a companion to the primary skill.
 
 - `information-writing`: Shared discipline for substantive answers and informational
   writing, with focused guidance for profiles, company descriptions, outreach drafts,
