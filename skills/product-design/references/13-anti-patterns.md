@@ -8,7 +8,7 @@ Symptom: strategy is a list of features and dates.
 
 Why it fails: outputs do not guarantee outcomes. Teams lose room to discover better solutions.
 
-Fix: translate work into outcomes, target users, opportunities and assumptions. Use roadmap to communicate bets and learning, not only delivery dates.
+Fix: connect work to outcomes, target users, opportunities and assumptions while retaining prioritization and coordination around consequential dates. Distinguish candidate scope, forecasts and promises; a published feature list can become a perceived commitment even when called a hypothesis. Preserve existing commitments until properly changed. Report baseline, intended outcome, observed effect and what changes next; see [operating model](02-product-operating-model.md) and [metrics](11-business-outcomes-and-product-metrics.md).
 
 ## Solution-First Discovery
 
@@ -16,7 +16,15 @@ Symptom: team starts with `build chatbot`, `add dashboard`, `make new onboarding
 
 Why it fails: solution may not address real opportunity.
 
-Fix: ask what user need, pain or desire this solution addresses. Generate alternatives and test assumptions.
+Fix: for an unresolved product choice, establish the user need, compare alternatives and assess assumptions. A specified implementation can reuse accepted decisions and evidence; it does not automatically need new discovery.
+
+## Design As A Request Queue
+
+Symptom: designers receive fixed requirements and return polished screens while others choose the solution.
+
+Why it fails: staffing a design function does not provide early understanding, alternatives or influence over the experience.
+
+Fix: for solution discovery, involve design in user learning, constraints and alternative exploration before detailed polish; iterate with product and engineering. Centralized design capabilities and bounded production work remain legitimate. See [roles](02-product-operating-model.md).
 
 ## Opportunity From Internal Opinion
 
@@ -48,7 +56,7 @@ Symptom: tests exist but cannot change the decision.
 
 Why it fails: evidence becomes decoration.
 
-Fix: define decision, assumption, method, pass/fail threshold and next action before test.
+Fix: define the decision, assumption, suitable method and possible next actions. Prespecify criteria for confirmatory decisions; preserve changes and new hypotheses in exploratory learning. Label a fictional future customer letter as a framing device, never as an actual customer response or proof of demand. See [validation](05-validation-and-assumption-tests.md).
 
 ## AI Because Possible
 

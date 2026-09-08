@@ -25,7 +25,7 @@ because a request touches the same product.
 
 | Domain | Start with | Then route to |
 |---|---|---|
-| User problem, discovery, UX, requirements, design system | `product-design` | `business-product-consulting` for strategic or executive choices; the appropriate implementation domain after validation |
+| User problem, discovery, UX, requirements, design system | `product-design` | `business-product-consulting` for strategic or executive choices; the relevant engineering owner for technical input during discovery and implementation once the decision is sufficiently clear |
 | Business case, market or portfolio choice, operating model, executive recommendation | `business-product-consulting` | `product-design` for user evidence and UX; the affected engineering domain for implementation |
 | Classical service architecture | `system-design` | `api-contract-engineering` for HTTP artifacts; backend/database/data/platform owners for implementation; SWE/QA/SRE for change, verification, and operation |
 | Computer-vision problem, sensor, task, or end-to-end perception pipeline | `computer-vision-system-design` | CV data, modeling, evaluation, and inference specialists for their decision surfaces; classical service owners for the surrounding platform |
@@ -43,6 +43,7 @@ operation.
 | Reader need or artifact | Primary skill | Add only when needed |
 |---|---|---|
 | Direct user answer without a narrower operation | `information-writing` | `audience-adaptation` |
+| New profile, company description, outreach draft, release, or product-page copy | `information-writing` | local professional-genre reference; evidence route or `audience-adaptation` when needed |
 | Faithful account of supplied material | `information-source-summary` | `audience-adaptation` |
 | Finding that needs new/external evidence, or supplied sources that do not form the complete evidence boundary | `information-research-synthesis` | `information-decision-support`, `audience-adaptation` |
 | Faithful synthesis of one or more supplied sources that form the complete evidence boundary | `information-source-summary` | `audience-adaptation` |
@@ -51,7 +52,10 @@ operation.
 | Edit, rewrite, restructure, or compress existing text without an artifact-specific contract | `information-editing` | `audience-adaptation` |
 | Create or substantively revise a technical document or engineering analysis | `technical-writing` | source/research route, `audience-adaptation` |
 | Status update, decision memo, or execution plan | `execution-writing` | `information-decision-support`, `audience-adaptation` |
-| Presentation or slide narrative | `information-presentation` | evidence route, `audience-adaptation` |
+| Presentation or slide narrative for live delivery or independent reading | `information-presentation` | evidence route, `audience-adaptation` |
+
+See [product and writing decisions](docs/product-and-writing-skill-decisions.md)
+for the eight existing owners expanded by the two-book update.
 
 ## Architecture Domains
 

@@ -9,7 +9,7 @@ Use this skill to make product engineering work decision-ready: clarify business
 
 ## Core Rule
 
-Do not start from the feature, screen, model, library, architecture, or implementation. First clarify the situation, complication, stakeholder, decision, desired outcome, alternatives, business/user value, risks, metrics, ownership, and next test or ask.
+For an open strategic or business decision, connect the situation, stakeholder, desired outcome, alternatives, value, risks, metrics and ownership before recommending action. Reuse supplied context and accepted choices. A bounded request does not require new discovery, an organizational intervention, an OKR or a memo. Investigate only missing information that can materially change the requested decision or work; use the relevant output fields and existing authorization.
 
 ## Hierarchy And Handoffs
 
@@ -33,15 +33,19 @@ Read only the references needed for the current task.
 - For executive updates, PRDs, RFCs, strategy memos, postmortems, emails, and concise narrative framing, read `references/02-scr-scqa-communication.md`.
 - For answer-first communication, storyline, synthesis, argument quality, and executive summaries, read `references/03-pyramid-principle.md`.
 - For problem decomposition, root-cause analysis, issue trees, workstreams, segmentation, roadmap options, and taxonomy design, read `references/04-mece-issue-trees.md`.
-- For product discovery, market/opportunity analysis, value proposition, adoption friction, competitor/alternative framing, and UI/UX review through product/business outcomes, read `references/05-product-discovery-and-market-analysis.md`.
+- For product/market choices, vision and strategy, customer partners, business constraints, adoption friction, evidence selection, and UI/UX review through business outcomes, read `references/05-product-discovery-and-market-analysis.md`.
 - For developer productivity, dev tooling, platform/productivity claims, engineering metrics, and avoiding vanity metrics, read `references/06-developer-productivity-space.md`.
 - For AI-assisted software development, agentic coding, AI tool rollout, evals, guardrails, governance, and value-stream impact, read `references/07-ai-assisted-development-dora.md`.
 - For organization design, team ownership, platform/product boundaries, cognitive load, dependencies, and fast flow, read `references/08-team-topologies-fast-flow.md`.
+- For product leadership capability, succession, role design or coordination burden, read the leadership sections of `references/12-product-leadership-and-operating-model.md`.
+- For requested operating-model change or diagnosis of slow innovation/delivery, read the intervention and trial sections of `references/12-product-leadership-and-operating-model.md`. Team boundaries and dependencies remain in `08`.
 - For downside analysis, future impact, hidden work, support burden, operational risk, rollback, and guardrails, read `references/09-risk-and-second-order-effects.md`.
 - For reviewing decks, memos, RFCs, demo narratives, UI/UX narratives, and leadership updates, read `references/10-presentation-review-checklist.md`.
 - For creating or updating a future skill, routing behavior, output discipline, or agent operating model, read `references/11-agent-operating-model-and-skill-outline.md`.
 
 ## Workflow
+
+Select the relevant steps and output fields for the decision; reuse supplied framing for bounded work.
 
 1. Classify the request:
    - Ambiguous product/engineering task: read `01`, then `04`, `05`, and `09` as needed.
@@ -51,6 +55,7 @@ Read only the references needed for the current task.
    - Developer productivity or tooling: read `06`, plus `09`.
    - AI-assisted development or agents in engineering workflows: read `07`, then `06` and `09`.
    - Org design, ownership, platform, architecture dependencies, or team flow: read `08`, then `09`.
+   - Product leadership or operating-model change advice: read the relevant sections of `12`; use `08` for boundary/dependency questions and `09` for consequential risks.
 2. Identify blocking unknowns. Ask only if the missing information changes the decision; otherwise state assumptions.
 3. Start with an answer-first recommendation or a crisp problem statement.
 4. Use SCR/SCQA to frame context and urgency.

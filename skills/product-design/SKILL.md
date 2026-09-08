@@ -9,7 +9,7 @@ Use this skill to design or review products end to end. Treat product design as 
 
 ## Core Rule
 
-Do not start from a screen, component, model, or feature. First clarify the user, context, desired outcome, opportunity, evidence, assumptions, risks, success metrics, guardrails, fallback, ownership, and maintenance path.
+For an unresolved product decision, connect the user, context, desired outcome, opportunity, evidence, assumptions, risks and success measures before selecting an experience. Reuse supplied context and accepted decisions. For a bounded implementation or edit, address only unknowns that could materially change the requested work; do not require fresh discovery, alternatives, an OKR or a document merely to proceed. Apply quality, guardrails, fallback, ownership and maintenance requirements relevant to the actual change.
 
 ## Hierarchy And Handoffs
 
@@ -23,9 +23,11 @@ portfolio or market choice, operating model, organization/ownership, executive
 recommendation, or a comparison of strategic alternatives. It may consume this
 skill's evidence but does not replace user research or UX design.
 
-After the product decision is made, delegate implementation architecture to the
-appropriate frontend, backend, system, ML, LLM, or mobile owner. Do not let an implementation choice
-stand in for validation of the user problem.
+Involve the appropriate frontend, backend, system, ML, LLM or mobile owner early when
+technical options or constraints affect discovery. That owner also leads implementation
+architecture once the product decision is sufficiently clear. Early engineering input
+and ongoing product/design support during delivery preserve shared understanding;
+an implementation choice does not itself validate the user problem.
 
 For browser UI, give `$web-frontend-engineering` the acceptance journey, supported
 devices and input modes, visible and operable states, focus behavior, and failure
@@ -38,10 +40,10 @@ Read only the references needed for the current task.
 
 - Always start with `references/00-index.md` for broad product design work or to choose a route.
 - For shared vocabulary, read `references/01-terminology.md`.
-- For organization, empowered teams, outcomes over output, product roles, and value/usability/feasibility/viability risks, read `references/02-product-operating-model.md`.
+- For empowered teams, product roles and authority, cross-team coherence, commitments, and value/usability/feasibility/viability risks, read `references/02-product-operating-model.md`.
 - For product discovery, opportunity-solution trees, outcome -> opportunities -> solutions -> assumptions, and discovery anti-patterns, read `references/03-discovery-and-opportunity-solution-trees.md`.
-- For interview planning, research questions, story-based interviews, user evidence, and synthesis, read `references/04-user-research-and-interviewing.md`.
-- For validation plans, assumption tests, experiment selection, AI validation, UI validation, and readiness to build, read `references/05-validation-and-assumption-tests.md`.
+- For interview planning, research questions, story-based interviews, prototype sessions, user evidence, and shared learning, read `references/04-user-research-and-interviewing.md`.
+- For assumption tests, evidence and prototype selection, AI/UI validation, learning artifacts versus release readiness, and readiness to build, read `references/05-validation-and-assumption-tests.md`.
 - For AI/ML product UX, AI-vs-non-AI decisions, data needs, explainability, automation, model errors, and feedback loops, read `references/06-ai-ml-product-ux.md`.
 - For calibrated trust, confidence, user control, correction, undo, fallback, granular feedback, and global controls, read `references/07-calibrated-trust-and-human-control.md`.
 - For UI/UX product quality, states, accessibility extensions, instrumentation, design system fit, and implementation quality, read `references/08-ui-ux-product-quality.md`.
@@ -52,6 +54,8 @@ Read only the references needed for the current task.
 - For red flags and failure modes, read `references/13-anti-patterns.md`.
 
 ## Workflow
+
+Use the route and output fields relevant to the request. These lists guide substantial design work; they do not require reopening settled decisions or producing every artifact for a bounded change.
 
 1. Classify the request:
    - New product or feature: read `00`, `01`, `02`, `03`, `05`, `11`, then topic files.
@@ -65,7 +69,7 @@ Read only the references needed for the current task.
      sources before making strong claims; label any remaining inference explicitly.
 2. Identify blocking unknowns. Ask only when missing information changes the decision; otherwise state assumptions.
 3. Separate outcome, opportunity, solution, and assumptions.
-4. Evaluate value, usability, feasibility, and viability before committing to a solution.
+4. Assess material value, usability, feasibility and viability uncertainty using available evidence; pursue additional inquiry where it can change the decision. Make residual risks explicit when a commitment is needed under uncertainty.
 5. Produce practical recommendations with validation, metrics, guardrails, fallback, ownership, and maintenance.
 6. Mark any recommendation not grounded in the references as `external extension`.
 
@@ -125,7 +129,7 @@ Include:
 
 - Do not equate output with outcome.
 - Do not call a need an opportunity until it is backed by customer evidence or clearly marked as an assumption.
-- Do not jump from opportunity to one solution without alternatives and assumption tests.
+- When choosing a solution for an unresolved opportunity, compare alternatives and assess critical assumptions; reuse prior decisions and evidence for a specified change.
 - Do not add AI without proving unique AI value and designing uncertainty, correction, fallback, and control.
 - Do not call a UI product-ready without non-happy-path states, accessibility basics, instrumentation, error handling, and ownership.
 - Do not call a design system mature because it has a UI kit or component package; require adoption, governance, docs, release process, and metrics.

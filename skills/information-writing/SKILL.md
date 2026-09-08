@@ -66,6 +66,14 @@ Remove repetition, empty framing, and details that do not change understanding, 
 
 Separate facts, interpretations, assumptions, recommendations, and uncertainty when that distinction matters.
 
+Cutting noise and adding information are different repairs. Use supported facts to fill a reader's gap; missing detail is not permission to invent a date, mechanism, or promise. Read only the reference relevant to the current problem:
+
+- [Selecting informative detail](references/selecting-informative-detail.md) for vague claims, unexplained facts, or persuasive wording without useful support.
+- [Structure and navigation](references/structure-and-navigation.md) for substantial texts with selective reading, comparisons, or difficult entry points.
+- The matching section of [Professional genres](references/professional-genres.md) for applications, profiles, company descriptions, first-contact drafts, releases, or product pages. These are ordinary writing unless a specialized artifact or evidence contract applies.
+
+Clarify scope or prerequisites near the opening only when a likely expectation mismatch makes that useful. If preparation, conflicting reader questions, or listening instead of reading changes the content path, use `audience-adaptation` when available. Preserve requested personal voice, warmth, humor, and formality when they serve the text; clarity does not require neutrality.
+
 ## Select a specific skill
 
 Use one specialized writing skill when it materially changes the work:

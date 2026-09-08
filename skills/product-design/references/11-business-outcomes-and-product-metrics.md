@@ -12,6 +12,12 @@ Output - что команда поставила. Outcome - что измени
 - Product outcome: больше пользователей завершают review task за меньшее время без роста ошибок.
 - Business outcome: сокращение support cost или рост activation.
 
+## Team Objectives And Commitments
+
+Если работа ведется через цели команды, различать желаемое качественное изменение и измеримые результаты, по которым виден прогресс. Цель может задать направление до выбора решения; она не требует предварительно завершить discovery. Для совместного результата сохранить общую ответственность команды и видимость зависимостей.
+
+Продвижение к исследуемому outcome и выполнение согласованного обязательства — разные выводы. Срок оценки outcome не обязательно является обещанием поставить конкретную фичу; основание обещания — в [operating model](02-product-operating-model.md#основание-для-обязательства). Сопоставлять исходное состояние, ожидаемое изменение, наблюдаемый эффект и следующую корректировку. Не назначать OKR каждому тикету или фиксированные нормы количества, горизонта и scoring. Это дополнение по «Вдохновленным» Марти Кагана; см. [индекс](00-index.md).
+
 ## Customer Value И Business Value
 
 Product Talk подчеркивает tension между customer value and business value. Продукт должен создавать customer value способом, который поддерживает business value over time. Lovable product без business viability может быть закрыт. Business value без customer value разрушает доверие and retention.
@@ -45,7 +51,7 @@ Lagging indicators говорят, что уже произошло. Leading ind
 
 ## Success And Failure Thresholds
 
-Перед test/release нужно определить:
+Для confirmatory проверки или решения о выпуске заранее определить применимые критерии:
 
 - target metric;
 - guardrail metrics;
@@ -53,7 +59,7 @@ Lagging indicators говорят, что уже произошло. Leading ind
 - threshold for rollback or investigation;
 - owner and response action.
 
-Без thresholds команда будет rationalize любые данные.
+Заранее выбранные критерии защищают от подгонки решения под увиденные данные. Для exploratory learning сформулировать вопрос и возможные следующие действия, сохраняя появившиеся гипотезы отдельно от подтвержденных выводов; такая работа не всегда имеет числовой pass/fail. Условия прекращения опасной экспозиции нужны и в exploration, когда риск этого требует.
 
 ## AI Metrics Need User Meaning
 
@@ -82,7 +88,7 @@ Component usage важно, но недостаточно. Оно не дока�
 - Какая business metric связана с outcome?
 - Какие leading indicators появятся раньше?
 - Какие guardrails защищают от local optimization?
-- Какие thresholds заранее приняты?
+- Какие критерии требуются для решения и заданы заранее; что пока исследуется без pass/fail?
 - Как metric будет instrumented?
 - Что команда сделает при success, neutral, failure?
 

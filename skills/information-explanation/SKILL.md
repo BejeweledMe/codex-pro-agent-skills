@@ -27,6 +27,8 @@ Choose the pattern that fits:
 
 Use precise terms where they help. Briefly define a non-obvious term at first use instead of avoiding useful vocabulary. Explain only the background necessary to bridge the reader to the new idea.
 
+When an explanation remains abstract or advice leaves the reader unable to recognize or handle the relevant situation, use [Examples and practical depth](references/examples-and-practical-depth.md). Choose the missing bridge without turning every explanation into a procedure, and check whether an example accidentally narrows the rule or implies a promise.
+
 ## Boundaries
 
 Add exceptions, failure modes, and nearby concepts only when omitting them would create a wrong model. Use analogies only when they preserve the relevant structure, and make clear where an analogy stops applying.
@@ -34,3 +36,5 @@ Add exceptions, failure modes, and nearby concepts only when omitting them would
 ## Final check
 
 The reader should be able to say what the thing is, why it matters, how it works, what it is commonly confused with, and where the simplified account stops being true.
+
+If practical action was promised, the reader should also have a feasible first step and the conditions needed to use it. Orientation alone is appropriate when that is the requested scope.

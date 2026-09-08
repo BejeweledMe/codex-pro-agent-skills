@@ -34,14 +34,16 @@ Choose the requested mode and keep its boundary clear:
 
 ## Method
 
-For existing text, work bottom-up after preserving invariants:
+Choose the editing order from the requested mode and main defect. For local wording or syntax problems, work from the sentence outward while reading enough surrounding text to preserve its focus. When restructuring is authorized and the main problem is access or sequence, organize the existing material before polishing it. A structure problem noticed during a copyedit can be flagged without silently expanding the edit.
 
-`wording -> sentences -> paragraphs -> structure`
+Remove unneeded repetition and verbal noise; simplify syntax and repair paragraph focus or transitions where they obstruct the reader. A word or construction is a diagnostic cue, not an automatic deletion target. After cuts, splitting, or regrouping, reread for continuity. Do not rewrite a clear sentence merely to make it different.
 
-Remove repetition and verbal noise first. Simplify difficult syntax, then repair paragraph focus and transitions. Change structure only when the requested mode requires it or the current order prevents understanding. Do not rewrite a clear sentence merely to make it different.
+For difficult repair choices, use [Revision decisions](references/revision-decisions.md): claim-changing specificity, sentence focus, entry-point meaning, accepted-draft access, official replies, and requested tone changes.
 
 For compression, remove repeated ideas, low-value framing, redundant examples, and reader-irrelevant detail before removing evidence, conditions, limitations, or causal links.
 
 ## Final check
 
 Re-read the result against the invariants. It should be easier to use, no less accurate, and appropriate for the requested language and reader.
+
+Check newly specific wording against the original assertion and supported context: actor, certainty, timing, quantity, cause, condition logic, attribution, and commitment. For structural edits, read likely entry points without their parent context and confirm that cuts preserve necessary connections and consequential repetition.

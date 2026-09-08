@@ -23,6 +23,8 @@ Use this knowledge when the user asks for:
 
 ## Agent Workflow
 
+Reuse established context and decisions; apply only the steps and output fields useful to the request. A bounded task does not commission new discovery or organizational change.
+
 1. Classify the request: communication, problem framing, product/market analysis, productivity, AI adoption, org design, risk review.
 2. Read only relevant references.
 3. Write an answer-first recommendation or problem statement.
@@ -41,6 +43,7 @@ Use this knowledge when the user asks for:
 - UI/UX review: read [05](05-product-discovery-and-market-analysis.md), [10](10-presentation-review-checklist.md), then route to the [product-design reference](../../product-design/references/00-index.md).
 - AI/dev productivity: read [06](06-developer-productivity-space.md), [07](07-ai-assisted-development-dora.md), [09](09-risk-and-second-order-effects.md).
 - Org/architecture/platform: read [08](08-team-topologies-fast-flow.md), [09](09-risk-and-second-order-effects.md).
+- Product leadership or requested operating-model change: read the relevant sections of [12](12-product-leadership-and-operating-model.md); use [08](08-team-topologies-fast-flow.md) for team boundaries and dependencies.
 
 ## Output Standards
 

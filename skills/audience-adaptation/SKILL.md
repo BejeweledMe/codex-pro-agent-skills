@@ -26,6 +26,8 @@ An explicitly named audience and desired reader action take precedence. For a di
 
 Choose one dominant mode. A user may be technical in one subject and nontechnical in another, so recalibrate when the subject changes.
 
+When the broad mode is insufficient, use [Reader preparation and consumption](references/reader-preparation-and-consumption.md). It helps distinguish what readers can already do, which questions they need answered, and whether they can pause, reread, or follow a visual reference. Use known context; a routine edit does not require a new audience brief.
+
 ## Technical reader
 
 Optimize for precision, causal understanding, constraints, and implementation relevance. Include interfaces, contracts, component interactions, assumptions, invariants, dependencies, mechanisms, failure modes, scale, metrics with conditions, validation, and trade-offs when they change the result.

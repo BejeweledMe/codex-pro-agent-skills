@@ -1,6 +1,6 @@
 ---
 name: information-presentation
-description: Create claim-driven presentation content with clear visual evidence, speaker notes, and a decision- or learning-oriented narrative.
+description: Create presentation and slide content for live delivery or independent reading, with supported claims, informative visuals, and a decision- or learning-oriented narrative.
 ---
 
 # Information Presentation
@@ -15,15 +15,19 @@ narrative. Use `information-research-synthesis`, `information-source-summary`, o
 needed, then use this skill to turn it into claims, visual evidence, and speaker
 notes. Use `audience-adaptation` to set the appropriate depth and decision framing.
 
+## Delivery mode
+
+Establish whether the deck accompanies speech, supports independent reading, or must do both. Essential explanation and qualifications must remain accessible in the mode the audience receives. For mixed use, choose an autonomous deck, pre-reading with discussion, or separate versions when the requested scope supports it; do not assume every task needs two decks. Use [Delivery and visual evidence](references/delivery-and-visual-evidence.md) for content allocation, retrieval titles, comparisons, and callouts.
+
 ## Slide composition
 
 Distinguish three layers for each slide:
 
-- **Claim**: the single conclusion the audience should remember; prefer it as the title.
-- **Visual evidence**: chart, diagram, comparison, figure, or tightly selected data that directly supports the claim.
-- **Speaker notes**: context, transitions, caveats, and narration that should not crowd the slide.
+- **Point and title**: the primary conclusion or topic the slide helps the audience inspect. Prefer a supported claim title when there is a conclusion; an accurate topic title can introduce a subject, orient the audience, or frame an open question.
+- **Supporting material**: chart, diagram, screenshot, comparison, quotation, figure, or selected text that enables the required understanding. Choose an informative visual when it carries the relationship better than prose.
+- **Delivery support**: narration, transitions, and optional context for the speaker. Keep qualifications that determine the meaning of a visible claim with that claim, including during live delivery; an autonomous deck must not depend on unavailable speaker notes.
 
-Use one to three supporting evidence blocks. Move deep methodology, exhaustive detail, and secondary alternatives to backup slides when they do not support the main path.
+Use one to three supporting evidence blocks as a working default, adapting to the material and delivery mode. Move deep methodology, exhaustive detail, and secondary alternatives to backup slides when they do not support the main path. Preserve essential conditions and intentional recaps.
 
 ## Narrative
 
@@ -35,4 +39,4 @@ Adapt the arc instead of forcing it. A research presentation may use question, m
 
 ## Final check
 
-For every slide, verify that the title states a useful claim, every visible element supports it, the visual is more effective than prose where used, and notes contain only delivery support rather than slide content.
+For every slide, verify that the title accurately identifies its point or topic, the supporting material lets the audience inspect it, and necessary context and qualifications remain accessible in the actual delivery mode. Check comparison conditions and annotation targets where relevant, and any dependency on speech or another slide. Notes may support delivery; they must not carry the only explanation an independent reader needs.

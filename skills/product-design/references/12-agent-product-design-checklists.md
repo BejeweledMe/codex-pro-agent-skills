@@ -2,7 +2,9 @@
 
 Related: [terminology](01-terminology.md), [operating model](02-product-operating-model.md), [discovery](03-discovery-and-opportunity-solution-trees.md), [AI UX](06-ai-ml-product-ux.md), [design systems](09-design-systems-as-product.md), [anti-patterns](13-anti-patterns.md)
 
-## Universal Product Design Checklist
+Select checks for the actual decision and exposure. Reuse established context, evidence and accepted risks; these lists do not require fresh discovery or every output field for a bounded edit. For exploratory learning versus confirmatory decisions, follow [validation](05-validation-and-assumption-tests.md).
+
+## Product Design Decision Checklist
 
 - Who is the user, buyer and affected stakeholder?
 - What is the business problem?
@@ -43,12 +45,12 @@ Related: [terminology](01-terminology.md), [operating model](02-product-operatin
 
 - Critical assumptions named.
 - Test method fits assumption type.
-- Pass/fail threshold defined before test.
+- Learning question is clear; confirmatory decision criteria are defined before results.
 - Sample and context are credible.
 - Evidence can change decision.
 - Guardrail metrics included.
 - Unknowns and accepted risks documented.
-- Next action after pass/fail is clear.
+- Relevant next actions follow from the finding, including unresolved or contradictory evidence.
 
 ## AI Feature Readiness
 
@@ -112,7 +114,7 @@ Related: [terminology](01-terminology.md), [operating model](02-product-operatin
 
 ## Agent Output Standard
 
-When producing product design recommendations, include:
+For substantial product design recommendations, use the relevant fields:
 
 1. `Problem and outcome`.
 2. `Evidence and assumptions`.

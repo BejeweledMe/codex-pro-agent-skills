@@ -6,7 +6,7 @@
 
 ## Core Rule
 
-Не начинайте с реализации. Сначала сформулируйте:
+Для открытого бизнес-решения использовать применимые вопросы ниже. Для ограниченного запроса опираться на принятые решения и известный контекст; эта база не требует нового исследования, полного memo или организационных изменений ради выполнения задачи.
 
 1. Что изменилось в бизнесе, продукте, рынке, пользователях или системе.
 2. Почему это важно сейчас.
@@ -22,6 +22,8 @@
 - Разобрать проблему или метрику: [01](01-business-thinking.md) -> [04](04-mece-issue-trees.md) -> [05](05-product-discovery-and-market-analysis.md).
 - Оценить продуктивность разработки или AI adoption: [06](06-developer-productivity-space.md) -> [07](07-ai-assisted-development-dora.md) -> [09](09-risk-and-second-order-effects.md).
 - Проверить организационный и архитектурный impact: [08](08-team-topologies-fast-flow.md) -> [09](09-risk-and-second-order-effects.md).
+- Разобрать лидерские функции, преемственность или координационную нагрузку: разделы о leadership в [12](12-product-leadership-and-operating-model.md).
+- Диагностировать или изменить product operating model по запросу: разделы об intervention/trial в [12](12-product-leadership-and-operating-model.md); [08](08-team-topologies-fast-flow.md) для границ и зависимостей.
 - Подготовить будущий Codex skill: [11](11-agent-operating-model-and-skill-outline.md).
 
 ## Files
@@ -37,8 +39,11 @@
 - [09-risk-and-second-order-effects.md](09-risk-and-second-order-effects.md): future impact, hidden work, operational burden, reversibility.
 - [10-presentation-review-checklist.md](10-presentation-review-checklist.md): pre-flight checklist для deck, memo, RFC, demo narrative.
 - [11-agent-operating-model-and-skill-outline.md](11-agent-operating-model-and-skill-outline.md): как использовать базу в будущем agent skill.
+- [12-product-leadership-and-operating-model.md](12-product-leadership-and-operating-model.md): лидерские функции и преемственность, координационная нагрузка, диагностика и ограниченное изменение способа работы.
 
-## Agent Minimum Workflow
+## Agent Workflow
+
+Use the steps that clarify the requested decision; do not recreate established context or impose every artifact.
 
 1. State the `answer-first` recommendation in one sentence.
 2. Write the situation and complication before proposing work.
@@ -58,3 +63,5 @@ Each topic file separates:
 - `Extension`: applied guidance for software/product work derived from the source.
 
 This distinction matters. For example, DORA 2025 directly says AI is an amplifier of the organizational system. Applying that to Codex agents, eval loops, PR review and release guardrails is an extension.
+
+Дополнения о продуктовых обязательствах, стратегическом фокусе, партнерах, лидерстве и изменении способа работы опираются также на Марти Кагана, «Вдохновленные», МИФ, 2020, ISBN 9785001464310. Практический опыт и исторические кейсы дают вопросы для решения, но не сравнительное доказательство эффективности, нормативы staffing или гарантию product/market fit. Книга не предоставляет полной методологии market analysis. Дополнения сформулированы самостоятельно и сохраняют границы прежних источников.

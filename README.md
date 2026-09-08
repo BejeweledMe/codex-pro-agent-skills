@@ -37,6 +37,15 @@ Computer vision and other specialist domains are optional. They are not included
 
 ## How Skill Routing Works
 
+The two-book update expands eight existing skills: two product/business owners and
+six writing owners. Product guidance covers discovery evidence, early engineering
+input, leadership, and scoped operating-model advice. Writing guidance adds
+informative detail, revision choices, reader preparation, navigation, explanations,
+procedures, and live versus independently read presentations.
+
+See [product and writing decisions](docs/product-and-writing-skill-decisions.md)
+for the exact owner mapping. This update introduces no new skills or bundles.
+
 The repository is physically flat: every skill lives in `skills/<skill-name>`. Its
 logical structure comes from routing between skills.
 
@@ -367,7 +376,8 @@ serving/training infrastructure routes to `ai-platform-llmops`.
 <summary><strong>Writing and communication</strong></summary>
 
 - `information-writing`: Shared discipline for substantive answers and informational
-  writing.
+  writing, with focused guidance for profiles, company descriptions, outreach drafts,
+  releases, and product-page copy.
 - `information-editing`: Copyediting, faithful rewriting, restructuring, and
   compression.
 - `information-source-summary`: Faithful summaries of supplied sources.
@@ -379,7 +389,8 @@ serving/training infrastructure routes to `ai-platform-llmops`.
 - `technical-writing`: Documentation, design docs, runbooks, benchmarks, and
   engineering analysis.
 - `execution-writing`: Status reports, decision memos, and execution plans.
-- `information-presentation`: Claim-driven presentations and speaker notes.
+- `information-presentation`: Presentation content for live delivery or independent
+  reading, with informative visuals and appropriate speaker support.
 
 </details>
 
