@@ -37,6 +37,7 @@ incident response.
 
 - For the least-autonomous execution pattern within the selected product design, read [agent or pipeline](references/01_agent_or_pipeline.md).
 - For tool contracts, state, checkpoints, retries, and semantic validation, read [tools and state](references/02_tools_state_contracts.md).
+- When authoring tool descriptions, errors, system instructions, or handoff text that governs an agent's next action, read [text for agent decisions](references/agent-facing-text.md). Express established contracts and label proposed changes; wording does not replace runtime checks.
 - For supervisors, handoffs, multi-agent boundaries, and partial failures, read [orchestration](references/03_orchestration_handoffs.md).
 - For traces, budgets, recovery, replay, rollout, and degradation, read [control and recovery](references/04_control_observability_recovery.md).
 - For reusable design and contract formats, read [templates](references/05_templates.md).

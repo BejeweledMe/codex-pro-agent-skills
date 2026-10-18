@@ -30,6 +30,9 @@ Read only the files needed for the current request.
   LLM product, a design review, or a prompt/RAG/agent/adaptation decision.
 - For provider/model portfolio, prompts, context windows, structured output, and
   model routing, read [models, prompts, and context](references/02_models_prompts_context.md).
+- When drafting system instructions or tool descriptions for an established agent
+  workflow, use [text for agent decisions](../agent-workflows/references/agent-facing-text.md).
+  Keep prompt architecture here; wording does not replace enforcement.
 - For service topology, fallbacks, product budgets, and graceful degradation, read
   [architecture and routing](references/03_architecture_routing_fallbacks.md).
 - For tenancy, release bundles, rollout, rollback, and operating controls, read

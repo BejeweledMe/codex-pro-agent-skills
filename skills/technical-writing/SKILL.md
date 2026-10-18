@@ -30,6 +30,8 @@ For troubleshooting, start with recognizable symptoms and preconditions. Use dia
 
 For instructions with advance preparation, overlapping phases, spatial ambiguity, or readers returning midway, use [Procedure reading paths](references/procedure-reading-paths.md). Walk the documented actions in execution order and keep prerequisites and safety conditions available where they govern a choice.
 
+When rewriting a procedure or error message risks changing its conditions or next action, use [Instruction clarity](../information-editing/references/instruction-clarity.md). Keep the technical contract and document ownership here; do not infer missing behavior from a cleaner sentence.
+
 When a document explains a stateful boundary or hands off a defect, an optional boundary-contract paragraph can name the relevant states and transitions, invariants, authority and owner, rejection or stale-result behavior, diagnostic telemetry, and version limits. For a defect, include the smallest reproducible input or action sequence, environment and relevant state/revision identity, expected versus observed behavior, attempted recovery, and the next owner; redact secrets and unnecessary user data. Obtain these technical facts from the responsible engineering owner or verified artifacts, and keep hypotheses separate from observations.
 
 Document only confirmed behavior and explicitly marked proposals. Preserve permissions, conditions, and failure modes that make instructions safe and executable.

@@ -59,6 +59,12 @@ English prose; it preserves the primary owner's workflow and evidence boundary.
 See [product and writing decisions](docs/product-and-writing-skill-decisions.md)
 for the eight existing owners expanded by the two-book update.
 
+For instructions whose wording affects an action, `information-editing` provides
+checks for faithful rewrites, while `agent-workflows` owns authoring text for agent
+decisions. Existing technical, HTTP, and prompt owners retain their contracts.
+Load these references only when needed; ordinary technical prose does not require
+an extra pass. See [instruction clarity decisions](docs/instruction-clarity-decisions.md).
+
 ## Architecture Domains
 
 | Question | Primary skill | Delegate detailed work to |

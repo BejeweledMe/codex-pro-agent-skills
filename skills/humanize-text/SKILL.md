@@ -11,6 +11,9 @@ For an ordinary rewrite, use information-editing as the primary operation. For n
 
 Explicit instructions, source fidelity, required format, accessibility, and house style take precedence over these defaults. A request for light editing does not authorize a structural rewrite. Preserve the language and useful personality of the input; natural writing need not be casual, terse, or emotionally neutral.
 
+Technical subject matter alone does not impose sentence-length or punctuation
+restrictions.
+
 Read the whole text before changing it. Identify its intended reader and register from the supplied context. If writing samples are provided, observe their diction, rhythm, and degree of formality as provisional style cues; do not import their events or claims into the new text.
 
 Locate the passages that sound mechanical and repair those passages. Keep good sentences. For a new draft, apply the same choices while writing:

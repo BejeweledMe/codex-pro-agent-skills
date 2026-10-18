@@ -50,6 +50,13 @@ The `humanize-text` companion adds a natural-voice pass for Russian and English
 prose while preserving meaning and the author's voice. It works with the relevant
 writing or editing owner and is included in `writing-specialists` and `all`.
 
+Two focused references extend existing owners: `agent-workflows` covers text that
+governs an agent's next action, and `information-editing` covers instruction rewrites
+that must preserve conditions, uncertainty, and exact tokens. Technical, API, and
+LLM owners link to these references when needed. See
+[instruction clarity decisions](docs/instruction-clarity-decisions.md) for the
+boundaries. These additions introduce no new skills or bundles.
+
 The repository is physically flat: every skill lives in `skills/<skill-name>`. Its
 logical structure comes from routing between skills.
 

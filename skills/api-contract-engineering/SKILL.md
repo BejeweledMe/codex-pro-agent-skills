@@ -41,6 +41,8 @@ This skill owns HTTP contract artifacts and their observable compatibility, incl
 
 Use named handoffs only when another decision is needed. This skill does not require loading every adjacent owner.
 
+When expressing established HTTP outcomes for an agent, use [text for agent decisions](../agent-workflows/references/agent-facing-text.md) if wording affects the next action. HTTP error and replay semantics remain here; do not change them during a wording-only edit.
+
 ## Evidence Bar
 
 - Do not certify runtime compatibility from meta-schema validation, generated-code stability, or version numbering.

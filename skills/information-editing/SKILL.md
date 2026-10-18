@@ -43,6 +43,8 @@ Remove unneeded repetition and verbal noise; simplify syntax and repair paragrap
 
 For difficult repair choices, use [Revision decisions](references/revision-decisions.md): claim-changing specificity, sentence focus, entry-point meaning, accepted-draft access, official replies, and requested tone changes.
 
+When ambiguous instructions can change an action, or a requested style constraint risks changing their meaning, use [Instruction clarity](references/instruction-clarity.md). Preserve the source's condition scope, modality, referents, and literal tokens; keep unresolved intent explicit. Ordinary prose does not require this additional pass.
+
 For compression, remove repeated ideas, low-value framing, redundant examples, and reader-irrelevant detail before removing evidence, conditions, limitations, or causal links.
 
 ## Final check
